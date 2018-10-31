@@ -12,9 +12,14 @@
   color: #999;
   width: 100%;
   font-size: 12px;
+
   .m-header {
     width: 1190px;
     margin: 0 auto;
+
+    .m-user > a {
+      color: #13d1be;
+    }
   }
 }
 

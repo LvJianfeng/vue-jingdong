@@ -17,33 +17,32 @@
             placeholder="搜索商家或地点"
             @focus="focus"
             @blur="blur"
-            @input="input"
-          />
+            @input="input"/>
           <button class="el-button el-button--primary"><i class="el-icon-search"/></button>
           <dl
             v-if="isHotPlace"
-            class="hotPlace"
-          >
+            class="hotPlace">
             <dt>热门搜索</dt>
             <dd
               v-for="(item, index) in hotPlace"
-              :key="index">
-              {{ item }}</dd>
+              :key="index">{{ item }}</dd>
           </dl>
           <dl
             v-if="isSearchList"
-            class="searchList"
-          >
+            class="searchList">
             <dd
-              v-for="(item,index) in searchList"
-              :key="index"
-            >{{ item }}</dd>
+              v-for="(item, index) in searchList"
+              :key="index">{{ item }}</dd>
           </dl>
         </div>
-        <p class="suggset">
-          <a href="#">故宫博物院1</a>
-          <a href="#">故宫博物院2</a>
-        </p>
+        <div class="suggset">
+          <nuxt-link
+            class="login"
+            to="/">故宫博物院1</nuxt-link>
+          <nuxt-link
+            class="login"
+            to="/">故宫博物院2</nuxt-link>
+        </div>
         <ul class="nav">
           <li>
             <nuxt-link
@@ -74,8 +73,7 @@
       </el-col>
       <el-col
         :span="6"
-        class="right"
-      >
+        class="right">
         <ul class="security">
           <li>
             <i class="refund"/><p class="txt">随时退</p>
@@ -96,8 +94,8 @@
 export default {
 	data() {
 		return {
-			search: '', //当前输入框的值
-			isFocus: false, //是否聚焦
+			search: '', // 当前输入框的值
+			isFocus: false, // 是否聚焦
 			hotPlace: ['火锅', '火锅', '火锅', '火锅', '火锅'], // 热门搜索数据
 			searchList: ['故宫', '故宫', '故宫'] // 搜索数据
 		}
