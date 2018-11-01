@@ -6,6 +6,7 @@
     <el-main>
       <nuxt/>
     </el-main>
+    <!-- height='100%' 去掉默认 60px -->
     <el-footer height="100%">
       <my-footer/>
     </el-footer>

@@ -21,4 +21,6 @@ $ yarn run generate
 
 For detailed explanation on how things work, checkout [Nuxt.js docs](https://nuxtjs.org).
 
-## a
+## qq 授权码
+
+vjalqgcbjqdhbbfb

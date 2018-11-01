@@ -78,6 +78,8 @@
 </template>
 
 <script>
+// 加密
+import CryptoJS from 'crypto-js'
 export default {
 	data() {
 		return {
@@ -143,6 +145,8 @@ export default {
 			if (this.timerid) {
 				return false
 			}
+
+			// 验证用户名是否通过校验
 			this.$refs['ruleForm'].validateField('name', valid => {
 				namePass = valid
 			})
@@ -150,16 +154,22 @@ export default {
 			if (namePass) {
 				return false
 			}
+
+			// 检测邮箱是否通过校验
 			this.$refs['ruleForm'].validateField('email', valid => {
 				emailPass = valid
 			})
+
+			// 如果用户名, 邮箱都通过
 			if (!namePass && !emailPass) {
 				this.$axios
 					.post('/users/verify', {
+						// encodeURIComponent: 对中文进行编码
 						username: encodeURIComponent(this.ruleForm.name),
 						email: this.ruleForm.email
 					})
 					.then(({ status, data }) => {
+						// 验证码有效倒计时
 						if (status === 200 && data && data.code === 0) {
 							let count = 60
 							this.statusMsg = `验证码已发送，剩余${count--}秒`
@@ -176,7 +186,33 @@ export default {
 					})
 			}
 		},
-		register() {}
+		register() {
+			this.$refs['ruleForm'].validate(valid => {
+				if (valid) {
+					this.$axios
+						.post('/users/signup', {
+							username: window.encodeURIComponent(this.ruleForm.name),
+							password: CryptoJS.MD5(this.ruleForm.psd).toString(),
+							email: this.ruleForm.emial,
+							code: this.ruleForm.odec
+						})
+						.then((statius, data) => {
+							if (status === 200) {
+								if (data && data.code === 0) {
+									location.href = '/login'
+								} else {
+									this.error = data.msg
+								}
+							} else {
+								this.error = `服务器出错, 错误码:${status}`
+							}
+							setTimeout(() => {
+								this.error = ''
+							}, 1500)
+						})
+				}
+			})
+		}
 	}
 }
 </script>
