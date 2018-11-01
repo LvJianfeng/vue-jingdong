@@ -235,6 +235,7 @@
       }
     }
   }
+
   .m-geo {
     color: #666;
     font-size: 12px;
@@ -274,11 +275,13 @@
       }
     }
   }
+
   .m-nav {
     float: right;
     margin: 0;
     padding: 0;
     z-index: 999;
+    
     .nav {
       list-style: none;
       float: right;

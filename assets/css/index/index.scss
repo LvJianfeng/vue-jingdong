@@ -30,6 +30,7 @@
       box-sizing: border-box;
       padding: 2px 12px;
       height: 26px;
+      margin: 0;
       cursor: pointer;
 
       &:hover {
@@ -178,13 +179,13 @@
       width: 400px;
       height: 416px;
       color: #999;
-      background: #fff;
+      background: rgb(238, 232, 232);
       z-index: 9999;
 
       h4 {
         margin-top: 24px;
         padding-bottom: 10px;
-        border-bottom: 1px solid #e5e5e5;
+        border-bottom: 1px solid #3b3535;
         height: 22px;
         line-height: 22px;
       }

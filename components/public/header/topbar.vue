@@ -1,9 +1,9 @@
 <template>
-  <!-- gutter 属性来指定每一栏之间的间隔，默认间隔为 0 -->
+  <!-- [gutter](http://element-cn.eleme.io/#/zh-CN/component/layout) -->
   <el-row
     :gutter="0"
     class="m-header">
-    <!-- span 网格 1, 共 24 网格  -->
+    <!-- [span](http://element-cn.eleme.io/#/zh-CN/component/layout)  -->
     <el-col :span="5">
       <geo/>
     </el-col>

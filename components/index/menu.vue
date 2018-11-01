@@ -2,23 +2,23 @@
   <div class="m-menu">
     <dl
       class="nav"
-      @mouseleave="mouseleave">
+      @mouseleave="navLeave">
       <dt>全部分类</dt>
       <dd
         v-for="(item, index) in menu"
         :key="index"
-        @mouseenter="enter">
+        @mouseenter="navEnter">
         <i :class="item.type"/>{{ item.name }}<span class="arrow"/>
       </dd>
     </dl>
     <div
       v-if="kind"
       class="detail"
-      @mouseenter="sover"
-      @mouseleave="sout">
+      @mouseenter="detailEnter"
+      @mouseleave="detailLeave">
       <template
         v-for="(item, index) in curdetail.child">
-        <h4 :key="index">标题</h4>
+        <h4 :key="index">{{ item.title }}</h4>
         <span
           v-for="v in item.child"
           :key="v">
@@ -70,24 +70,29 @@ export default {
 	},
 	computed: {
 		curdetail() {
+      /* 打印结果是个数组，要去其内容 */
+      console.log(this.menu.filter((item)=>{
+        return item.type === this.kind
+      })[0])
 			return this.menu.filter(item => {
 				return item.type === this.kind
 			})[0]
 		}
 	},
 	methods: {
-		mouseleave() {
+		navLeave() {
 			this._timer = setTimeout(() => {
 				this.kind = ''
 			}, 150)
 		},
-		enter(e) {
+		navEnter(e) {
+      /* 获取 i 标签 className */
 			this.kind = e.target.querySelector('i').className
 		},
-		sover() {
+		detailEnter() {
 			clearTimeout(this._timer)
 		},
-		sout() {
+		detailLeave() {
 			this.kind = ''
 		}
 	}
