@@ -21,7 +21,10 @@ export default {
 		return {
 			user: ''
 		}
-	}
+  },
+  mounted() {
+    const {} = this.$axios.get('/users/getUser').then()
+  }
 }
 </script>
 

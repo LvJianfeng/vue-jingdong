@@ -31,6 +31,7 @@
           label="邮箱"
           prop="email">
           <el-input v-model="ruleForm.email"/>
+          <!-- round: 是否圆角按钮 -->
           <el-button
             size="mini"
             round
@@ -81,6 +82,7 @@
 // 加密
 import CryptoJS from 'crypto-js'
 export default {
+  layout: 'blank',
 	data() {
 		return {
 			statusMsg: '',
@@ -123,6 +125,7 @@ export default {
 						trigger: 'blur'
 					},
 					{
+            // 自定义规则
 						validator: (rule, value, callback) => {
 							if (value === '') {
 								callback(new Error('请再次输入密码'))
@@ -138,7 +141,6 @@ export default {
 			}
 		}
 	},
-	layout: 'blank',
 	methods: {
 		sendMsg() {
 			let namePass, emailPass

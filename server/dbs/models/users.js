@@ -1,5 +1,6 @@
 import mongoose from 'mongoose'
 
+// user 数据库表
 const Schema = mongoose.Schema
 const UserSchema = new Schema({
   username: {

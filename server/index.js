@@ -1,17 +1,20 @@
-//const Koa = require('koa')
-//const consola = require('consola')
 import Koa from 'koa'
+// Console Logger
 import consola from 'consola'
-const { Nuxt, Builder } = require('nuxt')
 import mongoose from 'mongoose'
+// 解析 body 的中间件，比方说你通过 post 来传递表单，json 数据，或者上传文件，在 koa 中是不容易获取的，通过 koa-bodyparser 解析之后，在 koa 中 this.body 就能直接获取到数据。
 import bodyParser from 'koa-bodyparser'
+// session 内存存储, supports defer session getter.
 import session from 'koa-generic-session'
+// redis 用来存储 session 的数据库, key-value 类型更快
 import Redis from 'koa-redis'
+// JSON pretty-printed response middleware. 美观输出数据
 import json from 'koa-json'
 import dbConfig from './dbs/config'
 import passport from './interface/utils/passport'
 import users from './interface/users'
 
+const { Nuxt, Builder } = require('nuxt')
 const app = new Koa()
 const host = process.env.HOST || '127.0.0.1'
 const port = process.env.PORT || 3000
@@ -42,6 +45,8 @@ mongoose.connect(
     useNewUrlParser: true
   }
 )
+
+// 开启 koa-passport 对 session 的支持
 app.use(passport.initialize())
 app.use(passport.session())
 
@@ -58,6 +63,7 @@ async function start() {
     const builder = new Builder(nuxt)
     await builder.build()
   }
+
   // 引进路由
   app.use(users.routes()).use(users.allowedMethods())
   app.use(ctx => {

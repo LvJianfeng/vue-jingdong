@@ -1,14 +1,18 @@
 import Router from 'koa-router'
+// redis 用来存储 session 的数据库, key-value 类型更快
 import Redis from 'koa-redis'
+// nodemailer: 用自己账号给用户发邮件
 import nodeMailer from 'nodemailer'
 import User from '../dbs/models/users'
 import Passport from './utils/passport'
 import Email from '../dbs/config'
 import axios from './utils/axios'
 
+// 路由前缀
 let router = new Router({
   prefix: '/users'
 })
+// 获取 redis 客户端
 let Store = new Redis().client
 
 /**
@@ -16,14 +20,16 @@ let Store = new Redis().client
  */
 router.post('/signup', async ctx => {
   const { username, password, email, code } = ctx.request.body // post方式
+  // 验证码
   if (code) {
+    // redis 获取数据
     const saveCode = await Store.hget(`nodemail:${username}`, 'code')
     const saveExpire = await Store.hget(`nodemail:${username}`, 'expire')
     if (code === saveCode) {
       if (new Date().getTime() - saveExpire > 0) {
         ctx.body = {
           code: -1,
-          msg: '验证吗已过期，请重新尝试'
+          msg: '验证码已过期，请重新尝试'
         }
         return false
       }
@@ -39,7 +45,7 @@ router.post('/signup', async ctx => {
       msg: '请填写验证码'
     }
   }
-
+  // 用户名
   let user = await User.find({
     username
   })
@@ -84,7 +90,7 @@ router.post('/signup', async ctx => {
  * -----登录接口-----
  */
 router.post('/signin', async (ctx, next) => {
-  // authenticate: 调用 passport-local
+  // authenticate: 执行 passport-local 策略, 调用授权页面
   return Passport.authenticate('local', function(err, user, info, status) {
     if (err) {
       ctx.body = {
@@ -98,6 +104,7 @@ router.post('/signin', async (ctx, next) => {
           msg: '登录成功',
           user
         }
+        // ctx.login(user) 登录用户（序列化用户）
         return ctx.login(user)
       } else {
         ctx.body = {
@@ -107,10 +114,11 @@ router.post('/signin', async (ctx, next) => {
       }
     }
   })(ctx, next)
-  // (ctx, next): API 里面固定写法
 })
+
+// 添加路由
 router.get('/fix', async ctx => {
-  //Store.hset(`test`, "name", "111");
+  // Store.hset(`test`, "name", "111");
   ctx.session.name = 'nidie'
   ctx.body = {
     code: 0
@@ -122,6 +130,7 @@ router.get('/fix', async ctx => {
  */
 router.post('/verify', async (ctx, next) => {
   let username = ctx.request.body.username
+  // 处理验证码过期时间
   const saveExpire = await Store.hget(`nodemail:${username}`, 'expire')
   if (saveExpire && new Date().getTime() - saveExpire < 0) {
     ctx.body = {
@@ -140,7 +149,7 @@ router.post('/verify', async (ctx, next) => {
       pass: Email.smtp.pass
     }
   })
-  // 对外发送, 接收方式
+  // 对外发送什么信息, 接收方式是什么
   let ko = {
     code: Email.smtp.code(),
     expire: Email.smtp.expire(),
@@ -159,6 +168,7 @@ router.post('/verify', async (ctx, next) => {
     if (err) {
       return console.log(err)
     } else {
+      // redis 存储用户信息
       Store.hmset(
         `nodemail:${ko.user}`,
         'code',
@@ -170,6 +180,7 @@ router.post('/verify', async (ctx, next) => {
       )
     }
   })
+  // 响应
   ctx.body = {
     code: 0,
     msg: '验证码已经发送，可能会有延时，有效期1分钟'
@@ -181,7 +192,7 @@ router.post('/verify', async (ctx, next) => {
  */
 router.get('/exit', async (ctx, next) => {
   await ctx.logout()
-  // isAuthenticated: passport API, 检测现在是否是登录状态
+  // isAuthenticated: 判断是否认证 (检测现在是否是登录状态)
   if (!ctx.isAuthenticated()) {
     ctx.body = {
       code: 0
@@ -197,7 +208,6 @@ router.get('/exit', async (ctx, next) => {
  * 获取用户信息
  */
 router.get('/getUser', async ctx => {
-  // isAuthenticated: passport API, 检测现在是否是登录状态
   if (ctx.isAuthenticated()) {
     const { username, email } = ctx.session.passport.user
     ctx.body = {
