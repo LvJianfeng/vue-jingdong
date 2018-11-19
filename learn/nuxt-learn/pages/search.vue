@@ -1,10 +1,10 @@
-<template>
-  <div class="page">
+﻿<template>
+  <section class="container">
     Page is search
     <ul>
       <li v-for="(item, idx) in $store.state.navbar.app" :key="idx">{{item}}</li>
     </ul>
-  </div>
+  </section>
 </template>
 
 <script>
@@ -21,16 +21,17 @@ export default {
   ssr 服务器把编译好的内容下发给你
   异步获取的数据同时给浏览器端
   */
-	async asyncData() {
-		let {
-			status,
-			data: { list }
-		} = await axios.get('http://localhost:3000/city/list')
-		if (status === 200) {
-			return {
-				list
-			}
-		}
-	}
+  // async mounted() {}
+	// async asyncData() {
+	// 	let {
+	// 		status,
+	// 		data: { list }
+	// 	} = await axios.get('http://127.0.0.1:3000/city/list')
+	// 	if (status === 200) {
+	// 		return {
+	// 			list
+	// 		}
+	// 	}
+	// }
 }
 </script>

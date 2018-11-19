@@ -7,11 +7,11 @@
 </template>
 
 <script>
-export default {}
+export default {};
 </script>
 
 <style lang="css">
 .layout-search {
-	color: red;
+  color: red;
 }
 </style>

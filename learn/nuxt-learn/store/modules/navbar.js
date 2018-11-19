@@ -2,7 +2,7 @@ const state = () => ({
   app: ['a', 'c']
 })
 const mutations = {
-  add(state, text) {
+  add (state, text) {
     state.app.push(text)
   }
 }
