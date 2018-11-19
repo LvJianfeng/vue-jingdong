@@ -1,7 +1,7 @@
 function pv(ctx) {
   /* redis */
-  // session: 区分不同用户
-  // ctx.session.count++
+  // session: 用户访问多少次
+  ctx.session.count++
   global.console.log('pv', ctx.path)
 }
 

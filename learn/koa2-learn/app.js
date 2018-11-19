@@ -8,7 +8,7 @@ const logger = require('koa-logger')
 const index = require('./routes/index')
 const users = require('./routes/users')
 /* redis */
-// const session = require('koa-generic-session')
+const session = require('koa-generic-session')
 const Redis = require('koa-redis')
 // middlewares
 const pv = require('./middleware/koa-pv')
@@ -22,14 +22,14 @@ const dbConfig = require('./dbs/config')
 onerror(app)
 
 /* redis */
-// app.keys = ['keys', 'keyskeys']
-// app.use(
-// 	session({
-// 		key: 'mt',
-// 		prefix: 'mtpr',
-// 		store: new Redis()
-// 	})
-// )
+app.keys = ['keys', 'keyskeys']
+app.use(
+	session({
+		key: 'mt',
+		prefix: 'mtpr',
+		store: new Redis()
+	})
+)
 
 // middlewares
 /* app.use: Add the given middleware function to this application */
