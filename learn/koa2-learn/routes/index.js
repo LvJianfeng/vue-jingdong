@@ -28,7 +28,6 @@ router.get('/testAsync', async ctx => {
 			resolve('ab')
 		}, 1000)
 	})
-	/* 如果不是则转化为 Promise */
 	const b = await 123
 	ctx.body = {
 		a,

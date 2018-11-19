@@ -8,9 +8,9 @@ const logger = require('koa-logger')
 const index = require('./routes/index')
 const users = require('./routes/users')
 /* redis */
-const session = require('koa-generic-session')
+// const session = require('koa-generic-session')
 const Redis = require('koa-redis')
-
+// middlewares
 const pv = require('./middleware/koa-pv')
 const m1 = require('./middleware/m1')
 const m2 = require('./middleware/m2')
@@ -22,14 +22,14 @@ const dbConfig = require('./dbs/config')
 onerror(app)
 
 /* redis */
-app.keys = ['keys', 'keyskeys']
-app.use(
-	session({
-		key: 'mt',
-		prefix: 'mtpr',
-		store: new Redis()
-	})
-)
+// app.keys = ['keys', 'keyskeys']
+// app.use(
+// 	session({
+// 		key: 'mt',
+// 		prefix: 'mtpr',
+// 		store: new Redis()
+// 	})
+// )
 
 // middlewares
 /* app.use: Add the given middleware function to this application */
@@ -62,7 +62,7 @@ app.use(async (ctx, next) => {
 app.use(index.routes(), index.allowedMethods())
 app.use(users.routes(), users.allowedMethods())
 
-// connect
+/* 连接数据库 */
 mongoose.connect(
 	dbConfig.dbs,
 	{
