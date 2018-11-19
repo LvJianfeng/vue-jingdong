@@ -1,5 +1,5 @@
 import Router from 'koa-router'
-// redis 用来存储 session 的数据库, key-value 类型更快
+// redis 用来存储 session 的数据库, key-value 类型快
 import Redis from 'koa-redis'
 // nodemailer: 用自己账号给用户发邮件
 import nodeMailer from 'nodemailer'
@@ -19,10 +19,11 @@ let Store = new Redis().client
  * -----注册接口-----
  */
 router.post('/signup', async ctx => {
-  const { username, password, email, code } = ctx.request.body // post方式
+  const { username, password, email, code } = ctx.request.body // post 方式
   // 验证码
   if (code) {
     // redis 获取数据
+    // hget 不经过 session 直接读取 redis
     const saveCode = await Store.hget(`nodemail:${username}`, 'code')
     const saveExpire = await Store.hget(`nodemail:${username}`, 'expire')
     if (code === saveCode) {

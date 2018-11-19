@@ -25,6 +25,7 @@
       <li class="list site">
         <nuxt-link to="/site">网站导航</nuxt-link>
         <div class="subContainer">
+          <!-- 用 dl 有 dt, 能标识标题 -->
           <dl class="hotel">
             <dt>酒店旅游</dt>
             <dd>国际机票</dd>

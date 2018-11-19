@@ -147,7 +147,6 @@ export default {
 			if (this.timerid) {
 				return false
 			}
-
 			// 验证用户名是否通过校验
 			this.$refs['ruleForm'].validateField('name', valid => {
 				namePass = valid
@@ -156,12 +155,10 @@ export default {
 			if (namePass) {
 				return false
 			}
-
 			// 检测邮箱是否通过校验
 			this.$refs['ruleForm'].validateField('email', valid => {
 				emailPass = valid
 			})
-
 			// 如果用户名, 邮箱都通过
 			if (!namePass && !emailPass) {
 				this.$axios

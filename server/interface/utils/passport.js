@@ -13,7 +13,7 @@ passport.use(
     }
     // mongodb: findOne 查询数据, 找出一条
     let result = await UserModel.findOne(where)
-    if (result != null) {
+    if (result !== null) {
       if (result.password === password) {
         return done(null, result)
       } else {

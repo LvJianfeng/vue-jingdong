@@ -70,10 +70,10 @@ export default {
 	},
 	computed: {
 		curdetail() {
-      /* 打印结果是个数组，要去其内容 */
-      console.log(this.menu.filter((item)=>{
-        return item.type === this.kind
-      })[0])
+      /* 打印结果是个数组，要取内容 */
+      // console.log(this.menu.filter((item)=>{
+      //   return item.type === this.kind
+      // })[0])
 			return this.menu.filter(item => {
 				return item.type === this.kind
 			})[0]
@@ -101,4 +101,3 @@ export default {
 
 <style lang="scss">
 </style>
-
