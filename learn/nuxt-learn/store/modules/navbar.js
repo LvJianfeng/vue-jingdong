@@ -1,9 +1,9 @@
-const state = () => ({
-  list: ['a', 'b']
+﻿const state = () => ({
+  app: ['a', 'c']
 })
 const mutations = {
-  add (state, text) {
-    state.list.push(text)
+  add(state, text) {
+    state.app.push(text)
   }
 }
 const actions = {
