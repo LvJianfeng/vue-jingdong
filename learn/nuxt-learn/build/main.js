@@ -148,6 +148,8 @@ var _regenerator = __webpack_require__(0);
 
 var _regenerator2 = _interopRequireDefault(_regenerator);
 
+// import cityInterface from './interface/city'
+
 var start = function () {
   var _ref = _asyncToGenerator( /*#__PURE__*/_regenerator2.default.mark(function _callee() {
     var app, host, port, config, nuxt, builder;
@@ -181,6 +183,7 @@ var start = function () {
 
           case 10:
 
+            // app.use(cityInterface.routes()).use(cityInterface.allowdMethods())
             app.use(function (ctx) {
               ctx.status = 200;
               ctx.respond = false; // Mark request as handled for Koa
