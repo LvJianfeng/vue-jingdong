@@ -2,28 +2,24 @@
 
 > My bedazzling Nuxt.js project
 
-## Build Setup
-
-``` bash
-# install dependencies
-$ yarn install
-
-# serve with hot reload at localhost:3000
-$ yarn run dev
-
-# build for production and launch server
-$ yarn run build
-$ yarn start
-
-# generate static project
-$ yarn run generate
-```
-
-For detailed explanation on how things work, checkout [Nuxt.js docs](https://nuxtjs.org).
-
 ## qq 授权码
 
 vjalqgcbjqdhbbfb
+
+npm install @vue/cli -g
+npm i npx -g
+npx create-nuxt-app projectName
+koa
+element-ui
+Universal
+yes
+yes
+ganyihuan
+npm
+
+nvm use 8.12.0
+
+npm i scss-loader sass-loader passport-local nodemailer node-sass mongoose koa-router koa-redis koa-passport koa-json koa-generic-session koa-bodyparser babel-preset-es2015 babel-cli axios @nuxtjs/axios crypto-js -S
 
 ## b
 

@@ -1,5 +1,6 @@
 const router = require('koa-router')()
 const Person = require('../dbs/models/person')
+
 /* redis */
 const Redis = require('koa-redis')
 const Store = new Redis().client
@@ -16,7 +17,6 @@ router.get('/bar', function (ctx, next) {
 
 /* 增加数据 */
 router.post('/addPerson', async (ctx, next) => {
-  // 实例
   const person = new Person({
     name: ctx.request.body.name,
     age: ctx.request.body.age
@@ -80,6 +80,7 @@ router.post('/removePerson', async function (ctx) {
 /* redis */
 /* 不经过 session 直接读取 redis */
 router.get('/fix', async (ctx, next) => {
+  /* key, k-v */
   const st = await Store.hset('fix', 'name', Math.random())
   ctx.body = {
     code: 0,

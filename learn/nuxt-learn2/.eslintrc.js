@@ -7,18 +7,11 @@ module.exports = {
   },
   extends: 'standard',
   // required to lint *.vue files
-  plugins: [
-    'html'
-  ],
+  plugins: ['html'],
   // add your custom rules here
   rules: {
-    'space-before-function-paren': [
-      2,
-      {
-        anonymous: 'always',
-        named: 'never'
-      }
-    ],
+    'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
+    'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off'
   },
   globals: {}
 }

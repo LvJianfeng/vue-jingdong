@@ -5,74 +5,80 @@ const json = require('koa-json')
 const onerror = require('koa-onerror')
 const bodyparser = require('koa-bodyparser')
 const logger = require('koa-logger')
+
+/* Redis */
+const Redis = require('koa-redis')
+/* session */
+const session = require('koa-generic-session')
+
+/* route */
 const index = require('./routes/index')
 const users = require('./routes/users')
-/* redis */
-const session = require('koa-generic-session')
-const Redis = require('koa-redis')
-// middlewares
+
+/* middlewares */
 const pv = require('./middleware/koa-pv')
 const m1 = require('./middleware/m1')
 const m2 = require('./middleware/m2')
+
 /* mongoose */
 const mongoose = require('mongoose')
 const dbConfig = require('./dbs/config')
 
-// error handler
+/* error handler */
 onerror(app)
 
 /* redis */
 app.keys = ['keys', 'keyskeys']
 app.use(
-	session({
-		key: 'mt',
-		prefix: 'mtpr',
-		store: new Redis()
-	})
+  session({
+    key: 'mt',
+    prefix: 'mtpr',
+    store: new Redis()
+  })
 )
 
-// middlewares
+/* middlewares */
 /* app.use: Add the given middleware function to this application */
 app.use(pv())
 app.use(m1())
 app.use(m2())
 app.use(
-	bodyparser({
-		enableTypes: ['json', 'form', 'text']
-	})
+  bodyparser({
+    enableTypes: ['json', 'form', 'text']
+  })
 )
 app.use(json())
 app.use(logger())
 app.use(require('koa-static')(__dirname + '/public'))
 app.use(
-	views(__dirname + '/views', {
-		extension: 'ejs'
-	})
+  views(__dirname + '/views', {
+    extension: 'ejs'
+  })
 )
 
-// logger
+/* logger */
 app.use(async (ctx, next) => {
-	const start = new Date()
-	await next()
-	const ms = new Date() - start
-	console.log(`${ctx.method} ${ctx.url} - ${ms}ms`)
+  const start = new Date()
+  await next()
+  const ms = new Date() - start
+  console.log(`${ctx.method} ${ctx.url} - ${ms}ms`)
 })
 
-// routes
+/* routes use */
 app.use(index.routes(), index.allowedMethods())
 app.use(users.routes(), users.allowedMethods())
 
 /* 连接数据库 */
 mongoose.connect(
-	dbConfig.dbs,
-	{
-		useNewUrlParser: true
-	}
+  dbConfig.dbs,
+  {
+    useNewUrlParser: true
+  }
 )
 
-// error-handling
+/* error-handling */
 app.on('error', (err, ctx) => {
-	console.error('server error', err, ctx)
+  console.error('server error', err, ctx)
 })
 
 module.exports = app
