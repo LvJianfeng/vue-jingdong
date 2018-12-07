@@ -1,9 +1,9 @@
 <template>
-  <!-- [gutter](http://element-cn.eleme.io/#/zh-CN/component/layout) -->
+  <!-- gutter	栅格间隔 -->
   <el-row
     :gutter="0"
     class="m-header">
-    <!-- [span](http://element-cn.eleme.io/#/zh-CN/component/layout)  -->
+    <!-- span	栅格占据的列数 (共24) -->
     <el-col :span="5">
       <geo/>
     </el-col>
