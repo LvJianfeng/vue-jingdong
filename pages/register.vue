@@ -185,10 +185,13 @@ export default {
     },
     register() {
       this.$refs['ruleForm'].validate(valid => {
+        // 验证通过
         if (valid) {
           this.$axios
             .post('/users/signup', {
+              // encodeURIComponent: 对中文进行编码
               username: window.encodeURIComponent(this.ruleForm.name),
+              // CryptoJS.MD5 加密
               password: CryptoJS.MD5(this.ruleForm.pwd).toString(),
               email: this.ruleForm.email,
               code: this.ruleForm.code

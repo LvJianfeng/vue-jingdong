@@ -43,28 +43,3 @@ curl -d 'username=aaa&password=111&email=583520052@qq.com' http://localhost:3000
 
 npm install npx -g
 npx create-nuxt-app project-name
-
-// 如果用户名, 邮箱都通过
-if (!namePass && !emailPass) {
-  this.$axios
-    .post('/users/verify', {
-      // encodeURIComponent: 对中文进行编码
-      username: encodeURIComponent(this.ruleForm.name),
-      email: this.ruleForm.email
-    })
-    .then(({ status, data }) => {
-      // 验证码有效倒计时
-      if (status === 200 && data && data.code === 0) {
-        let count = 60
-        this.statusMsg = `验证码已发送，剩余${count--}秒`
-        this.timerid = setInterval(() => {
-          this.statusMsg = `验证码已发送，剩余${count--}秒`
-          if (count === 0) {
-            clearInterval(this.timerid)
-            this.statusMsg = ''
-          }
-        }, 1000)
-      } else {
-        this.statusMsg = data.msg
-      }
-    })
