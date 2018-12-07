@@ -183,29 +183,28 @@ export default {
           })
       }
     },
-    register: function() {
-      const self = this
+    register() {
       this.$refs['ruleForm'].validate(valid => {
         if (valid) {
-          self.$axios
+          this.$axios
             .post('/users/signup', {
-              username: window.encodeURIComponent(self.ruleForm.name),
-              password: CryptoJS.MD5(self.ruleForm.pwd).toString(),
-              email: self.ruleForm.email,
-              code: self.ruleForm.code
+              username: window.encodeURIComponent(this.ruleForm.name),
+              password: CryptoJS.MD5(this.ruleForm.pwd).toString(),
+              email: this.ruleForm.email,
+              code: this.ruleForm.code
             })
             .then(({ status, data }) => {
               if (status === 200) {
                 if (data && data.code === 0) {
                   location.href = '/login'
                 } else {
-                  self.error = data.msg
+                  this.error = data.msg
                 }
               } else {
-                self.error = `服务器出错，错误码:${status}`
+                this.error = `服务器出错，错误码:${status}`
               }
-              setTimeout(function() {
-                self.error = ''
+              setTimeout(() => {
+                this.error = ''
               }, 1500)
             })
         }
