@@ -20,8 +20,8 @@
         ref="ruleForm"
         :model="ruleForm"
         :rules="rules"
-        label-width="100px"
         class="demo-ruleForm"
+        label-width="100px"
       >
         <el-form-item
           label="昵称"
@@ -32,7 +32,6 @@
           label="邮箱"
           prop="email">
           <el-input v-model="ruleForm.email"/>
-          <!-- round: 是否圆角按钮 -->
           <el-button
             size="mini"
             round
@@ -184,28 +183,29 @@ export default {
           })
       }
     },
-    register() {
+    register: function() {
+      const self = this
       this.$refs['ruleForm'].validate(valid => {
         if (valid) {
-          this.$axios
+          self.$axios
             .post('/users/signup', {
-              username: window.encodeURIComponent(this.ruleForm.name),
-              password: CryptoJS.MD5(this.ruleForm.psd).toString(),
-              email: this.ruleForm.emial,
-              code: this.ruleForm.odec
+              username: window.encodeURIComponent(self.ruleForm.name),
+              password: CryptoJS.MD5(self.ruleForm.pwd).toString(),
+              email: self.ruleForm.email,
+              code: self.ruleForm.code
             })
-            .then((statius, data) => {
+            .then(({ status, data }) => {
               if (status === 200) {
                 if (data && data.code === 0) {
                   location.href = '/login'
                 } else {
-                  this.error = data.msg
+                  self.error = data.msg
                 }
               } else {
-                this.error = `服务器出错, 错误码:${status}`
+                self.error = `服务器出错，错误码:${status}`
               }
-              setTimeout(() => {
-                this.error = ''
+              setTimeout(function() {
+                self.error = ''
               }, 1500)
             })
         }

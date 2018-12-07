@@ -9,11 +9,11 @@ import Email from '../dbs/config'
 import axios from './utils/axios'
 
 // 路由前缀
-let router = new Router({
+const router = new Router({
   prefix: '/users'
 })
 // 获取 redis 客户端
-let Store = new Redis().client
+const Store = new Redis().client
 
 /**
  * -----注册接口-----
@@ -47,7 +47,7 @@ router.post('/signup', async ctx => {
     }
   }
   // 用户名
-  let user = await User.find({
+  const user = await User.find({
     username
   })
   if (user.length) {
@@ -57,13 +57,13 @@ router.post('/signup', async ctx => {
     }
     return
   }
-  let nuser = await User.create({
+  const nuser = await User.create({
     username,
     password,
     email
   })
   if (nuser) {
-    let res = await axios.post('/users/signin', {
+    const res = await axios.post('/users/signin', {
       username,
       password
     })
@@ -90,7 +90,7 @@ router.post('/signup', async ctx => {
 /**
  * -----登录接口-----
  */
-router.post('/signin', async (ctx, next) => {
+router.post('/signin', async(ctx, next) => {
   // authenticate: 执行 passport-local 策略, 调用授权页面
   return Passport.authenticate('local', function(err, user, info, status) {
     if (err) {
@@ -129,8 +129,8 @@ router.get('/fix', async ctx => {
 /**
  * -----邮箱发送接口-----
  */
-router.post('/verify', async (ctx, next) => {
-  let username = ctx.request.body.username
+router.post('/verify', async(ctx, next) => {
+  const username = ctx.request.body.username
   // 处理验证码过期时间
   const saveExpire = await Store.hget(`nodemail:${username}`, 'expire')
   if (saveExpire && new Date().getTime() - saveExpire < 0) {
@@ -141,7 +141,7 @@ router.post('/verify', async (ctx, next) => {
     return false
   }
   // 发邮件
-  let transporter = nodeMailer.createTransport({
+  const transporter = nodeMailer.createTransport({
     host: Email.smtp.host,
     port: 587,
     secure: false,
@@ -151,14 +151,14 @@ router.post('/verify', async (ctx, next) => {
     }
   })
   // 对外发送什么信息, 接收方式是什么
-  let ko = {
+  const ko = {
     code: Email.smtp.code(),
     expire: Email.smtp.expire(),
     email: ctx.request.body.email,
     user: ctx.request.body.username
   }
   // 邮件显示什么内容
-  let mailOptions = {
+  const mailOptions = {
     from: `认证邮件<${Email.smtp.user}>`,
     to: ko.email,
     subject: '《慕课网高仿美团网全栈实战》注册码',
@@ -191,7 +191,7 @@ router.post('/verify', async (ctx, next) => {
 /**
  * 退出登录
  */
-router.get('/exit', async (ctx, next) => {
+router.get('/exit', async(ctx, next) => {
   await ctx.logout()
   // isAuthenticated: 判断是否认证 (检测现在是否是登录状态)
   if (!ctx.isAuthenticated()) {

@@ -46,6 +46,7 @@
 </template>
 
 <script>
+// 加密
 import CryptoJS from 'crypto-js'
 export default {
   data: () => {
@@ -58,23 +59,22 @@ export default {
   },
   layout: 'blank',
   methods: {
-    login() {
-      this.$axios
-        .post('/users/signup', {
-          username: window.encodeURIComponent(this.username),
-          password: CryptoJS.MD5(this.password).toString()
-        })
-        .then(({ status, data }) => {
-          if (status === 200) {
-            if (data && data.code === 0) {
-              location.href = '/'
-            } else {
-              this.error = data.msg
-            }
+    login: function() {
+      const self = this
+      self.$axios.post('/users/signin', {
+        username: window.encodeURIComponent(self.username),
+        password: CryptoJS.MD5(self.password).toString()
+      }).then(({ status, data }) => {
+        if (status === 200) {
+          if (data && data.code === 0) {
+            location.href = '/'
           } else {
-            this.error = `服务器出错`
+            self.error = data.msg
           }
-        })
+        } else {
+          self.error = `服务器出错`
+        }
+      })
     }
   }
 }

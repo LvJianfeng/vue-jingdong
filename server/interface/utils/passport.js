@@ -1,6 +1,6 @@
-// koa-passport 实现登录注册功能
+// 实现登录注册功能
 import passport from 'koa-passport'
-// koa-passport 本地权限认证
+// 本地权限认证
 import LocalStrategy from 'passport-local'
 // mongodb user 数据库表
 import UserModel from '../../dbs/models/users'
@@ -8,12 +8,12 @@ import UserModel from '../../dbs/models/users'
 // 把一个策略保存在本地，后续可以通过 name 来访问, 提交数据(策略)
 passport.use(
   new LocalStrategy(async function(username, password, done) {
-    let where = {
+    const where = {
       username
     }
     // mongodb: findOne 查询数据, 找出一条
-    let result = await UserModel.findOne(where)
-    if (result !== null) {
+    const result = await UserModel.findOne(where)
+    if (result != null) {
       if (result.password === password) {
         return done(null, result)
       } else {
@@ -29,6 +29,7 @@ passport.use(
 passport.serializeUser(function(user, done) {
   done(null, user)
 })
+
 passport.deserializeUser(function(user, done) {
   return done(null, user)
 })
