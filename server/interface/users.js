@@ -20,11 +20,10 @@ const Store = new Redis().client
  * 注册接口
  */
 router.post('/signup', async ctx => {
-  const { username, password, email, code } = ctx.request.body // post 方式
+  const { username, password, email, code } = ctx.request.body
   // 验证码
   if (code) {
-    // redis 获取数据
-    // hget 不经过 session 直接读取 redis
+    // redis 存储验证码
     const saveCode = await Store.hget(`nodemail:${username}`, 'code')
     const saveExpire = await Store.hget(`nodemail:${username}`, 'expire')
     if (code === saveCode) {
@@ -58,11 +57,13 @@ router.post('/signup', async ctx => {
     }
     return
   }
+  // 写入数据库
   const nuser = await User.create({
     username,
     password,
     email
   })
+  // 登录
   if (nuser) {
     const res = await axios.post('/users/signin', {
       username,
@@ -106,7 +107,6 @@ router.post('/signin', async(ctx, next) => {
           msg: '登录成功',
           user
         }
-        // ctx.login(user) 登录用户（序列化用户）
         return ctx.login(user)
       } else {
         ctx.body = {
@@ -118,7 +118,9 @@ router.post('/signin', async(ctx, next) => {
   })(ctx, next)
 })
 
-// 添加路由
+/**
+ * 添加路由
+ */
 router.get('/fix', async ctx => {
   // Store.hset(`test`, "name", "111");
   ctx.session.name = 'nidie'
@@ -128,12 +130,13 @@ router.get('/fix', async ctx => {
 })
 
 /**
- * 邮箱发送接口
+ * 验证码验证
  */
 router.post('/verify', async(ctx, next) => {
   const username = ctx.request.body.username
-  // 处理验证码过期时间
+  // 验证码过期时间
   const saveExpire = await Store.hget(`nodemail:${username}`, 'expire')
+  // 超出验证码过期时间
   if (saveExpire && new Date().getTime() - saveExpire < 0) {
     ctx.body = {
       code: -1,
@@ -141,10 +144,11 @@ router.post('/verify', async(ctx, next) => {
     }
     return false
   }
-  // 发邮件
+  // 发邮件配置
   const transporter = nodeMailer.createTransport({
     host: Email.smtp.host,
     port: 587,
+    // false: 监听其他端口
     secure: false,
     auth: {
       user: Email.smtp.user,

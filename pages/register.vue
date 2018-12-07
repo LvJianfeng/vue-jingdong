@@ -145,7 +145,7 @@ export default {
       if (this.timerid) {
         return false
       }
-      // 验证用户名是否通过校验
+      // 验证用户名是否通过校验 (element-ui 方法)
       this.$refs['ruleForm'].validateField('name', valid => {
         namePass = valid
       })

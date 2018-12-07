@@ -1,7 +1,7 @@
 import Koa from 'koa'
-// Console Logger
-import consola from 'consola'
 import mongoose from 'mongoose'
+// 适用于Node.js和浏览器的优雅控制台记录器
+import consola from 'consola'
 // 解析 body 的中间件，在 koa 中 this.body 就能直接获取到数据。
 import bodyParser from 'koa-bodyparser'
 // session 内存存储, 支持延迟会话
