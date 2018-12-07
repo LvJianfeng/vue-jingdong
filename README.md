@@ -23,6 +23,7 @@ npm i scss-loader sass-loader passport-local nodemailer node-sass mongoose koa-r
 
 ## b
 
+```js
   username: {
     type: String,
     unique: true,
@@ -36,6 +37,7 @@ npm i scss-loader sass-loader passport-local nodemailer node-sass mongoose koa-r
     type: String,
     require: true
   }
+```
 
 curl -d 'username=aaa&password=111&email=583520052@qq.com' http://localhost:3000/
 

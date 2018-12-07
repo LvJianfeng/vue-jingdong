@@ -69,7 +69,7 @@ export default {
   },
   computed: {
     curdetail() {
-      /* 打印结果是个数组，要取内容 */
+      /* 打印结果是数组，要取内容 */
       // console.log(this.menu.filter((item)=>{
       //   return item.type === this.kind
       // })[0])
@@ -79,14 +79,14 @@ export default {
     }
   },
   methods: {
+    navEnter(e) {
+      /* 获取 i 标签 className */
+      this.kind = e.target.querySelector('i').className
+    },
     navLeave() {
       this._timer = setTimeout(() => {
         this.kind = ''
       }, 150)
-    },
-    navEnter(e) {
-      /* 获取 i 标签 className */
-      this.kind = e.target.querySelector('i').className
     },
     detailEnter() {
       clearTimeout(this._timer)
