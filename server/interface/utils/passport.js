@@ -2,7 +2,7 @@
 import passport from 'koa-passport'
 // 本地权限认证
 import LocalStrategy from 'passport-local'
-// mongodb user 数据库表
+// mongodb 数据库表
 import UserModel from '../../dbs/models/users'
 
 // 把一个策略保存在本地，后续可以通过 name 来访问, 提交数据(策略)
@@ -25,7 +25,7 @@ passport.use(
   })
 )
 
-// 用户信息需要保留在 session 存储中(利用 cookie 或者服务端存储)，因此需要定义序列化和反序列的操作
+// 用户信息保留在 session 存储中
 passport.serializeUser(function(user, done) {
   done(null, user)
 })

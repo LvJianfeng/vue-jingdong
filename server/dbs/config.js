@@ -21,8 +21,7 @@ export default {
       return '583520052@qq.com'
     },
     get pass() {
-      // 自己腾讯邮箱授权码
-      // return 'mifmzufuevxubaic'
+      // SMTP 腾讯邮箱授权码
       return 'vjalqgcbjqdhbbfb'
     },
     // 验证码生成

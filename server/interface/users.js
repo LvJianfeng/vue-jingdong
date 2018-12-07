@@ -1,8 +1,9 @@
 import Router from 'koa-router'
-// redis 用来存储 session 的数据库, key-value 类型快
+// 服务端识别客户端状态
 import Redis from 'koa-redis'
-// nodemailer: 用自己账号给用户发邮件
+// 用自己账号给用户发邮件
 import nodeMailer from 'nodemailer'
+
 import User from '../dbs/models/users'
 import Passport from './utils/passport'
 import Email from '../dbs/config'
@@ -16,7 +17,7 @@ const router = new Router({
 const Store = new Redis().client
 
 /**
- * -----注册接口-----
+ * 注册接口
  */
 router.post('/signup', async ctx => {
   const { username, password, email, code } = ctx.request.body // post 方式
@@ -88,7 +89,7 @@ router.post('/signup', async ctx => {
 })
 
 /**
- * -----登录接口-----
+ * 登录接口
  */
 router.post('/signin', async(ctx, next) => {
   // authenticate: 执行 passport-local 策略, 调用授权页面
@@ -127,7 +128,7 @@ router.get('/fix', async ctx => {
 })
 
 /**
- * -----邮箱发送接口-----
+ * 邮箱发送接口
  */
 router.post('/verify', async(ctx, next) => {
   const username = ctx.request.body.username
