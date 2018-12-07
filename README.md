@@ -43,3 +43,24 @@ curl -d 'username=aaa&password=111&email=583520052@qq.com' http://localhost:3000
 
 npm install npx -g
 npx create-nuxt-app project-name
+
+## 导入数据到 mongodb
+
+> 进入 dbs 目录
+
+mongoimport -d student -c areas areas.dat
+mongoimport -d student -c category category.dat
+mongoimport -d student -c cities cities.dat
+mongoimport -d student -c maps maps.dat
+mongoimport -d student -c menus menus.dat
+mongoimport -d student -c pois pois.dat
+mongoimport -d student -c provinces provinces.dat
+mongoimport -d student -c regions regions.dat
+mongoimport -d student -c topsearches topsearches.dat
+
+慕课网uid: 3225903
+[接口签名](http://cp-tools.cn/sign)
+
+## postman
+
+[查看数据](http://localhost:3000/geo/getPosition)
