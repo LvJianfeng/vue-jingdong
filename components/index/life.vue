@@ -48,9 +48,9 @@
 <script>
 import Slider from './slider.vue'
 export default {
-	components: {
-		Slider
-	}
+  components: {
+    Slider
+  }
 }
 </script>
 

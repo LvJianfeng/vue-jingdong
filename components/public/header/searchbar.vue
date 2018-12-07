@@ -92,35 +92,35 @@
 
 <script>
 export default {
-	data() {
-		return {
-			search: '', // 当前输入框的值
-			isFocus: false, // 是否聚焦
-			hotPlace: ['火锅', '火锅', '火锅', '火锅', '火锅'], // 热门搜索数据
-			searchList: ['故宫', '故宫', '故宫'] // 搜索数据
-		}
-	},
-	computed: {
-		isHotPlace() {
-			return this.isFocus && !this.search
-		},
-		isSearchList() {
-			return this.isFocus && this.search
-		}
-	},
-	methods: {
-		focus() {
-			this.isFocus = true
-		},
-		blur() {
-			setTimeout(() => {
-				this.isFocus = false
-			}, 200)
-		},
-		input() {
-			console.log('input')
-		}
-	}
+  data() {
+    return {
+      search: '', // 当前输入框的值
+      isFocus: false, // 是否聚焦
+      hotPlace: ['火锅', '火锅', '火锅', '火锅', '火锅'], // 热门搜索数据
+      searchList: ['故宫', '故宫', '故宫'] // 搜索数据
+    }
+  },
+  computed: {
+    isHotPlace() {
+      return this.isFocus && !this.search
+    },
+    isSearchList() {
+      return this.isFocus && this.search
+    }
+  },
+  methods: {
+    focus() {
+      this.isFocus = true
+    },
+    blur() {
+      setTimeout(() => {
+        this.isFocus = false
+      }, 200)
+    },
+    input() {
+      console.log('input')
+    }
+  }
 }
 </script>
 

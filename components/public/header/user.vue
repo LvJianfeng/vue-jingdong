@@ -19,20 +19,20 @@
 export default {
   data() {
     return {
-      user: ""
-    };
+      user: ''
+    }
   },
   mounted() {
     const {
       status,
       data: { user }
-    } = this.$axios.get("/users/getUser").then();
+    } = this.$axios.get('/users/getUser').then()
     // await 后面是 promise 对象
     if (status === 200) {
-      this.user = user;
+      this.user = user
     }
   }
-};
+}
 </script>
 
 <style scoped lang="scss">

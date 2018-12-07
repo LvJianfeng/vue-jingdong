@@ -17,10 +17,10 @@
 import MyHeader from '@/components/public/header/index'
 import MyFooter from '@/components/public/footer/index'
 export default {
-	components: {
-		MyHeader,
-		MyFooter
-	}
+  components: {
+    MyHeader,
+    MyFooter
+  }
 }
 </script>
 

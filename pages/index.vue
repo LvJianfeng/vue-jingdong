@@ -22,14 +22,14 @@ import Elife from '@/components/index/life.vue'
 import Eartistic from '@/components/index/artistic.vue'
 
 export default {
-	components: {
-		Emenu,
-		Elife,
-		Eartistic
-	}
+  components: {
+    Emenu,
+    Elife,
+    Eartistic
+  }
 }
 </script>
 
 <style lang="scss">
-@import '@/assets/css/index/index.scss';
+@import "@/assets/css/index/index.scss";
 </style>

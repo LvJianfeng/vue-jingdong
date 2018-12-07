@@ -21,11 +21,11 @@ import Geo from './geo'
 import User from './user'
 import Navbar from './nav'
 export default {
-	components: {
-		Geo,
-		User,
-		Navbar
-	}
+  components: {
+    Geo,
+    User,
+    Navbar
+  }
 }
 </script>
 

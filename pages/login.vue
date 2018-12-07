@@ -11,13 +11,19 @@
           src="//s0.meituan.net/bs/file/?f=fe-sso-fs:build/page/static/banner/www.jpg"
           width="480"
           height="370"
-          alt="美团网">
+          alt="美团网"
+        >
       </div>
       <div class="form">
         <h4
           v-if="error"
-          class="tips"><i/>{{ error }}</h4>
-        <p><span>账号登录</span></p>
+          class="tips">
+          <i/>
+          {{ error }}
+        </h4>
+        <p>
+          <span>账号登录</span>
+        </p>
         <el-input
           v-model="username"
           prefix-icon="profile"/>
@@ -42,38 +48,38 @@
 <script>
 import CryptoJS from 'crypto-js'
 export default {
-	data: () => {
-		return {
-			checked: '',
-			username: '',
-			password: '',
-			error: ''
-		}
-	},
-	layout: 'blank',
-	methods: {
-		login() {
-			this.$axios
-				.post('/users/signup', {
-					username: window.encodeURIComponent(this.username),
-					password: CryptoJS.MD5(this.password).toString()
-				})
-				.then(({ status, data }) => {
-					if (status === 200) {
-						if (data && data.code === 0) {
-							location.href = '/'
-						} else {
-							this.error = data.msg
-						}
-					} else {
-						this.error = `服务器出错`
-					}
-				})
-		}
-	}
+  data: () => {
+    return {
+      checked: '',
+      username: '',
+      password: '',
+      error: ''
+    }
+  },
+  layout: 'blank',
+  methods: {
+    login() {
+      this.$axios
+        .post('/users/signup', {
+          username: window.encodeURIComponent(this.username),
+          password: CryptoJS.MD5(this.password).toString()
+        })
+        .then(({ status, data }) => {
+          if (status === 200) {
+            if (data && data.code === 0) {
+              location.href = '/'
+            } else {
+              this.error = data.msg
+            }
+          } else {
+            this.error = `服务器出错`
+          }
+        })
+    }
+  }
 }
 </script>
 
 <style lang="scss">
-@import '@/assets/css/login/index.scss';
+@import "@/assets/css/login/index.scss";
 </style>

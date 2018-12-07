@@ -38,3 +38,6 @@ npm i scss-loader sass-loader passport-local nodemailer node-sass mongoose koa-r
   }
 
 curl -d 'username=aaa&password=111&email=583520052@qq.com' http://localhost:3000/
+
+npm install npx -g
+npx create-nuxt-app project-name

@@ -17,10 +17,10 @@
 import topBar from './topbar.vue'
 import searchBar from './searchbar.vue'
 export default {
-	components: {
-		topBar,
-		searchBar
-	}
+  components: {
+    topBar,
+    searchBar
+  }
 }
 </script>
 
