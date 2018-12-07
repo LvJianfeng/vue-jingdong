@@ -60,20 +60,24 @@ export default {
   layout: 'blank',
   methods: {
     login() {
-      this.$axios.post('/users/signin', {
-        username: window.encodeURIComponent(this.username),
-        password: CryptoJS.MD5(this.password).toString()
-      }).then(({ status, data }) => {
-        if (status === 200) {
-          if (data && data.code === 0) {
-            location.href = '/'
+      this.$axios
+        .post('/users/signin', {
+          // encodeURIComponent: 对中文进行编码
+          username: window.encodeURIComponent(this.username),
+          // CryptoJS.MD5 加密
+          password: CryptoJS.MD5(this.password).toString()
+        })
+        .then(({ status, data }) => {
+          if (status === 200) {
+            if (data && data.code === 0) {
+              location.href = '/'
+            } else {
+              this.error = data.msg
+            }
           } else {
-            this.error = data.msg
+            this.error = `服务器出错`
           }
-        } else {
-          this.error = `服务器出错`
-        }
-      })
+        })
     }
   }
 }
