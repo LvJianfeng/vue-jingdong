@@ -26,49 +26,43 @@
             <dd
               v-for="(item, index) in $store.state.search.hotPlace.slice(0, 5)"
               :key="index"
-            >{{ item.name }}</dd>
+            >
+              <a :href="'/products?keyword=' + encodeURIComponent(item.name)">{{ item.name }}</a>
+            </dd>
           </dl>
           <dl
             v-if="isSearchList"
             class="searchList">
             <dd
               v-for="(item, index) in searchList"
-              :key="index">{{ item.name }}</dd>
+              :key="index">
+              <a :href="'/products?keyword=' + encodeURIComponent(item.name)">{{ item.name }}</a>
+            </dd>
           </dl>
         </div>
         <div class="suggset">
           <a
             v-for="(item, index) in $store.state.search.hotPlace.slice(0, 5)"
             :key="index"
-            href="#"
+            :href="'/products?keyword=' + encodeURIComponent(item.name)"
           >{{ item.name }}</a>
         </div>
         <ul class="nav">
-          <li>
-            <nuxt-link
-              to="/"
-              class="takeout">美团外卖</nuxt-link>
-          </li>
-          <li>
-            <nuxt-link
-              to="/"
-              class="movie">猫眼电影</nuxt-link>
-          </li>
-          <li>
-            <nuxt-link
-              to="/"
-              class="hotel">美团酒店</nuxt-link>
-          </li>
-          <li>
-            <nuxt-link
-              to="/"
-              class="apartment">民宿/公寓</nuxt-link>
-          </li>
-          <li>
-            <nuxt-link
-              to="/"
-              class="business">商家入驻</nuxt-link>
-          </li>
+          <li><nuxt-link
+            to="/"
+            class="takeout">美团外卖</nuxt-link></li>
+          <li><nuxt-link
+            to="/"
+            class="movie">猫眼电影</nuxt-link></li>
+          <li><nuxt-link
+            to="/"
+            class="hotel">美团酒店</nuxt-link></li>
+          <li><nuxt-link
+            to="/"
+            class="apartment">民宿/公寓</nuxt-link></li>
+          <li><nuxt-link
+            to="/"
+            class="business">商家入驻</nuxt-link></li>
         </ul>
       </el-col>
       <el-col

@@ -11,7 +11,7 @@
     <dl
       v-for="item in block"
       :key="item.title"
-      class="m-categroy-section">
+      class="m-category-section">
       <dt :id="'city-' + item.title">{{ item.title }}</dt>
       <dd>
         <span
