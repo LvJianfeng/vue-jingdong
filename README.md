@@ -2,6 +2,22 @@
 
 > My bedazzling Nuxt.js project
 
+## 启动
+
+```console
+<!-- node: 10.0.0 -->
+sudo mongod
+<!-- open other iTerm -->
+mongo
+<!-- open other iTerm -->
+redis-server
+<!-- open other iTerm -->
+redis-cli
+<!-- open other iTerm -->
+<!-- 进入根目录 -->
+npm run dev
+```
+
 ## qq 授权码
 
 vjalqgcbjqdhbbfb
