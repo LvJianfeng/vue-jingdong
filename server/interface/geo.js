@@ -10,7 +10,7 @@ const sign = Config.sign
 
 // 获取位置
 router.get('/getPosition', async(ctx) => {
-  const { status, data: { province, city }} = await axios.get(`http://cp-tools.cn/geo/getPosition?sign=${sign}`)
+  const { status, data: { province, city }} = await axios.get(`${Config.requestUrl}/geo/getPosition?sign=${sign}`)
   if (status === 200) {
     ctx.body = {
       province,
@@ -24,6 +24,7 @@ router.get('/getPosition', async(ctx) => {
   }
 })
 
+// 获取菜单数据
 router.get('/menu', async(ctx) => {
   const { status, data: { menu }} = await axios.get(`${Config.requestUrl}/geo/menu?sign=${sign}`)
   if (status === 200) {
@@ -37,6 +38,7 @@ router.get('/menu', async(ctx) => {
   }
 })
 
+// 获取省份
 router.get('/province', async(ctx) => {
   // let province = await Province.find();
   // console.log(province);
@@ -48,7 +50,6 @@ router.get('/province', async(ctx) => {
   //     }
   //   })
   // }
-
   const { status, data: { province }} = await axios.get(`${Config.requestUrl}/geo/province?sign=${sign}`)
   ctx.body = {
     province: status === 200 ? province : []

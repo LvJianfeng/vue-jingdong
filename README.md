@@ -64,3 +64,4 @@ mongoimport -d student -c topsearches topsearches.dat
 ## postman
 
 [查看数据](http://localhost:3000/geo/getPosition)
+[查看数据](http://localhost:3000/geo/menu)
