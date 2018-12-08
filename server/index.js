@@ -15,6 +15,7 @@ import dbConfig from './dbs/config'
 import passport from './interface/utils/passport'
 import users from './interface/users'
 import geo from './interface/geo'
+import search from './interface/search'
 
 const { Nuxt, Builder } = require('nuxt')
 const app = new Koa()
@@ -67,6 +68,7 @@ async function start() {
   // 引进路由
   app.use(users.routes()).use(users.allowedMethods())
   app.use(geo.routes()).use(geo.allowedMethods())
+  app.use(search.routes()).use(search.allowedMethods())
   app.use(ctx => {
     ctx.status = 200 // koa defaults to 404 when it sees that status is unset
     return new Promise((resolve, reject) => {

@@ -63,6 +63,7 @@ mongoimport -d student -c topsearches topsearches.dat
 
 ## postman
 
-[查看数据](http://localhost:3000/geo/getPosition)
-[查看数据](http://localhost:3000/geo/menu)
-[查看数据](http://localhost:3000/geo/province)
+http://localhost:3000/geo/getPosition
+http://localhost:3000/geo/menu
+http://localhost:3000/geo/province
+http://localhost:3000/search/top?input=火锅&city=天津&sign=a3c9fe0782107295ee9f1709edd15218
