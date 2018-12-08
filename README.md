@@ -65,3 +65,4 @@ mongoimport -d student -c topsearches topsearches.dat
 
 [查看数据](http://localhost:3000/geo/getPosition)
 [查看数据](http://localhost:3000/geo/menu)
+[查看数据](http://localhost:3000/geo/province)

@@ -40,8 +40,8 @@ router.get('/menu', async(ctx) => {
 
 // 获取省份
 router.get('/province', async(ctx) => {
+  /* 操作本地数据库 */
   // let province = await Province.find();
-  // console.log(province);
   // ctx.body = {
   //   province: province.map(item => {
   //     return {
@@ -50,6 +50,7 @@ router.get('/province', async(ctx) => {
   //     }
   //   })
   // }
+  /* 线上服务 */
   const { status, data: { province }} = await axios.get(`${Config.requestUrl}/geo/province?sign=${sign}`)
   ctx.body = {
     province: status === 200 ? province : []
