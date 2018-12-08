@@ -58,12 +58,13 @@ mongoimport -d student -c provinces provinces.dat
 mongoimport -d student -c regions regions.dat
 mongoimport -d student -c topsearches topsearches.dat
 
-慕课网uid: 3225903
+慕课网 uid: 3225903
 [接口签名](http://cp-tools.cn/sign)
 
 ## postman
 
-http://localhost:3000/geo/getPosition
-http://localhost:3000/geo/menu
-http://localhost:3000/geo/province
-http://localhost:3000/search/top?input=火锅&city=天津&sign=a3c9fe0782107295ee9f1709edd15218
+- http://localhost:3000/geo/getPosition
+- http://localhost:3000/geo/menu
+- http://localhost:3000/geo/province
+- http://localhost:3000/search/top?input=火锅&city=天津&sign=a3c9fe0782107295ee9f1709edd15218
+- http://localhost:3000/search/hotPlace?city=天津&sign=a3c9fe0782107295ee9f1709edd15218

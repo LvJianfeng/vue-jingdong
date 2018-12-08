@@ -22,6 +22,7 @@ router.get('/top', async(ctx) => {
   }
 })
 
+// 热门搜索
 router.get('/hotPlace', async(ctx) => {
   const city = ctx.store ? ctx.store.geo.position.city : ctx.query.city
   const { status, data: { result }} = await axios.get(`${Config.requestUrl}/search/hotPlace`, {
@@ -35,6 +36,7 @@ router.get('/hotPlace', async(ctx) => {
   }
 })
 
+// s
 router.get('/resultsByKeywords', async(ctx) => {
   const { city, keyword } = ctx.query
   const { status, data: { count, pois }} = await axios.get(`${Config.requestUrl}/search/resultsByKeywords`, {

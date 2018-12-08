@@ -2,13 +2,15 @@
 import Vuex from 'vuex'
 import geo from './modules/geo'
 import home from './modules/home'
-// import search from './modules/search'
+import search from './modules/search'
+
 Vue.use(Vuex)
 
 const store = () => new Vuex.Store({
   modules: {
     geo,
-    home
+    home,
+    search
   },
   actions: {
     // 将服务端的一些数据传到客户端
@@ -20,6 +22,14 @@ const store = () => new Vuex.Store({
       {
         const { status, data: { menu }} = await app.$axios.get('/geo/menu')
         commit('home/setMenu', status === 200 ? menu : [])
+      }
+      {
+        const { status, data: { result }} = await app.$axios.get('/search/hotPlace', {
+          params: {
+            city: app.store.state.geo.position.city.replace('市', '')
+          }
+        })
+        commit('search/setHotPlace', status === 200 ? result : [])
       }
     }
   }

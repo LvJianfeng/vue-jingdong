@@ -24,24 +24,24 @@
             class="hotPlace">
             <dt>热门搜索</dt>
             <dd
-              v-for="(item, index) in hotPlace"
-              :key="index">{{ item }}</dd>
+              v-for="(item, index) in $store.state.search.hotPlace.slice(0, 5)"
+              :key="index"
+            >{{ item.name }}</dd>
           </dl>
           <dl
             v-if="isSearchList"
             class="searchList">
             <dd
               v-for="(item, index) in searchList"
-              :key="index">{{ item }}</dd>
+              :key="index">{{ item.name }}</dd>
           </dl>
         </div>
         <div class="suggset">
-          <nuxt-link
-            class="login"
-            to="/">故宫博物院1</nuxt-link>
-          <nuxt-link
-            class="login"
-            to="/">故宫博物院2</nuxt-link>
+          <a
+            v-for="(item, index) in $store.state.search.hotPlace.slice(0, 5)"
+            :key="index"
+            href="#"
+          >{{ item.name }}</a>
         </div>
         <ul class="nav">
           <li>
@@ -91,13 +91,15 @@
 </template>
 
 <script>
+import _ from 'lodash'
 export default {
   data() {
     return {
       search: '', // 当前输入框的值
       isFocus: false, // 是否聚焦
       hotPlace: ['火锅', '火锅', '火锅', '火锅', '火锅'], // 热门搜索数据
-      searchList: ['故宫', '故宫', '故宫'] // 搜索数据
+      // searchList: ['故宫', '故宫', '故宫'] // 搜索数据
+      searchList: []
     }
   },
   computed: {
@@ -117,9 +119,18 @@ export default {
         this.isFocus = false
       }, 200)
     },
-    input() {
-      console.log('input')
-    }
+    input: _.debounce(async function() {
+      const self = this
+      const city = self.$store.state.geo.position.city.replace('市', '')
+      self.searchList = []
+      const { data: { top }} = await self.$axios.get('/search/top', {
+        params: {
+          input: self.search,
+          city
+        }
+      })
+      self.searchList = top.slice(0, 10)
+    }, 300)
   }
 }
 </script>
