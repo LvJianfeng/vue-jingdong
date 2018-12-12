@@ -7,16 +7,16 @@ const Store = new Redis().client
 
 router.prefix('/users')
 
-router.get('/', function (ctx, next) {
+router.get('/', function(ctx, next) {
   ctx.body = 'this is a users response!'
 })
 
-router.get('/bar', function (ctx, next) {
+router.get('/bar', function(ctx, next) {
   ctx.body = 'this is a users/bar response'
 })
 
 /* 增加数据 */
-router.post('/addPerson', async (ctx, next) => {
+router.post('/addPerson', async(ctx, next) => {
   const person = new Person({
     name: ctx.request.body.name,
     age: ctx.request.body.age
@@ -35,7 +35,7 @@ router.post('/addPerson', async (ctx, next) => {
 })
 
 /* 查询数据 */
-router.post('/getPerson', async (ctx, next) => {
+router.post('/getPerson', async(ctx, next) => {
   /* findOne: 找出一条 */
   const result = await Person.findOne({
     name: ctx.request.body.name
@@ -52,7 +52,7 @@ router.post('/getPerson', async (ctx, next) => {
 })
 
 /* 修改数据 */
-router.post('/updatePerson', async function (ctx) {
+router.post('/updatePerson', async function(ctx) {
   /* where: 定位数据 */
   /* update: 修改数据 */
   const result = await Person.where({
@@ -67,7 +67,7 @@ router.post('/updatePerson', async function (ctx) {
 })
 
 /* 删除数据 */
-router.post('/removePerson', async function (ctx) {
+router.post('/removePerson', async function(ctx) {
   const result = await Person.where({
     name: ctx.request.body.name
   }).remove()
@@ -79,7 +79,7 @@ router.post('/removePerson', async function (ctx) {
 
 /* redis */
 /* 不经过 session 直接读取 redis */
-router.get('/fix', async (ctx, next) => {
+router.get('/fix', async(ctx, next) => {
   /* key, k-v */
   const st = await Store.hset('fix', 'name', Math.random())
   ctx.body = {

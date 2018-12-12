@@ -38,7 +38,6 @@ app.use(
 )
 
 /* middlewares */
-/* app.use: Add the given middleware function to this application */
 app.use(pv())
 app.use(m1())
 app.use(m2())
@@ -49,15 +48,19 @@ app.use(
 )
 app.use(json())
 app.use(logger())
-app.use(require('koa-static')(__dirname + '/public'))
+// app.use(require('koa-static')(__dirname + '/public'))
+app.use(require('koa-static')(`${__dirname}/public`))
 app.use(
-  views(__dirname + '/views', {
+  // views(__dirname + '/views', {
+  //   extension: 'ejs'
+  // })
+  views(`${__dirname}/views`, {
     extension: 'ejs'
   })
 )
 
 /* logger */
-app.use(async (ctx, next) => {
+app.use(async(ctx, next) => {
   const start = new Date()
   await next()
   const ms = new Date() - start

@@ -1,6 +1,6 @@
 const router = require('koa-router')()
 
-router.get('/', async (ctx, next) => {
+router.get('/', async(ctx, next) => {
   global.console.log('index2')
   ctx.cookies.set('pvid', Math.random())
   await ctx.render('index', {
@@ -8,11 +8,11 @@ router.get('/', async (ctx, next) => {
   })
 })
 
-router.get('/string', async (ctx, next) => {
+router.get('/string', async(ctx, next) => {
   ctx.body = 'koa2 string'
 })
 
-router.get('/json', async (ctx, next) => {
+router.get('/json', async(ctx, next) => {
   ctx.body = {
     title: 'koa2 json',
     cookie: ctx.cookies.get('pvid')
