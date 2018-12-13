@@ -1,6 +1,6 @@
 import mongoose from 'mongoose'
 
-// user 数据库表
+/* Schema: 表的描述 */
 const Schema = mongoose.Schema
 const UserSchema = new Schema({
   username: {
@@ -17,5 +17,5 @@ const UserSchema = new Schema({
     require: true
   }
 })
-
+/* model 建模型 */
 export default mongoose.model('User', UserSchema)

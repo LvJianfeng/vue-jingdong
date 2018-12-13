@@ -12,8 +12,8 @@ const store = () =>
       navbar
     },
     actions: {
-      /* nuxt: 生命周期 */
-      // nuxtServerInit ({ commit }, { req }) {
+      /* nuxtServerInit: 生命周期 */
+      // nuxtServerInit({ commit }, { req }) {
       //   if (req.session.user) {
       //     commit('city', req.session.user)
       //   }

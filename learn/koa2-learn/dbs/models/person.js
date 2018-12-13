@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 
 /* 建表 */
-let personSchema = new mongoose.Schema({
+const personSchema = new mongoose.Schema({
   name: String,
   age: Number
 })

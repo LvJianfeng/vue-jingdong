@@ -1,6 +1,6 @@
 import Koa from 'koa'
 import { Nuxt, Builder } from 'nuxt'
-// import cityInterface from './interface/city'
+import cityInterface from './interface/city'
 
 async function start() {
   const app = new Koa()
@@ -20,7 +20,7 @@ async function start() {
     await builder.build()
   }
 
-  // app.use(cityInterface.routes()).use(cityInterface.allowdMethods())
+  app.use(cityInterface.routes()).use(cityInterface.allowedMethods())
   app.use(ctx => {
     ctx.status = 200
     ctx.respond = false // Mark request as handled for Koa
