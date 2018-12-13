@@ -145,7 +145,7 @@ export default {
       if (this.timerid) {
         return false
       }
-      // 验证用户名是否通过校验 (element-ui 方法)
+      // 验证用户名是否通过校验 (element-ui 方法), 如果有值表示没有通过
       this.$refs['ruleForm'].validateField('name', valid => {
         namePass = valid
       })
@@ -153,7 +153,7 @@ export default {
       if (namePass) {
         return false
       }
-      // 检测邮箱是否通过校验
+      // 检测邮箱是否通过校验 (element-ui 方法), 如果有值表示没有通过
       this.$refs['ruleForm'].validateField('email', valid => {
         emailPass = valid
       })
@@ -166,7 +166,7 @@ export default {
             email: this.ruleForm.email
           })
           .then(({ status, data }) => {
-            // 验证码有效倒计时
+            // 发送成功后, 验证码有效倒计时
             if (status === 200 && data && data.code === 0) {
               let count = 60
               this.statusMsg = `验证码已发送，剩余${count--}秒`

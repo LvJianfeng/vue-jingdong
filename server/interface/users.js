@@ -23,7 +23,7 @@ router.post('/signup', async ctx => {
   const { username, password, email, code } = ctx.request.body
   // 验证码
   if (code) {
-    // redis 存储验证码
+    // redis get 验证码
     const saveCode = await Store.hget(`nodemail:${username}`, 'code')
     const saveExpire = await Store.hget(`nodemail:${username}`, 'expire')
     if (code === saveCode) {
@@ -46,10 +46,7 @@ router.post('/signup', async ctx => {
       msg: '请填写验证码'
     }
   }
-  // 用户名
-  const user = await User.find({
-    username
-  })
+  const user = await User.find({ username })
   if (user.length) {
     ctx.body = {
       code: -1,
@@ -93,7 +90,7 @@ router.post('/signup', async ctx => {
  * 登录接口
  */
 router.post('/signin', async(ctx, next) => {
-  // authenticate: 执行 passport-local 策略, 调用授权页面
+  // authenticate() 执行 passport-local 策略, 调用授权页面
   return Passport.authenticate('local', function(err, user, info, status) {
     if (err) {
       ctx.body = {
@@ -134,9 +131,7 @@ router.get('/fix', async ctx => {
  */
 router.post('/verify', async(ctx, next) => {
   const username = ctx.request.body.username
-  // 验证码过期时间
   const saveExpire = await Store.hget(`nodemail:${username}`, 'expire')
-  // 超出验证码过期时间
   if (saveExpire && new Date().getTime() - saveExpire < 0) {
     ctx.body = {
       code: -1,
