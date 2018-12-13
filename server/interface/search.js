@@ -30,9 +30,13 @@ router.get('/top', async(ctx) => {
   //     top: []
   //   }
   // }
-  const { status, data: {
-    top
-  }} = await axios.get(`http://cp-tools.cn/search/top`, {
+  const {
+    status,
+    data: {
+      top
+    }
+  } = await axios.get(`http://cp-tools.cn/search/top`, {
+    // 也可以采用拼接方式
     params: {
       input: ctx.query.input,
       city: ctx.query.city,
@@ -72,9 +76,12 @@ router.get('/hotPlace', async(ctx) => {
   const city = ctx.store
     ? ctx.store.geo.position.city
     : ctx.query.city
-  const { status, data: {
-    result
-  }} = await axios.get(`http://cp-tools.cn/search/hotPlace`, {
+  const {
+    status,
+    data: {
+      result
+    }
+  } = await axios.get(`http://cp-tools.cn/search/hotPlace`, {
     params: {
       sign,
       city

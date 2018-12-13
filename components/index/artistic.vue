@@ -51,13 +51,13 @@ export default {
       kind: 'all',
       list: {
         all: [
-          {
-            img:
-							'//p0.meituan.net/hotel/01b1941a2e0bf25aed72f69b39e2298c362774.png@368w_208h_1e_1c',
-            title: '东方之家酒店',
-            pos: '酒店套餐',
-            price: 398
-          }
+          // {
+          //   img:
+          // 		'//p0.meituan.net/hotel/01b1941a2e0bf25aed72f69b39e2298c362774.png@368w_208h_1e_1c',
+          //   title: '东方之家酒店',
+          //   pos: '酒店套餐',
+          //   price: 398
+          // }
         ],
         part: [],
         spa: [],
@@ -71,30 +71,55 @@ export default {
       return this.list[this.kind]
     }
   },
+  async mounted() {
+    const self = this
+    const { status, data: { count, pois }} = await self.$axios.get('/search/resultsByKeywords', {
+      params: {
+        keyword: '景点',
+        city: self.$store.state.geo.position.city
+      }
+    })
+    if (status === 200 && count > 0) {
+      const r = pois.filter(item => item.photos.length).map(item => {
+        return {
+          title: item.name,
+          pos: item.type.split(';')[0],
+          price: item.biz_ext.cost || '暂无',
+          img: item.photos[0].url,
+          url: '//abc.com'
+        }
+      })
+      self.list[self.kind] = r.slice(0, 9)
+    } else {
+      self.list[self.kind] = []
+    }
+  },
   methods: {
     over: async function(e) {
       const dom = e.target
       const tag = dom.tagName.toLowerCase()
-      const self = this
+      const that = this
       if (tag === 'dd') {
         this.kind = dom.getAttribute('kind')
         const keyword = dom.getAttribute('keyword')
-        const { status, data: { count, pois }} = await self.$axios.get('/search/resultsByKeywords', {
+        const { status, data: { count, pois }} = await that.$axios.get('/search/resultsByKeywords', {
           params: {
             keyword,
             city: this.$store.state.geo.position.city
           }
         })
         if (status === 200 && count > 0) {
-          const r = pois.filter((item) => item.photos.length).map((item, index) => {
-            return {
-              title: item.name,
-              pos: item.type.split(';')[0],
-              price: item.biz_ext.cost || '暂无',
-              img: item.photos[0].url,
-              url: '//abc.com'
-            }
-          })
+          const r = pois
+            .filter((item) => item.photos.length)
+            .map((item, index) => {
+              return {
+                title: item.name,
+                pos: item.type.split(';')[0],
+                price: item.biz_ext.cost || '暂无',
+                img: item.photos[0].url,
+                url: '//abc.com'
+              }
+            })
           this.list[this.kind] = r.slice(0, 9)
         } else {
           this.list[this.kind] = []

@@ -79,10 +79,10 @@ mongoimport -d student -c topsearches topsearches.dat
 
 ## postman
 
-- http://localhost:3000/geo/getPosition
-- http://localhost:3000/geo/menu
-- http://localhost:3000/geo/province
-- http://localhost:3000/search/top?input=火锅&city=天津&sign=a3c9fe0782107295ee9f1709edd15218
-- http://localhost:3000/search/hotPlace?city=天津&sign=a3c9fe0782107295ee9f1709edd15218
-- http://localhost:3000/category/crumbs?city=北京
-- http://localhost:3000/search/resultsByKeywords?city=广州&keyword=广州流溪河国家森林公园
+http://localhost:3000/geo/getPosition
+http://localhost:3000/geo/menu
+http://localhost:3000/geo/province
+http://localhost:3000/search/top?input=火锅&city=天津&sign=a3c9fe0782107295ee9f1709edd15218
+http://localhost:3000/search/hotPlace?city=天津&sign=a3c9fe0782107295ee9f1709edd15218
+http://localhost:3000/category/crumbs?city=北京
+http://localhost:3000/search/resultsByKeywords?city=广州&keyword=广州流溪河国家森林公园

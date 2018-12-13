@@ -112,17 +112,22 @@ export default {
         this.isFocus = false
       }, 200)
     },
+    // _.debounce 延时函数
     input: _.debounce(async function() {
-      const self = this
-      const city = self.$store.state.geo.position.city.replace('市', '')
-      self.searchList = []
-      const { data: { top }} = await self.$axios.get('/search/top', {
+      const that = this
+      const city = that.$store.state.geo.position.city.replace('市', '')
+      that.searchList = []
+      const {
+        data: {
+          top
+        }
+      } = await that.$axios.get('/search/top', {
         params: {
-          input: self.search,
+          input: that.search,
           city
         }
       })
-      self.searchList = top.slice(0, 10)
+      that.searchList = top.slice(0, 10)
     }, 300)
   }
 }

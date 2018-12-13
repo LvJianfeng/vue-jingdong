@@ -10,7 +10,12 @@ const sign = Config.sign
 
 // 获取位置
 router.get('/getPosition', async(ctx) => {
-  const { status, data: { province, city }} = await axios.get(`${Config.requestUrl}/geo/getPosition?sign=${sign}`)
+  const {
+    status,
+    data: {
+      province, city
+    }
+  } = await axios.get(`${Config.requestUrl}/geo/getPosition?sign=${sign}`)
   if (status === 200) {
     ctx.body = {
       province,
@@ -26,7 +31,16 @@ router.get('/getPosition', async(ctx) => {
 
 // 获取菜单数据
 router.get('/menu', async(ctx) => {
-  const { status, data: { menu }} = await axios.get(`${Config.requestUrl}/geo/menu?sign=${sign}`)
+  // const result = await Menu.findOne()
+  // ctx.body = {
+  //   menu: result.menu
+  // }
+  const {
+    status,
+    data: {
+      menu
+    }
+  } = await axios.get(`${Config.requestUrl}/geo/menu?sign=${sign}`)
   if (status === 200) {
     ctx.body = {
       menu
@@ -51,7 +65,12 @@ router.get('/province', async(ctx) => {
   //   })
   // }
   /* 线上服务 */
-  const { status, data: { province }} = await axios.get(`${Config.requestUrl}/geo/province?sign=${sign}`)
+  const {
+    status,
+    data: {
+      province
+    }
+  } = await axios.get(`${Config.requestUrl}/geo/province?sign=${sign}`)
   ctx.body = {
     province: status === 200 ? province : []
   }
@@ -66,9 +85,12 @@ router.get('/province/:id', async(ctx) => {
   //     return {province: item.province, id: item.id, name: item.name}
   //   })
   // }
-  const { status, data: {
-    city
-  }} = await axios.get(`${Config.requestUrl}/geo/province/${ctx.params.id}?sign=${sign}`)
+  const {
+    status,
+    data: {
+      city
+    }
+  } = await axios.get(`${Config.requestUrl}/geo/province/${ctx.params.id}?sign=${sign}`)
   if (status === 200) {
     ctx.body = {
       city
