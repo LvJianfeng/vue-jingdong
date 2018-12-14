@@ -87,7 +87,7 @@ http://localhost:3000/search/hotPlace?city=天津&sign=a3c9fe0782107295ee9f1709e
 http://localhost:3000/category/crumbs?city=北京
 http://localhost:3000/search/resultsByKeywords?city=广州&keyword=广州流溪河国家森林公园
 
-<el-breadcrumb separator=">">
-  <el-breadcrumb-item :to="{ path: '/' }">{{ $store.state.geo.position.city.replace('市','') }}美团</el-breadcrumb-item>
-  <el-breadcrumb-item><a href="/">{{ $store.state.geo.position.city.replace('市','') }}{{ decodeURIComponent(keyword) }}</a></el-breadcrumb-item>
-</el-breadcrumb>
+// 服务端执行
+async asyncData(ctx) {
+  // 接口传递过来
+  const { keyword, type } = ctx.query

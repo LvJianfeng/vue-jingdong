@@ -55,7 +55,9 @@ export default {
       return this.list.filter(item => item.photos.length).length
     }
   },
+  // 服务端执行
   async asyncData(ctx) {
+    // 接口传递过来
     const { keyword, type } = ctx.query
     const { status, data: { product, more: list, login }} = await ctx.$axios.get('/search/products', {
       params: {
