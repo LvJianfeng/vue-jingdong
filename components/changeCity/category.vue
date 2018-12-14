@@ -1,5 +1,5 @@
 ﻿<template>
-  <div class="">
+  <div class>
     <dl class="m-categroy">
       <dt>按拼音首字母选择：</dt>
       <dd
@@ -34,14 +34,22 @@ export default {
   async mounted() {
     const self = this
     const blocks = []
-    const { status, data: { city }} = await self.$axios.get('/geo/city')
+    const {
+      status,
+      data: {
+        city
+      }
+    } = await self.$axios.get('/geo/city')
     if (status === 200) {
       let p
       let c
       const d = {}
       city.forEach(item => {
-        // 拼音首字母
-        p = pyjs.getFullChars(item.name).toLocaleLowerCase().slice(0, 1)
+        // pyjs.getFullChars() 字母拼音
+        p = pyjs
+          .getFullChars(item.name)
+          .toLocaleLowerCase()
+          .slice(0, 1)
         // 序号
         c = p.charCodeAt(0)
         // a-z
@@ -66,5 +74,5 @@ export default {
 </script>
 
 <style lang="scss">
-  @import "@/assets/css/changeCity/categroy.scss";
+@import "@/assets/css/changeCity/categroy.scss";
 </style>

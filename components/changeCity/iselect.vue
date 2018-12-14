@@ -44,24 +44,24 @@ export default {
   },
   watch: {
     pvalue: async function(newPvalue) {
-      const self = this
-      const { status, data: { city }} = await self.$axios.get(`/geo/province/${newPvalue}`)
+      const that = this
+      const { status, data: { city }} = await that.$axios.get(`/geo/province/${newPvalue}`)
       if (status === 200) {
-        self.city = city.map(item => {
+        that.city = city.map(item => {
           return {
             value: item.id,
             label: item.name
           }
         })
-        self.cvalue = ''
+        that.cvalue = ''
       }
     }
   },
   mounted: async function() {
-    const self = this
-    const { status, data: { province }} = await self.$axios.get('/geo/province')
+    const that = this
+    const { status, data: { province }} = await that.$axios.get('/geo/province')
     if (status === 200) {
-      self.province = province.map(item => {
+      that.province = province.map(item => {
         return {
           value: item.id,
           label: item.name
@@ -70,20 +70,21 @@ export default {
     }
   },
   methods: {
+    // _.debounce() 延时函数
     querySearchAsync: _.debounce(async function(query, cb) {
-      const self = this
-      if (self.cities.length) {
+      const that = this
+      if (that.cities.length) {
         // 搜‘北’，显示所有带‘北’的数据
-        cb(self.cities.filter(item => item.value.indexOf(query) > -1))
+        cb(that.cities.filter(item => item.value.indexOf(query) > -1))
       } else {
-        const { status, data: { city }} = await self.$axios.get('/geo/city')
+        const { status, data: { city }} = await that.$axios.get('/geo/city')
         if (status === 200) {
-          self.cities = city.map(item => {
+          that.cities = city.map(item => {
             return {
               value: item.name
             }
           })
-          cb(self.cities.filter(item => item.value.indexOf(query) > -1))
+          cb(that.cities.filter(item => item.value.indexOf(query) > -1))
         } else {
           cb([])
         }
