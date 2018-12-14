@@ -26,6 +26,7 @@ export default {
   data() {
     return {
       id: `map`,
+      // 高德地图 key
       key: '8c9a4f3e2f7de635c9982cc8b8cda229'
     }
   },
@@ -39,16 +40,17 @@ export default {
     const self = this
     self.id = `map${Math.random().toString().slice(4, 6)}`
     window.onmaploaded = () => {
+      // init AMap
       const map = new window.AMap.Map(self.id, {
         resizeEnable: true,
         zoom: 11,
         center: self.point
       })
       self.map = map
+      // ToolBar
       window.AMap.plugin('AMap.ToolBar', () => {
         const toolbar = new window.AMap.ToolBar()
         map.addControl(toolbar)
-        // 1, 2, 3...
         const marker = new window.AMap.Marker({
           icon: 'https://webapi.amap.com/theme/v1.3/markers/n/mark_b.png',
           position: self.point

@@ -54,6 +54,7 @@ export default {
     })
     if (status === 200 && count > 0 && status2 === 200) {
       return {
+        // 没有图片的数据过滤出去
         list: pois.filter(item => item.photos.length).map(item => {
           return {
             type: item.type,

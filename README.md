@@ -87,42 +87,7 @@ http://localhost:3000/search/hotPlace?city=天津&sign=a3c9fe0782107295ee9f1709e
 http://localhost:3000/category/crumbs?city=北京
 http://localhost:3000/search/resultsByKeywords?city=广州&keyword=广州流溪河国家森林公园
 
-async mounted() {
-  const self = this
-  const blocks = []
-  const {
-    status,
-    data: {
-      city
-    }
-  } = await self.$axios.get('/geo/city')
-  if (status === 200) {
-    let p
-    let c
-    const d = {}
-    city.forEach(item => {
-      // pyjs.getFullChars() 字母拼音
-      p = pyjs
-        .getFullChars(item.name)
-        .toLocaleLowerCase()
-        .slice(0, 1)
-      // 序号
-      c = p.charCodeAt(0)
-      // a-z
-      if (c > 96 && c < 123) {
-        if (!d[p]) {
-          d[p] = []
-        }
-        d[p].push(item.name)
-      }
-    })
-    for (const [k, v] of Object.entries(d)) {
-      blocks.push({
-        title: k.toUpperCase(),
-        city: v
-      })
-    }
-    blocks.sort((a, b) => a.title.charCodeAt(0) - b.title.charCodeAt(0))
-    self.block = blocks
-  }
-}
+<el-breadcrumb separator=">">
+  <el-breadcrumb-item :to="{ path: '/' }">{{ $store.state.geo.position.city.replace('市','') }}美团</el-breadcrumb-item>
+  <el-breadcrumb-item><a href="/">{{ $store.state.geo.position.city.replace('市','') }}{{ decodeURIComponent(keyword) }}</a></el-breadcrumb-item>
+</el-breadcrumb>

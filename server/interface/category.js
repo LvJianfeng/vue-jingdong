@@ -7,7 +7,7 @@ const router = new Router({ prefix: '/category' })
 const sign = Config.sign
 
 router.get('/crumbs', async(ctx) => {
-  // let result = await Category.findOne({city: ctx.query.city.replace('市', '') || '北京'})
+  // let result = await Categroy.findOne({city: ctx.query.city.replace('市', '') || '北京'})
   // if (result) {
   //   ctx.body = {
   //     areas: result.areas,
@@ -19,7 +19,7 @@ router.get('/crumbs', async(ctx) => {
   //     types: []
   //   }
   // }
-  const { status, data: { areas, types }} = await axios.get(`${Config.requestUrl}/category/crumbs`, {
+  const { status, data: { areas, types }} = await axios.get('http://cp-tools.cn/categroy/crumbs', {
     params: {
       city: ctx.query.city.replace('市', '') || '北京',
       sign
