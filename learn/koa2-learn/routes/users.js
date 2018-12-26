@@ -5,6 +5,7 @@ const Person = require('../dbs/models/person')
 const Redis = require('koa-redis')
 const Store = new Redis().client
 
+/* 路由前缀 */
 router.prefix('/users')
 
 router.get('/', function(ctx, next) {
