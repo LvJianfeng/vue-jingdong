@@ -2,6 +2,14 @@
 
 > My bedazzling Nuxt.js project
 
+## 运行图片
+
+![首页](https://i.loli.net/2018/12/26/5c23a2f719bee.png)
+![登录界面](https://i.loli.net/2018/12/26/5c23a34dbdea7.png)
+![注册界面](https://i.loli.net/2018/12/26/5c23a366762d7.png)
+![风景列表](https://i.loli.net/2018/12/26/5c23a37d382db.png)
+![风景界面](https://i.loli.net/2018/12/26/5c23a39940df7.png)
+
 ## 启动
 
 ```console
