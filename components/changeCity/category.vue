@@ -16,7 +16,9 @@
       <dd>
         <span
           v-for="c in item.city"
-          :key="c">{{ c }}</span>
+          :key="c"
+        >{{ c }}
+        </span>
       </dd>
     </dl>
   </div>
