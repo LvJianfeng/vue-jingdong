@@ -2,12 +2,14 @@
   <div class="m-menu">
     <dl
       class="nav"
-      @mouseleave="navLeave">
+      @mouseleave="navLeave"
+    >
       <dt>全部分类</dt>
       <dd
         v-for="(item, index) in $store.state.home.menu"
         :key="index"
-        @mouseenter="navEnter">
+        @mouseenter="navEnter"
+      >
         <i :class="item.type"/>
         {{ item.name }}
         <span class="arrow"/>
@@ -17,12 +19,16 @@
       v-if="kind"
       class="detail"
       @mouseenter="detailEnter"
-      @mouseleave="detailLeave">
+      @mouseleave="detailLeave"
+    >
       <template v-for="(item, index) in curdetail.child">
         <h4 :key="index">{{ item.title }}</h4>
         <span
           v-for="v in item.child"
-          :key="v">{{ v }}</span>
+          :key="v"
+        >
+          {{ v }}
+        </span>
       </template>
     </div>
   </div>
@@ -44,16 +50,6 @@ export default {
       //       }
       //     ]
       //   },
-      //   {
-      //     type: 'takeout',
-      //     name: '外卖',
-      //     child: [
-      //       {
-      //         title: '外卖',
-      //         child: ['美团外卖']
-      //       }
-      //     ]
-      //   }
       // ]
     }
   },

@@ -45,29 +45,6 @@ nvm use 8.12.0
 
 npm i scss-loader sass-loader passport-local nodemailer node-sass mongoose koa-router koa-redis koa-passport koa-json koa-generic-session koa-bodyparser babel-preset-es2015 babel-cli axios @nuxtjs/axios crypto-js -S
 
-## b
-
-```js
-  username: {
-    type: String,
-    unique: true,
-    require: true
-  },
-  password: {
-    type: String,
-    require: true
-  },
-  email: {
-    type: String,
-    require: true
-  }
-```
-
-curl -d 'username=aaa&password=111&email=583520052@qq.com' http://localhost:3000/
-
-npm install npx -g
-npx create-nuxt-app project-name
-
 ## 导入数据到 mongodb
 
 > 进入 dbs 目录
@@ -99,3 +76,8 @@ http://localhost:3000/search/resultsByKeywords?city=广州&keyword=广州流溪�
 async asyncData(ctx) {
   // 接口传递过来
   const { keyword, type } = ctx.query
+
+
+
+
+
