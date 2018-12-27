@@ -76,6 +76,7 @@ router.get('/province', async(ctx) => {
   }
 })
 
+// 获取省份
 router.get('/province/:id', async(ctx) => {
   // let city = await City.findOne({id: ctx.params.id})
   //
@@ -102,6 +103,7 @@ router.get('/province/:id', async(ctx) => {
   }
 })
 
+// 获取城市
 router.get('/city', async(ctx) => {
   const { status, data: { city }} = await axios.get(`${Config.requestUrl}/geo/city?sign=${sign}`)
   if (status === 200) {
@@ -115,6 +117,7 @@ router.get('/city', async(ctx) => {
   }
 })
 
+// 获取热门城市
 router.get('/hotCity', async(ctx) => {
   const { status, data: { hots }} = await axios.get(`${Config.requestUrl}/geo/hotCity?sign=${sign}`)
   if (status === 200) {

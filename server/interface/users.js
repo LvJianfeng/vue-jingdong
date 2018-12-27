@@ -20,10 +20,11 @@ const Store = new Redis().client
  * 注册接口
  */
 router.post('/signup', async ctx => {
+  // 获取 post 数据
   const { username, password, email, code } = ctx.request.body
   // 验证码
   if (code) {
-    // redis get 验证码
+    // redis hget() 验证码
     const saveCode = await Store.hget(`nodemail:${username}`, 'code')
     const saveExpire = await Store.hget(`nodemail:${username}`, 'expire')
     if (code === saveCode) {
@@ -46,6 +47,7 @@ router.post('/signup', async ctx => {
       msg: '请填写验证码'
     }
   }
+  // 用户名已被注册
   const user = await User.find({ username })
   if (user.length) {
     ctx.body = {
@@ -60,7 +62,7 @@ router.post('/signup', async ctx => {
     password,
     email
   })
-  // 登录
+  // 注册成功?
   if (nuser) {
     const res = await axios.post('/users/signin', {
       username,
@@ -130,7 +132,8 @@ router.get('/fix', async ctx => {
  * 验证码验证
  */
 router.post('/verify', async(ctx, next) => {
-  const username = ctx.request.body.username
+  // 获取 post 数据
+  const { username } = ctx.request.body
   const saveExpire = await Store.hget(`nodemail:${username}`, 'expire')
   if (saveExpire && new Date().getTime() - saveExpire < 0) {
     ctx.body = {
@@ -209,6 +212,7 @@ router.get('/exit', async(ctx, next) => {
  * 获取用户信息
  */
 router.get('/getUser', async ctx => {
+  // isAuthenticated: 判断是否认证 (检测现在是否是登录状态)
   if (ctx.isAuthenticated()) {
     const { username, email } = ctx.session.passport.user
     ctx.body = {

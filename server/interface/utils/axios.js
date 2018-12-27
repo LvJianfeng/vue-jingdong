@@ -1,3 +1,4 @@
+// Promise based HTTP client for the browser and node.js
 import axios from 'axios'
 
 // 创建新的 axios 实例

@@ -4,13 +4,16 @@
       <header>
         <a
           href="/"
-          class="site-logo"/>
+          class="site-logo"
+        />
         <span class="login">
           <em class="bold">已有美团账号?</em>
           <a href="/login">
             <el-button
               type="primary"
-              size="small">登录</el-button>
+              size="small"
+            >登录
+            </el-button>
           </a>
         </span>
       </header>
@@ -157,7 +160,7 @@ export default {
       this.$refs['ruleForm'].validateField('email', valid => {
         emailPass = valid
       })
-      // 如果用户名, 邮箱都通过
+      // 如果用户名, 邮箱都通过 (有值则表示没通过)
       if (!namePass && !emailPass) {
         this.$axios
           .post('/users/verify', {
