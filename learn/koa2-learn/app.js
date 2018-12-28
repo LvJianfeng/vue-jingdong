@@ -27,7 +27,7 @@ const dbConfig = require('./dbs/config')
 /* error handler */
 onerror(app)
 
-/* redis */
+/* redis 连接 */
 app.keys = ['keys', 'keyskeys']
 app.use(
   session({

@@ -79,7 +79,7 @@ router.post('/removePerson', async function(ctx) {
   }
 })
 
-/* redis */
+// hget fix name
 /* 不经过 session 直接读取 redis */
 router.get('/fix', async(ctx, next) => {
   /* key, k-v */
