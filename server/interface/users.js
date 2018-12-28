@@ -132,6 +132,7 @@ router.get('/fix', async ctx => {
  * 验证码验证
  */
 router.post('/verify', async(ctx, next) => {
+  // 验证请求过于频繁
   // 获取 post 数据
   const { username } = ctx.request.body
   const saveExpire = await Store.hget(`nodemail:${username}`, 'expire')

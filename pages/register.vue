@@ -144,7 +144,9 @@ export default {
   },
   methods: {
     sendMsg() {
-      let namePass, emailPass
+      const that = this
+      let namePass
+      let emailPass
       if (this.timerid) {
         return false
       }
@@ -152,7 +154,7 @@ export default {
       this.$refs['ruleForm'].validateField('name', valid => {
         namePass = valid
       })
-      this.statusMsg = ''
+      that.statusMsg = ''
       if (namePass) {
         return false
       }
@@ -162,26 +164,26 @@ export default {
       })
       // 如果用户名, 邮箱都通过 (有值则表示没通过)
       if (!namePass && !emailPass) {
-        this.$axios
+        that.$axios
           .post('/users/verify', {
             // encodeURIComponent: 对中文进行编码
-            username: encodeURIComponent(this.ruleForm.name),
-            email: this.ruleForm.email
+            username: encodeURIComponent(that.ruleForm.name),
+            email: that.ruleForm.email
           })
           .then(({ status, data }) => {
             // 发送成功后, 验证码有效倒计时
             if (status === 200 && data && data.code === 0) {
               let count = 60
-              this.statusMsg = `验证码已发送，剩余${count--}秒`
-              this.timerid = setInterval(() => {
-                this.statusMsg = `验证码已发送，剩余${count--}秒`
+              that.statusMsg = `验证码已发送，剩余${count--}秒`
+              that.timerid = setInterval(() => {
+                that.statusMsg = `验证码已发送，剩余${count--}秒`
                 if (count === 0) {
-                  clearInterval(this.timerid)
-                  this.statusMsg = ''
+                  clearInterval(that.timerid)
+                  that.statusMsg = ''
                 }
               }, 1000)
             } else {
-              this.statusMsg = data.msg
+              that.statusMsg = data.msg
             }
           })
       }
