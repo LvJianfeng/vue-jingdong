@@ -59,9 +59,6 @@ export default {
       // console.log(this.menu.filter((item)=>{
       //   return item.type === this.kind
       // })[0])
-      // return this.menu.filter(item => {
-      //   return item.type === this.kind
-      // })[0]
       return this.$store.state.home.menu.filter(item => {
         return item.type === this.kind
       })[0]

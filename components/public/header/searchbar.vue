@@ -6,7 +6,8 @@
         class="left">
         <img
           src="//s0.meituan.net/bs/fe-web-meituan/e5eeaef/img/logo.png"
-          alt="美团">
+          alt="美团"
+        >
       </el-col>
       <el-col
         :span="15"
@@ -24,7 +25,7 @@
             class="hotPlace">
             <dt>热门搜索</dt>
             <dd
-              v-for="(item, index) in $store.state.search.hotPlace.slice(0, 5)"
+              v-for="(item, index) in $store.state.search.hotPlace.slice(0, 4)"
               :key="index"
             >
               <a :href="'/products?keyword=' + encodeURIComponent(item.name)">{{ item.name }}</a>
@@ -42,27 +43,45 @@
         </div>
         <div class="suggset">
           <a
-            v-for="(item, index) in $store.state.search.hotPlace.slice(0, 5)"
+            v-for="(item, index) in $store.state.search.hotPlace.slice(0, 4)"
             :key="index"
             :href="'/products?keyword=' + encodeURIComponent(item.name)"
           >{{ item.name }}</a>
         </div>
         <ul class="nav">
-          <li><nuxt-link
-            to="/"
-            class="takeout">美团外卖</nuxt-link></li>
-          <li><nuxt-link
-            to="/"
-            class="movie">猫眼电影</nuxt-link></li>
-          <li><nuxt-link
-            to="/"
-            class="hotel">美团酒店</nuxt-link></li>
-          <li><nuxt-link
-            to="/"
-            class="apartment">民宿/公寓</nuxt-link></li>
-          <li><nuxt-link
-            to="/"
-            class="business">商家入驻</nuxt-link></li>
+          <li>
+            <nuxt-link
+              to="/"
+              class="takeout">美团外卖
+            </nuxt-link>
+          </li>
+          <li>
+            <nuxt-link
+              to="/"
+              class="movie"
+            >猫眼电影
+            </nuxt-link>
+          </li>
+          <li>
+            <nuxt-link
+              to="/"
+              class="hotel"
+            >美团酒店
+            </nuxt-link>
+          </li>
+          <li>
+            <nuxt-link
+              to="/"
+              class="apartment">民宿/公寓
+            </nuxt-link>
+          </li>
+          <li>
+            <nuxt-link
+              to="/"
+              class="business"
+            >商家入驻
+            </nuxt-link>
+          </li>
         </ul>
       </el-col>
       <el-col
@@ -91,7 +110,7 @@ export default {
     return {
       search: '',
       isFocus: false,
-      hotPlace: ['火锅', '火锅', '火锅'],
+      hotPlace: [],
       searchList: []
     }
   },
