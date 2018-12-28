@@ -25,7 +25,6 @@ router.get('/testAsync', async ctx => {
   const a = await new Promise((resolve, reject) => {
     setTimeout(() => {
       global.console.log('async a', new Date().getTime())
-      /* await value it's resolve value 'ab' */
       resolve('ab')
     }, 1000)
   })

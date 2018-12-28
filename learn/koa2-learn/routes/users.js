@@ -12,6 +12,7 @@ router.get('/', function(ctx, next) {
   ctx.body = 'this is a users response!'
 })
 
+// 定位到 http://localhost:3000/users/bar 路由, 控制台输出
 router.get('/bar', function(ctx, next) {
   ctx.body = 'this is a users/bar response'
 })
