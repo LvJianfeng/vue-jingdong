@@ -4,6 +4,7 @@ import axios from './utils/axios'
 import Province from '../dbs/models/province'
 import Menu from '../dbs/models/menu'
 import City from '../dbs/models/city'
+import Positon from '../dbs/models/position'
 
 const router = new Router({
   prefix: '/geo'
@@ -12,18 +13,25 @@ const sign = Config.sign
 
 // 获取位置
 router.get('/getPosition', async(ctx) => {
-  const { status, data: { province, city }} = await axios.get(`${Config.requestUrl}/geo/getPosition?sign=${sign}`)
-  if (status === 200) {
-    ctx.body = {
-      province,
-      city
-    }
-  } else {
-    ctx.body = {
-      province: '',
-      city: ''
-    }
+  /* 操作本地数据库 */
+  const result = await Positon.findOne()
+  ctx.body = {
+    province: result.province,
+    city: result.city
   }
+  /* 线上服务 */
+  // const { status, data: { province, city }} = await axios.get(`${Config.requestUrl}/geo/getPosition?sign=${sign}`)
+  // if (status === 200) {
+  //   ctx.body = {
+  //     province,
+  //     city
+  //   }
+  // } else {
+  //   ctx.body = {
+  //     province: '',
+  //     city: ''
+  //   }
+  // }
 })
 
 // 获取菜单数据
