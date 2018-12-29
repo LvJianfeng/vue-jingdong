@@ -39,33 +39,34 @@ export default {
   data() {
     return {
       province: [],
+      // 当前省份
       pvalue: '',
       city: [],
+      // 当前省份下的城市
       cvalue: '',
       input: '',
+      // 全国城市列表
       cities: []
     }
   },
   watch: {
     pvalue: async function(newPvalue) {
-      const that = this
-      const { status, data: { city }} = await that.$axios.get(`/geo/province/${newPvalue}`)
+      const { status, data: { city }} = await this.$axios.get(`/geo/province/${newPvalue}`)
       if (status === 200) {
-        that.city = city.map(item => {
+        this.city = city.map(item => {
           return {
             value: item.id,
             label: item.name
           }
         })
-        that.cvalue = ''
+        this.cvalue = ''
       }
     }
   },
   mounted: async function() {
-    const that = this
-    const { status, data: { province }} = await that.$axios.get('/geo/province')
+    const { status, data: { province }} = await this.$axios.get('/geo/province')
     if (status === 200) {
-      that.province = province.map(item => {
+      this.province = province.map(item => {
         return {
           value: item.id,
           label: item.name
@@ -76,31 +77,31 @@ export default {
   methods: {
     // _.debounce() 延时函数
     querySearchAsync: _.debounce(async function(query, cb) {
-      const that = this
-      if (that.cities.length) {
+      if (this.cities.length) {
         // 搜‘北’，显示所有带‘北’的数据
-        cb(that.cities.filter(item => item.value.indexOf(query) > -1))
+        cb(this.cities.filter(item => item.value.indexOf(query) > -1))
       } else {
-        const { status, data: { city }} = await that.$axios.get('/geo/city')
+        const { status, data: { city }} = await this.$axios.get('/geo/city')
         if (status === 200) {
-          that.cities = city.map(item => {
+          this.cities = city.map(item => {
             return {
               value: item.name
             }
           })
-          cb(that.cities.filter(item => item.value.indexOf(query) > -1))
+          cb(this.cities.filter(item => item.value.indexOf(query) > -1))
         } else {
           cb([])
         }
       }
     }, 200),
-    handleSelect: function(item) {
-      console.log(item.value)
+    handleSelect(item) {
+      this.$store.commit('setPosition', item.value)
+      location.href = '/'
     }
   }
 }
 </script>
 
 <style lang="scss">
-  @import "@/assets/css/changeCity/iselect.scss";
+@import "@/assets/css/changeCity/iselect.scss";
 </style>

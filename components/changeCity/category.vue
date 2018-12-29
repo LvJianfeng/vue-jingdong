@@ -1,24 +1,22 @@
 ﻿<template>
-  <div class>
+  <div class="">
     <dl class="m-categroy">
       <dt>按拼音首字母选择：</dt>
       <dd
         v-for="item in list"
         :key="item">
-        <a :href="'#city-' + item">{{ item }}</a>
+        <a :href="'#city-'+item">{{ item }}</a>
       </dd>
     </dl>
     <dl
       v-for="item in block"
       :key="item.title"
-      class="m-category-section">
-      <dt :id="'city-' + item.title">{{ item.title }}</dt>
+      class="m-categroy-section">
+      <dt :id="'city-'+item.title">{{ item.title }}</dt>
       <dd>
         <span
           v-for="c in item.city"
-          :key="c"
-        >{{ c }}
-        </span>
+          :key="c">{{ c }}</span>
       </dd>
     </dl>
   </div>
@@ -34,25 +32,20 @@ export default {
     }
   },
   async mounted() {
-    const self = this
     const blocks = []
-    const {
-      status,
-      data: {
-        city
-      }
-    } = await self.$axios.get('/geo/city')
+    const { status, data: { city }} = await this.$axios.get('/geo/city')
     if (status === 200) {
       let p
       let c
       const d = {}
       city.forEach(item => {
         // pyjs.getFullChars() 字母拼音
+        // p 首字母小写拼音
         p = pyjs
           .getFullChars(item.name)
           .toLocaleLowerCase()
           .slice(0, 1)
-        // 序号
+        // 首字母小写拼音对应 ascii
         c = p.charCodeAt(0)
         // a-z
         if (c > 96 && c < 123) {
@@ -62,6 +55,7 @@ export default {
           d[p].push(item.name)
         }
       })
+      // 获取对应的键值对
       for (const [k, v] of Object.entries(d)) {
         blocks.push({
           title: k.toUpperCase(),
@@ -69,7 +63,7 @@ export default {
         })
       }
       blocks.sort((a, b) => a.title.charCodeAt(0) - b.title.charCodeAt(0))
-      self.block = blocks
+      this.block = blocks
     }
   }
 }
