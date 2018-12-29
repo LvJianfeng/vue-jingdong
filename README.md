@@ -1,7 +1,5 @@
 # imooc-mt
 
-> My bedazzling Nuxt.js project
-
 ## 运行图片
 
 ![首页](https://i.loli.net/2018/12/26/5c23a2f719bee.png)
@@ -29,6 +27,8 @@ npm run dev
 ## qq 授权码
 
 vjalqgcbjqdhbbfb
+
+## 初始化项目
 
 ```console
 npm install @vue/cli -g
