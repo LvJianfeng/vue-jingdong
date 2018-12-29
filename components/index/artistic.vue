@@ -72,11 +72,11 @@ export default {
     }
   },
   async mounted() {
-    const self = this
-    const { status, data: { count, pois }} = await self.$axios.get('/search/resultsByKeywords', {
+    const that = this
+    const { status, data: { count, pois }} = await that.$axios.get('/search/resultsByKeywords', {
       params: {
         keyword: '景点',
-        city: self.$store.state.geo.position.city
+        city: that.$store.state.geo.position.city
       }
     })
     if (status === 200 && count > 0) {
@@ -89,9 +89,9 @@ export default {
           url: '//abc.com'
         }
       })
-      self.list[self.kind] = r.slice(0, 9)
+      that.list[that.kind] = r.slice(0, 9)
     } else {
-      self.list[self.kind] = []
+      that.list[that.kind] = []
     }
   },
   methods: {
