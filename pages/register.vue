@@ -190,7 +190,7 @@ export default {
     },
     register() {
       this.$refs['ruleForm'].validate(valid => {
-        // 验证通过
+        // 验证全部通过
         if (valid) {
           this.$axios
             .post('/users/signup', {
