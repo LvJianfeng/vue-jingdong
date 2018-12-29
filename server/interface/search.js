@@ -2,6 +2,7 @@
 import Config from '../dbs/config'
 import axios from './utils/axios'
 import Poi from '../dbs/models/poi'
+import ResultsByKeywords from '../dbs/models/resultsByKeywords'
 
 const router = new Router({
   prefix: '/search'
@@ -83,18 +84,36 @@ router.get('/hotPlace', async(ctx) => {
 })
 
 router.get('/resultsByKeywords', async(ctx) => {
-  const { city, keyword } = ctx.query
-  const { status, data: { count, pois }} = await axios.get(`${Config.requestUrl}/search/resultsByKeywords`, {
-    params: {
-      city,
-      keyword,
-      sign
+  /* 操作本地数据库 bug */
+  try {
+    const pois = await ResultsByKeywords.find({
+      pois
+    })
+    ctx.body = {
+      code: 0,
+      count: ctx.query.count,
+      pois
     }
-  })
-  ctx.body = {
-    count: status === 200 ? count : 0,
-    pois: status === 200 ? pois : []
+  } catch (e) {
+    ctx.body = {
+      code: -1,
+      count: 0,
+      pois: []
+    }
   }
+  /* 线上服务 */
+  // const { city, keyword } = ctx.query
+  // const { status, data: { count, pois }} = await axios.get(`${Config.requestUrl}/search/resultsByKeywords`, {
+  //   params: {
+  //     city,
+  //     keyword,
+  //     sign
+  //   }
+  // })
+  // ctx.body = {
+  //   count: status === 200 ? count : 0,
+  //   pois: status === 200 ? pois : []
+  // }
 })
 
 router.get('/products', async(ctx) => {
