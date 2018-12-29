@@ -1,9 +1,9 @@
 ﻿import Router from 'koa-router'
 import Config from '../dbs/config'
 import axios from './utils/axios'
-// import Province from '../dbs/models/province'
-// import Menu from '../dbs/models/menu'
-// import City from '../dbs/models/city'
+import Province from '../dbs/models/province'
+import Menu from '../dbs/models/menu'
+import City from '../dbs/models/city'
 
 const router = new Router({
   prefix: '/geo'
@@ -28,85 +28,89 @@ router.get('/getPosition', async(ctx) => {
 
 // 获取菜单数据
 router.get('/menu', async(ctx) => {
-  // const result = await Menu.findOne()
-  // ctx.body = {
-  //   menu: result.menu
-  // }
-  const { status, data: { menu }} = await axios.get(`${Config.requestUrl}/geo/menu?sign=${sign}`)
-  if (status === 200) {
-    ctx.body = {
-      menu
-    }
-  } else {
-    ctx.body = {
-      menu: []
-    }
+  /* 操作本地数据库 */
+  const result = await Menu.findOne()
+  ctx.body = {
+    menu: result.menu
   }
+  /* 线上服务 */
+  // const { status, data: { menu }} = await axios.get(`${Config.requestUrl}/geo/menu?sign=${sign}`)
+  // if (status === 200) {
+  //   ctx.body = {
+  //     menu
+  //   }
+  // } else {
+  //   ctx.body = {
+  //     menu: []
+  //   }
+  // }
 })
 
 // 获取省份
 router.get('/province', async(ctx) => {
   /* 操作本地数据库 */
-  // let province = await Province.find();
-  // ctx.body = {
-  //   province: province.map(item => {
-  //     return {
-  //       id: item.id,
-  //       name: item.value[0]
-  //     }
-  //   })
-  // }
-  /* 线上服务 */
-  const { status, data: { province }} = await axios.get(`${Config.requestUrl}/geo/province?sign=${sign}`)
+  const province = await Province.find()
   ctx.body = {
-    province: status === 200 ? province : []
+    province: province.map(item => {
+      return {
+        id: item.id,
+        name: item.value[0]
+      }
+    })
   }
+  /* 线上服务 */
+  // const { status, data: { province }} = await axios.get(`${Config.requestUrl}/geo/province?sign=${sign}`)
+  // ctx.body = {
+  //   province: status === 200 ? province : []
+  // }
 })
 
-// 获取省份
+// 获取对应省份城市
 router.get('/province/:id', async(ctx) => {
-  // let city = await City.findOne({id: ctx.params.id})
-  //
-  // ctx.body = {
-  //   code: 0,
-  //   city: city.value.map(item => {
-  //     return {province: item.province, id: item.id, name: item.name}
-  //   })
-  // }
-  const { status, data: { city }} = await axios.get(`${Config.requestUrl}/geo/province/${ctx.params.id}?sign=${sign}`)
-  if (status === 200) {
-    ctx.body = {
-      city
-    }
-  } else {
-    ctx.body = {
-      city: []
-    }
+  /* 操作本地数据库 */
+  const city = await City.findOne({ id: ctx.params.id })
+  ctx.body = {
+    code: 0,
+    city: city.value.map(item => {
+      return { province: item.province, id: item.id, name: item.name }
+    })
   }
+  /* 线上服务 */
+  // const { status, data: { city }} = await axios.get(`${Config.requestUrl}/geo/province/${ctx.params.id}?sign=${sign}`)
+  // if (status === 200) {
+  //   ctx.body = {
+  //     city
+  //   }
+  // } else {
+  //   ctx.body = {
+  //     city: []
+  //   }
+  // }
 })
 
 // 获取城市
 router.get('/city', async(ctx) => {
   /* 操作本地数据库 */
-  // let city = await City.find();
-  // ctx.body = {
-  //   city: city.map(item => {
-  //     return {
-  //       id: item.id,
-  //       name: item.value[0]
-  //     }
-  //   })
-  // }
-  const { status, data: { city }} = await axios.get(`${Config.requestUrl}/geo/city?sign=${sign}`)
-  if (status === 200) {
-    ctx.body = {
-      city
-    }
-  } else {
-    ctx.body = {
-      city: []
-    }
+  const city = await City.find()
+  ctx.body = {
+    city: city.map(item => {
+      return {
+        id: item.id,
+        name: item.value[0]
+      }
+    })
   }
+  /* 线上服务 */
+  // const { status, data: { city }} = await axios.get(`${Config.requestUrl}/geo/city?sign=${sign}`)
+  // if (status === 200) {
+  //   ctx.body = {
+  //     city
+  //   }
+  // } else {
+  //   ctx.body = {
+  //     city: []
+  //   }
+  // }
 })
 
 // 获取热门城市

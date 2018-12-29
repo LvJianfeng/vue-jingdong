@@ -136,11 +136,7 @@ export default {
       const that = this
       const city = that.$store.state.geo.position.city.replace('市', '')
       that.searchList = []
-      const {
-        data: {
-          top
-        }
-      } = await that.$axios.get('/search/top', {
+      const { data: { top }} = await that.$axios.get('/search/top', {
         params: {
           input: that.search,
           city
