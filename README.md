@@ -1,5 +1,9 @@
 # imooc-mt
 
+## 内容大纲
+
+![内容大纲](https://i.loli.net/2018/12/30/5c28d153b9341.jpeg)
+
 ## 运行图片
 
 ![首页](https://i.loli.net/2018/12/26/5c23a2f719bee.png)
@@ -60,6 +64,8 @@ mongoimport -d student -c pois pois.dat
 mongoimport -d student -c provinces provinces.dat
 mongoimport -d student -c regions regions.dat
 mongoimport -d student -c topsearches topsearches.dat
+mongoimport -d student -c position position.dat
+mongoimport -d student -c resultsbykeywords resultsbykeywords.dat
 ```
 
 慕课网 uid: 3225903
