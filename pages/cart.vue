@@ -17,7 +17,8 @@
       </el-col>
       <el-col
         v-else
-        class="empty">购物车为空</el-col>
+        class="empty">购物车为空
+      </el-col>
     </el-row>
   </div>
 </template>
@@ -74,7 +75,6 @@ export default {
       }
     }
   }
-
 }
 </script>
 

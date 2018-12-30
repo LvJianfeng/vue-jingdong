@@ -7,6 +7,7 @@ import md5 from 'crypto-js/md5'
 const router = new Router({ prefix: '/cart' })
 
 router.post('/create', async ctx => {
+  // isAuthenticated 是否登录
   if (!ctx.isAuthenticated()) {
     ctx.body = {
       code: -1,
@@ -15,13 +16,16 @@ router.post('/create', async ctx => {
   } else {
     const time = Date()
     const cartNo = md5(Math.random() * 1000 + time).toString()
-    const {
-      params: {
-        id,
-        detail
-      }
-    } = ctx.request.body
-    const cart = new Cart({ id, cartNo, time, user: ctx.session.passport.user, detail })
+    // ctx.request.body: post 方式获取数据
+    const { params: { id, detail }} = ctx.request.body
+    const cart = new Cart({
+      id,
+      cartNo,
+      time,
+      user: ctx.session.passport.user,
+      detail
+    })
+    // 存储到数据库里面
     const result = await cart.save()
     if (result) {
       ctx.body = {
@@ -40,14 +44,11 @@ router.post('/create', async ctx => {
 
 router.post('/getCart', async ctx => {
   const { id } = ctx.request.body
-  console.log(id)
   try {
     const result = await Cart.findOne({ cartNo: id })
     ctx.body = {
       code: 0,
-      data: result
-        ? result.detail[0]
-        : {}
+      data: result ? result.detail[0] : {}
     }
   } catch (e) {
     ctx.body = {

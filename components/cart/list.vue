@@ -16,15 +16,13 @@
       <template slot-scope="scope">
         <el-input-number
           v-model="scope.row.count"
-          :min="0"/>
+          :min="0"
+        />
       </template>
     </el-table-column>
-    <el-table-column
-      label="总价">
+    <el-table-column label="总价">
       <template slot-scope="scope">
-        <div class="">
-          {{ scope.row.price*scope.row.count }}
-        </div>
+        <div>{{ scope.row.price*scope.row.count }}</div>
       </template>
     </el-table-column>
   </el-table>
