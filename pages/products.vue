@@ -81,5 +81,5 @@ export default {
 </script>
 
 <style lang="scss">
-  @import "@/assets/css/products/index.scss";
+@import "@/assets/css/products/index.scss";
 </style>

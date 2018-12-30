@@ -2,7 +2,8 @@
   <div
     :id="id"
     :style="{ width:width + 'px', height:height + 'px', margin:'34px auto' }"
-    class="m-map"/>
+    class="m-map"
+  />
 </template>
 
 <script>
@@ -38,7 +39,7 @@ export default {
   },
   mounted() {
     const self = this
-    self.id = `map${Math.random().toString().slice(4, 6)}`
+    this.id = `map${Math.random().toString().slice(4, 6)}`
     window.onmaploaded = () => {
       // init AMap
       const map = new window.AMap.Map(self.id, {
@@ -59,6 +60,7 @@ export default {
         marker.setMap(map)
       })
     }
+    // 异步加载 js api
     const url = `https://webapi.amap.com/maps?v=1.4.10&key=${self.key}&callback=onmaploaded`
     const jsapi = document.createElement('script')
     jsapi.charset = 'utf-8'
