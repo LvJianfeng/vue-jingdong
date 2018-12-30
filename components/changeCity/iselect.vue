@@ -34,6 +34,7 @@
 </template>
 
 <script>
+import { mapMutations } from 'vuex'
 import _ from 'lodash'
 export default {
   data() {
@@ -75,6 +76,9 @@ export default {
     }
   },
   methods: {
+    ...mapMutations({
+      setPosition: 'geo/setPosition'
+    }),
     // _.debounce() 延时函数
     querySearchAsync: _.debounce(async function(query, cb) {
       if (this.cities.length) {
@@ -94,9 +98,9 @@ export default {
         }
       }
     }, 200),
-    handleSelect(item) {
-      this.$store.commit('setPosition', item.value)
-      location.href = '/'
+    handleSelect(e) {
+      console.log(`${e.value}`)
+      this.$store.commit('geo/setP', e.value)
     }
   }
 }
