@@ -32,5 +32,19 @@
 </template>
 
 <script>
-export default {}
+export default {
+  props: {
+    cur: {
+      type: Array,
+      default: () => {
+        return []
+      }
+    }
+  }
+}
 </script>
+
+<style lang="scss">
+@import "@/assets/css/order/index.scss";
+</style>
+

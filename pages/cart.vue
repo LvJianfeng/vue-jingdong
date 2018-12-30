@@ -79,5 +79,5 @@ export default {
 </script>
 
 <style lang="scss">
-  @import "@/assets/css/cart/index.scss";
+@import "@/assets/css/cart/index.scss";
 </style>

@@ -1,16 +1,16 @@
 ﻿import Router from 'koa-router'
 import Order from '../dbs/models/order'
 import Cart from '../dbs/models/cart'
+// 加密
 import md5 from 'crypto-js/md5'
-// import axios from './utils/axios'
 
-const router = new Router({ prefix: '/category' })
-// const sign = Config.sign
+const router = new Router({ prefix: '/order' })
 
-router.post('/crateOrder', async(ctx) => {
+router.post('/createOrder', async(ctx) => {
   const { id, price, count } = ctx.request.body
   const time = Date()
   const orderID = md5(Math.random() * 1000 + time).toString()
+  // isAuthenticated 是否登录
   if (!ctx.isAuthenticated()) {
     ctx.body = {
       code: -1,
@@ -58,6 +58,7 @@ router.post('/getOrders', async ctx => {
     }
   } else {
     try {
+      // find 查询所有
       const result = await Order.find()
       if (result) {
         ctx.body = {

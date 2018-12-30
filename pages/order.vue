@@ -69,7 +69,7 @@ export default {
     }
   },
   watch: {
-    activeName: function(val) {
+    activeName(val) {
       this.cur = this.list.filter(item => {
         if (val === 'unpay') {
           return item.status === 0
@@ -80,7 +80,7 @@ export default {
         }
       })
     },
-    list: function() {
+    list() {
       const val = this.name
       this.cur = this.list.filter(item => {
         if (val === 'unplay') {
@@ -94,7 +94,7 @@ export default {
     }
   },
   methods: {
-    handleClick: function(tab) {
+    handleClick(tab) {
       this.activeName = tab.name
     }
   },
@@ -104,7 +104,22 @@ export default {
       return {
         list: list.map(item => {
           return {
-            img: item.imsg.length ? item.imgs[0].url : ''
+            img: item.imgs.length ? item.imgs[0].url : '/logo.png',
+            name: item.name,
+            count: 1,
+            total: item.total,
+            status: item.status,
+            statusText: item.status === 0 ? '待付款' : '已付款'
+          }
+        }),
+        cur: list.map(item => {
+          return {
+            img: item.imgs.length ? item.imgs[0].url : '/logo.png',
+            name: item.name,
+            count: 1,
+            total: item.total,
+            status: item.status,
+            statusText: item.status === 0 ? '待付款' : '已付款'
           }
         })
       }
