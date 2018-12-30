@@ -6,7 +6,8 @@
       <dd>
         <img
           :src="meta.photos[0].url"
-          :alt="meta.photos[0].title">
+          :alt="meta.photos[0].title"
+        >
       </dd>
       <dd>
         <h4>{{ meta.name }}</h4>
@@ -23,7 +24,8 @@
         <el-button
           type="warning"
           round
-          @click="createCart">立即抢购</el-button>
+          @click="createCart">立即抢购
+        </el-button>
       </dd>
     </dl>
   </li>
@@ -42,13 +44,7 @@ export default {
   methods: {
     createCart: async function() {
       const self = this
-      const {
-        status,
-        data: {
-          code,
-          id
-        }
-      } = await this.$axios.post('/cart/create', {
+      const { status, data: { code, id }} = await this.$axios.post('/cart/create', {
         params: {
           id: Math.random().toString().slice(3, 9),
           detail: {

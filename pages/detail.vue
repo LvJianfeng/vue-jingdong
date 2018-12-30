@@ -4,7 +4,8 @@
       <el-col :span="24">
         <crumbs
           :keyword="keyword"
-          :type="type"/>
+          :type="type"
+        />
       </el-col>
     </el-row>
     <el-row>
@@ -51,13 +52,11 @@ export default {
     List
   },
   computed: {
-    canOrder: function() {
+    canOrder() {
       return this.list.filter(item => item.photos.length).length
     }
   },
-  // 服务端执行
   async asyncData(ctx) {
-    // 接口传递过来
     const { keyword, type } = ctx.query
     const { status, data: { product, more: list, login }} = await ctx.$axios.get('/search/products', {
       params: {
@@ -88,5 +87,5 @@ export default {
 </script>
 
 <style lang="scss">
-  @import "@/assets/css/detail/index.scss";
+@import "@/assets/css/detail/index.scss";
 </style>

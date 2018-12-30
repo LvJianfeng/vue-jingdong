@@ -5,7 +5,8 @@
       <item
         v-for="(item,idx) in list"
         :key="idx"
-        :meta="item" />
+        :meta="item"
+      />
     </ul>
   </div>
 </template>
