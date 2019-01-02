@@ -20,6 +20,7 @@ router.get('/bar', function(ctx, next) {
 /* 增加数据 */
 router.post('/addPerson', async(ctx, next) => {
   const person = new Person({
+    // ctx.request是context经过封装的请求对象
     name: ctx.request.body.name,
     age: ctx.request.body.age
   })

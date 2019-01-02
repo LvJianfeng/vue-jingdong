@@ -33,7 +33,7 @@ app.use(
   session({
     /* Cookies: mt.sig */
     key: 'mt',
-    /*  session 储存的 key 值 */
+    /* session 储存的 key 值 */
     prefix: 'mtpr',
     store: new Redis()
   })
