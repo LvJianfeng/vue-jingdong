@@ -20,7 +20,7 @@ const Store = new Redis().client
  * 注册接口
  */
 router.post('/signup', async ctx => {
-  // 获取 post 数据
+  // 获取 post 数据 (register.vue 传来的参数)
   const { username, password, email, code } = ctx.request.body
   // 验证码
   if (code) {
@@ -92,6 +92,7 @@ router.post('/signup', async ctx => {
  * 登录接口
  */
 router.post('/signin', async(ctx, next) => {
+  // (register.vue 传来的参数)
   // authenticate() 执行 passport-local 策略, 调用授权页面
   return Passport.authenticate('local', function(err, user, info, status) {
     if (err) {
