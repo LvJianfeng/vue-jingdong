@@ -137,16 +137,16 @@ export default {
     },
     // _.debounce 延时函数
     input: _.debounce(async function() {
-      const that = this
-      const city = that.$store.state.geo.position.city.replace('市', '')
-      that.searchList = []
-      const { data: { top }} = await that.$axios.get('/search/top', {
+      const city = this.$store.state.geo.position.city.replace('市', '')
+      this.searchList = []
+      const { data: { top }} = await this.$axios.get('/search/top', {
         params: {
-          input: that.search,
+          // 传递到 search.js 的值
+          input: this.search,
           city
         }
       })
-      that.searchList = top.slice(0, 10)
+      this.searchList = top.slice(0, 10)
     }, 300)
   }
 }

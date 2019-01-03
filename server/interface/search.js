@@ -36,6 +36,7 @@ router.get('/top', async(ctx) => {
   /* 线上服务 */
   const { status, data: { top }} = await axios.get(`${Config.requestUrl}/search/top`, {
     params: {
+      // searchbar.vue 传入的参数
       input: ctx.query.input,
       city: ctx.query.city,
       sign
