@@ -10,9 +10,7 @@
         :key="index"
         @mouseenter="navEnter"
       >
-        <i :class="item.type"/>
-        {{ item.name }}
-        <span class="arrow"/>
+        <i :class="item.type"/>{{ item.name }}<span class="arrow"/>
       </dd>
     </dl>
     <div
@@ -26,9 +24,7 @@
         <span
           v-for="v in item.child"
           :key="v"
-        >
-          {{ v }}
-        </span>
+        >{{ v }}</span>
       </template>
     </div>
   </div>
@@ -66,6 +62,7 @@ export default {
   },
   methods: {
     navEnter(e) {
+      /* e.target: 当前被点击元素 */
       /* 获取 i 标签 className */
       this.kind = e.target.querySelector('i').className
     },

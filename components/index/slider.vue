@@ -3,7 +3,8 @@
     <el-carousel height="240px">
       <el-carousel-item
         v-for="item in list"
-        :key="item.img">
+        :key="item.img"
+      >
         <img :src="item.img">
       </el-carousel-item>
     </el-carousel>

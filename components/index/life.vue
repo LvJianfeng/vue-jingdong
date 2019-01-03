@@ -21,8 +21,7 @@
               <el-button
                 round
                 size="medium"
-              >注册
-              </el-button>
+              >注册</el-button>
             </nuxt-link>
           </p>
           <p>
@@ -30,8 +29,7 @@
               <el-button
                 round
                 size="medium"
-              >立即登录
-              </el-button>
+              >立即登录</el-button>
             </nuxt-link>
           </p>
         </div>
@@ -55,8 +53,7 @@
           >
           <p>美团APP手机版</p>
           <h4>
-            <span class="red">1元起</span>
-            <em class="gary">吃喝玩乐</em>
+            <span class="red">1元起</span><em class="gary">吃喝玩乐</em>
           </h4>
         </div>
       </el-col>
