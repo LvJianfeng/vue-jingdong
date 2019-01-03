@@ -17,5 +17,6 @@ const UserSchema = new Schema({
     require: true
   }
 })
+
 /* model 建模型 */
 export default mongoose.model('User', UserSchema)
