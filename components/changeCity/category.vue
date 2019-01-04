@@ -4,14 +4,16 @@
       <dt>按拼音首字母选择：</dt>
       <dd
         v-for="item in list"
-        :key="item">
+        :key="item"
+      >
         <a :href="'#city-'+item">{{ item }}</a>
       </dd>
     </dl>
     <dl
       v-for="item in block"
       :key="item.title"
-      class="m-categroy-section">
+      class="m-categroy-section"
+    >
       <dt :id="'city-'+item.title">{{ item.title }}</dt>
       <dd>
         <span
@@ -62,6 +64,7 @@ export default {
           city: v
         })
       }
+      // 排序
       blocks.sort((a, b) => a.title.charCodeAt(0) - b.title.charCodeAt(0))
       this.block = blocks
     }
