@@ -4,7 +4,8 @@
       <h1>{{ meta.name }}</h1>
       <el-rate
         v-model="rate"
-        disabled />
+        disabled
+      />
       <span>{{ Number(meta.biz_ext.rating)||rate }}分</span>
       <span>人均￥{{ Number(meta.biz_ext.cost) }}</span>
       <ul>
@@ -15,10 +16,12 @@
     <dd>
       <el-carousel
         height="214px"
-        indicator-position="none">
+        indicator-position="none"
+      >
         <el-carousel-item
           v-for="(item,idx) in meta.photos"
-          :key="idx">
+          :key="idx"
+        >
           <h3>
             <img
               :src="item.url"

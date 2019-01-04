@@ -22,17 +22,21 @@
       <el-col :span="24">
         <list
           v-if="login"
-          :list="list"/>
+          :list="list"
+        />
         <div
           v-else
-          class="deal-need-login">
+          class="deal-need-login"
+        >
           <img
             src="//p0.meituan.net/codeman/56a7d5abcb5ce3d90fc91195e5b5856911194.png"
-            alt="登录查看">
+            alt="登录查看"
+          >
           <span>请登录后查看详细团购优惠</span>
           <el-button
             type="primary"
-            round>
+            round
+          >
             <a href="/login">立即登录</a>
           </el-button>
         </div>
@@ -53,6 +57,7 @@ export default {
   },
   computed: {
     canOrder() {
+      // 有数据才能排序
       return this.list.filter(item => item.photos.length).length
     }
   },
