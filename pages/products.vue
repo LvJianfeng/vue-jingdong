@@ -4,7 +4,8 @@
       <crumbs :keyword="keyword"/>
       <category
         :types="types"
-        :areas="areas"/>
+        :areas="areas"
+      />
       <list :list="list"/>
     </el-col>
     <el-col :span="5">
@@ -12,7 +13,8 @@
         v-if="point.length"
         :width="230"
         :height="290"
-        :point="point"/>
+        :point="point"
+      />
     </el-col>
   </el-row>
 </template>
@@ -43,6 +45,7 @@ export default {
     const city = ctx.store.state.geo.position.city
     const { status, data: { count, pois }} = await ctx.$axios.get('/search/resultsByKeywords', {
       params: {
+        // 传递到后端的数据
         keyword,
         city
       }

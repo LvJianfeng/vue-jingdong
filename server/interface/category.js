@@ -8,6 +8,7 @@ const router = new Router({
 })
 const sign = Config.sign
 
+// products.vue
 router.get('/crumbs', async(ctx) => {
   /* 操作本地数据库 */
   // let result = await Categroy.findOne({city: ctx.query.city.replace('市', '') || '北京'})

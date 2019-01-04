@@ -5,10 +5,12 @@
       <dt>全部</dt>
       <dd
         v-for="(item,idx) in types"
-        :key="idx">
+        :key="idx"
+      >
         <iselect
           :name="item.type"
-          :list="item.module"/>
+          :list="item.module"
+        />
       </dd>
     </dl>
     <dl class="classic">
@@ -16,10 +18,12 @@
       <dt>全部</dt>
       <dd
         v-for="(item,idx) in areas"
-        :key="idx">
+        :key="idx"
+      >
         <iselect
           :name="item.type"
-          :list="item.module"/>
+          :list="item.module"
+        />
       </dd>
     </dl>
   </div>
