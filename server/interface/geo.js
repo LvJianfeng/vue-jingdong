@@ -12,7 +12,7 @@ const router = new Router({
 const sign = Config.sign
 
 // 获取位置
-router.get('/getPosition', async(ctx) => {
+router.get('/getPosition', async ctx => {
   /* 操作本地数据库 */
   // const result = await Positon.findOne()
   // ctx.body = {
@@ -20,7 +20,10 @@ router.get('/getPosition', async(ctx) => {
   //   city: result.city
   // }
   /* 线上服务 */
-  const { status, data: { province, city }} = await axios.get(`${Config.requestUrl}/geo/getPosition?sign=${sign}`)
+  const {
+    status,
+    data: { province, city }
+  } = await axios.get(`${Config.requestUrl}/geo/getPosition?sign=${sign}`)
   if (status === 200) {
     ctx.body = {
       province,
@@ -35,14 +38,17 @@ router.get('/getPosition', async(ctx) => {
 })
 
 // 获取菜单数据
-router.get('/menu', async(ctx) => {
+router.get('/menu', async ctx => {
   /* 操作本地数据库 */
   // const result = await Menu.findOne()
   // ctx.body = {
   //   menu: result.menu
   // }
   /* 线上服务 */
-  const { status, data: { menu }} = await axios.get(`${Config.requestUrl}/geo/menu?sign=${sign}`)
+  const {
+    status,
+    data: { menu }
+  } = await axios.get(`${Config.requestUrl}/geo/menu?sign=${sign}`)
   if (status === 200) {
     ctx.body = {
       menu
@@ -55,7 +61,7 @@ router.get('/menu', async(ctx) => {
 })
 
 // 获取省份
-router.get('/province', async(ctx) => {
+router.get('/province', async ctx => {
   /* 操作本地数据库 */
   // const province = await Province.find()
   // ctx.body = {
@@ -67,14 +73,17 @@ router.get('/province', async(ctx) => {
   //   })
   // }
   /* 线上服务 */
-  const { status, data: { province }} = await axios.get(`${Config.requestUrl}/geo/province?sign=${sign}`)
+  const {
+    status,
+    data: { province }
+  } = await axios.get(`${Config.requestUrl}/geo/province?sign=${sign}`)
   ctx.body = {
     province: status === 200 ? province : []
   }
 })
 
 // 获取对应省份城市
-router.get('/province/:id', async(ctx) => {
+router.get('/province/:id', async ctx => {
   /* 操作本地数据库 */
   // const city = await City.findOne({ id: ctx.params.id })
   // ctx.body = {
@@ -84,7 +93,12 @@ router.get('/province/:id', async(ctx) => {
   //   })
   // }
   /* 线上服务 */
-  const { status, data: { city }} = await axios.get(`${Config.requestUrl}/geo/province/${ctx.params.id}?sign=${sign}`)
+  const {
+    status,
+    data: { city }
+  } = await axios.get(
+    `${Config.requestUrl}/geo/province/${ctx.params.id}?sign=${sign}`
+  )
   if (status === 200) {
     ctx.body = {
       city
@@ -97,7 +111,7 @@ router.get('/province/:id', async(ctx) => {
 })
 
 // 获取城市
-router.get('/city', async(ctx) => {
+router.get('/city', async ctx => {
   /* 操作本地数据库 */
   // const city = await City.find()
   // ctx.body = {
@@ -109,7 +123,10 @@ router.get('/city', async(ctx) => {
   //   })
   // }
   /* 线上服务 */
-  const { status, data: { city }} = await axios.get(`${Config.requestUrl}/geo/city?sign=${sign}`)
+  const {
+    status,
+    data: { city }
+  } = await axios.get(`${Config.requestUrl}/geo/city?sign=${sign}`)
   if (status === 200) {
     ctx.body = {
       city
@@ -122,8 +139,11 @@ router.get('/city', async(ctx) => {
 })
 
 // 获取热门城市
-router.get('/hotCity', async(ctx) => {
-  const { status, data: { hots }} = await axios.get(`${Config.requestUrl}/geo/hotCity?sign=${sign}`)
+router.get('/hotCity', async ctx => {
+  const {
+    status,
+    data: { hots }
+  } = await axios.get(`${Config.requestUrl}/geo/hotCity?sign=${sign}`)
   if (status === 200) {
     ctx.body = {
       hots
