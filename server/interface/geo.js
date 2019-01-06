@@ -37,7 +37,7 @@ router.get('/getPosition', async ctx => {
   }
 })
 
-// 获取菜单数据
+// 获取左侧菜单栏数据
 router.get('/menu', async ctx => {
   /* 操作本地数据库 */
   // const result = await Menu.findOne()
@@ -60,7 +60,7 @@ router.get('/menu', async ctx => {
   }
 })
 
-// 获取省份
+// 获取全部省份
 router.get('/province', async ctx => {
   /* 操作本地数据库 */
   // const province = await Province.find()
