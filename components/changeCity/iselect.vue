@@ -15,13 +15,10 @@
     <el-select
       v-model="cvalue"
       :disabled="!city.length"
-      :fetch-suggestions="querySearchAsync"
       placeholder="城市"
-      @change="handleSelectCity"
     >
       <el-option
         v-for="item in city"
-        ref="cityName"
         :key="item.value"
         :label="item.label"
         :value="item.value"
@@ -90,21 +87,13 @@ export default {
         cb(this.cities.filter(item => item.value.indexOf(query) > -1))
       } else {
         // 要实现本地化数据，要穿参数过去，然后 server 接受后修改代码
-        /*
-          const {
-            status,
-            data: { result }
-          } = await app.$axios.get('/search/hotPlace', {
-            params: {
-              city: app.store.state.geo.position.city.replace('市', '')
-            }
-          })
-        */
+        // const { status, data: { city }} = await this.$axios.get('/geo/city', { params: { city: this.cvalue }})
         const { status, data: { city }} = await this.$axios.get('/geo/city')
+        console.log(status, city)
         if (status === 200) {
           this.cities = city.map(item => {
             return {
-              value: item.name
+              value: item.name.name
             }
           })
           cb(this.cities.filter(item => item.value.indexOf(query) > -1))
@@ -114,18 +103,9 @@ export default {
       }
     }, 200),
     handleSelect(e) {
-      console.log(`${e.value} ${e}`)
+      console.log(`${e.value}`)
       this.$store.commit('geo/setCity', e.value)
       this.$store.commit('geo/setProvince', e.value)
-    },
-    handleSelectCity(e) {
-      console.log(`${this.cvalue}`)
-      // const city = console.log('a')
-      // const city = e.target.querySelector('input').value
-      // console.log(this.$refs.cityName[0].value)
-      // console.log(city)
-      // this.$store.commit('geo/setCity', city)
-      // this.$store.commit('geo/setProvince', e.value)
     }
   }
 }
