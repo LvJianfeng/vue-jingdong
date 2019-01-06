@@ -15,15 +15,19 @@
     <el-select
       v-model="cvalue"
       :disabled="!city.length"
+      :fetch-suggestions="querySearchAsync"
       placeholder="城市"
+      @change="handleSelectCity"
     >
       <el-option
         v-for="item in city"
+        ref="cityName"
         :key="item.value"
         :label="item.label"
         :value="item.value"
       />
     </el-select>
+    <span class="name">直接搜索:</span>
     <el-autocomplete
       v-model="input"
       :fetch-suggestions="querySearchAsync"
@@ -99,8 +103,18 @@ export default {
       }
     }, 200),
     handleSelect(e) {
-      console.log(`${e.value}`)
-      this.$store.commit('geo/setP', e.value)
+      console.log(`${e.value} ${e}`)
+      this.$store.commit('geo/setCity', e.value)
+      this.$store.commit('geo/setProvince', e.value)
+    },
+    handleSelectCity(e) {
+      console.log(`${this.cvalue} ${e.value}`)
+      // const city = console.log('a')
+      // const city = e.target.querySelector('input').value
+      console.log(this.$refs.cityName[0].value)
+      // console.log(city)
+      // this.$store.commit('geo/setCity', city)
+      // this.$store.commit('geo/setProvince', e.value)
     }
   }
 }

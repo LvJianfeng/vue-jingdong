@@ -3,17 +3,16 @@
     <el-row class="m-header-searchbar">
       <el-col
         :span="3"
-        class="left"
-      >
-        <img
-          src="//s0.meituan.net/bs/fe-web-meituan/e5eeaef/img/logo.png"
-          alt="美团"
-        >
+        class="left">
+        <nuxt-link to="/">
+          <img
+            src="//s0.meituan.net/bs/fe-web-meituan/e5eeaef/img/logo.png"
+            alt="美团">
+        </nuxt-link>
       </el-col>
       <el-col
         :span="15"
-        class="center"
-      >
+        class="center">
         <div class="wrapper">
           <el-input
             v-model="search"
@@ -22,27 +21,25 @@
             @blur="blur"
             @input="input"
           />
-          <button class="el-button el-button--primary"><i class="el-icon-search"/></button>
+          <button class="el-button el-button--primary">
+            <i class="el-icon-search"/>
+          </button>
           <dl
             v-if="isHotPlace"
-            class="hotPlace"
-          >
+            class="hotPlace">
             <dt>热门搜索</dt>
             <dd
               v-for="(item, index) in $store.state.search.hotPlace.slice(0, 4)"
-              :key="index"
-            >
+              :key="index">
               <a :href="'/products?keyword=' + encodeURIComponent(item.name)">{{ item.name }}</a>
             </dd>
           </dl>
           <dl
             v-if="isSearchList"
-            class="searchList"
-          >
+            class="searchList">
             <dd
               v-for="(item, index) in searchList"
-              :key="index"
-            >
+              :key="index">
               <a :href="'/products?keyword=' + encodeURIComponent(item.name)">{{ item.name }}</a>
             </dd>
           </dl>
@@ -58,48 +55,45 @@
           <li>
             <nuxt-link
               to="/"
-              class="takeout"
-            >美团外卖</nuxt-link>
+              class="takeout">美团外卖</nuxt-link>
           </li>
           <li>
             <nuxt-link
               to="/"
-              class="movie"
-            >猫眼电影</nuxt-link>
+              class="movie">猫眼电影</nuxt-link>
           </li>
           <li>
             <nuxt-link
               to="/"
-              class="hotel"
-            >美团酒店</nuxt-link>
+              class="hotel">美团酒店</nuxt-link>
           </li>
           <li>
             <nuxt-link
               to="/"
-              class="apartment"
-            >民宿/公寓</nuxt-link>
+              class="apartment">民宿/公寓</nuxt-link>
           </li>
           <li>
             <nuxt-link
               to="/"
-              class="business"
-            >商家入驻</nuxt-link>
+              class="business">商家入驻</nuxt-link>
           </li>
         </ul>
       </el-col>
       <el-col
         :span="6"
-        class="right"
-      >
+        class="right">
         <ul class="security">
           <li>
-            <i class="refund"/><p class="txt">随时退</p>
+            <i class="refund"/>
+            <p class="txt">随时退</p>
           </li>
           <li>
-            <i class="single"/><p class="txt">不满意免单</p>
+            <i class="single"/>
+            <p class="txt">不满意免单</p>
           </li>
           <li>
-            <i class="overdue"/><p class="txt">过期退</p>
+            <i class="overdue"/>
+            <p class="txt">过期退</p>
           </li>
         </ul>
       </el-col>
@@ -139,7 +133,9 @@ export default {
     input: _.debounce(async function() {
       const city = this.$store.state.geo.position.city.replace('市', '')
       this.searchList = []
-      const { data: { top }} = await this.$axios.get('/search/top', {
+      const {
+        data: { top }
+      } = await this.$axios.get('/search/top', {
         params: {
           // 传递到 search.js 的值
           input: this.search,
