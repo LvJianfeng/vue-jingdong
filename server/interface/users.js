@@ -62,7 +62,7 @@ router.post('/signup', async ctx => {
     password,
     email
   })
-  // 注册成功?
+  // 注册成功
   if (nuser) {
     const res = await axios.post('/users/signin', {
       username,
