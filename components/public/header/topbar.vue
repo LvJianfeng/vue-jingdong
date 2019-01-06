@@ -2,7 +2,8 @@
   <!-- gutter	栅格间隔 -->
   <el-row
     :gutter="0"
-    class="m-header">
+    class="m-header"
+  >
     <!-- span	栅格占据的列数 (共24) -->
     <el-col :span="5">
       <geo/>

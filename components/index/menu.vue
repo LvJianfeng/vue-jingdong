@@ -50,6 +50,10 @@ export default {
     }
   },
   computed: {
+    /**
+     * 选中左侧分类某一项后，出现对应的右侧栏数据(过滤数据)
+     * @return: 过滤数据
+     */
     curdetail() {
       /* 打印结果是数组，要取内容 */
       // console.log(this.menu.filter((item)=>{
