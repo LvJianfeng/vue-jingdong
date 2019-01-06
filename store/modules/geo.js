@@ -5,6 +5,9 @@
 const mutations = {
   setPosition(state, val) {
     state.position = val
+  },
+  setP(state, val) {
+    state.position.city = val
   }
 }
 
