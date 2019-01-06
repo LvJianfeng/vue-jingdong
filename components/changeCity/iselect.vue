@@ -89,6 +89,7 @@ export default {
         // 搜‘北’，显示所有带‘北’的数据
         cb(this.cities.filter(item => item.value.indexOf(query) > -1))
       } else {
+        // 要实现本地化数据，要穿参数过去，然后 server 接受后修改代码
         const { status, data: { city }} = await this.$axios.get('/geo/city')
         if (status === 200) {
           this.cities = city.map(item => {
