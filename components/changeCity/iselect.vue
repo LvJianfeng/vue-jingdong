@@ -13,9 +13,11 @@
       />
     </el-select>
     <el-select
+      ref="currentCity"
       v-model="cvalue"
       :disabled="!city.length"
       placeholder="城市"
+      @blur="ShandleSelect"
     >
       <el-option
         v-for="item in city"
@@ -114,7 +116,7 @@ export default {
               // console.log(wantCityArray)
             })
           }
-          console.log(wantCityArray)
+          // console.log(wantCityArray)
           this.cities = wantCityArray.map(item => {
             return {
               value: item
@@ -129,7 +131,12 @@ export default {
     handleSelect(e) {
       console.log(`${e.value}`)
       this.$store.commit('geo/setCity', e.value)
-      this.$store.commit('geo/setProvince', e.value)
+      // this.$store.commit('geo/setProvince', e.value)
+    },
+    ShandleSelect(e) {
+      console.log(`${e}`)
+      console.log(2)
+      console.log(this.$refs.currentCity.value)
     }
   }
 }
