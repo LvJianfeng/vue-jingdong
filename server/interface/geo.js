@@ -125,9 +125,19 @@ router.get('/city', async ctx => {
   // }
   const result = await City.find()
   ctx.body = {
-    code: 0,
-    city: result.value.map(item => {
-      return { province: item.province, id: item.id, name: item.name }
+    city: result.map(item => {
+      const value = item.value
+      const valueArray = [...value]
+      // let valueItem
+      // for (const i of valueArray.values()) {
+      //   valueItem = i
+      // }
+      // valueArray.forEach(item => {
+      //   valueItem = item
+      // })
+      return {
+        value: valueArray
+      }
     })
   }
   /* 线上服务 */

@@ -89,17 +89,41 @@ export default {
         // 要实现本地化数据，要穿参数过去，然后 server 接受后修改代码
         // const { status, data: { city }} = await this.$axios.get('/geo/city', { params: { city: this.cvalue }})
         const { status, data: { city }} = await this.$axios.get('/geo/city')
-        console.log(status, city)
-        // if (status === 200) {
-        //   this.cities = city.map(item => {
-        //     return {
-        //       value: item.name.name
-        //     }
-        //   })
-        //   cb(this.cities.filter(item => item.value.indexOf(query) > -1))
-        // } else {
-        //   cb([])
-        // }
+        // console.log(status, city)
+        if (status === 200) {
+          // this.cities = city.map(item => {
+          //   return {
+          //     value: item.value.name
+          //   }
+          // })
+          const cityArray = city.map(item => {
+            return {
+              item
+            }
+          })
+          // console.log(cityArray)
+          let wantArray
+          const wantCityArray = []
+          for (const value of cityArray) {
+            // console.log(value.item.value)
+            wantArray = [...value.item.value]
+            // console.log(wantArray)
+            wantArray.map(item => {
+              // console.log(item.name)
+              wantCityArray.push(item.name)
+              // console.log(wantCityArray)
+            })
+          }
+          console.log(wantCityArray)
+          this.cities = wantCityArray.map(item => {
+            return {
+              value: item
+            }
+          })
+          cb(this.cities.filter(item => item.value.indexOf(query) > -1))
+        } else {
+          cb([])
+        }
       }
     }, 200),
     handleSelect(e) {
