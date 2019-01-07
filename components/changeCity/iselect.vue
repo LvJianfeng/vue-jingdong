@@ -90,16 +90,16 @@ export default {
         // const { status, data: { city }} = await this.$axios.get('/geo/city', { params: { city: this.cvalue }})
         const { status, data: { city }} = await this.$axios.get('/geo/city')
         console.log(status, city)
-        if (status === 200) {
-          this.cities = city.map(item => {
-            return {
-              value: item.name.name
-            }
-          })
-          cb(this.cities.filter(item => item.value.indexOf(query) > -1))
-        } else {
-          cb([])
-        }
+        // if (status === 200) {
+        //   this.cities = city.map(item => {
+        //     return {
+        //       value: item.name.name
+        //     }
+        //   })
+        //   cb(this.cities.filter(item => item.value.indexOf(query) > -1))
+        // } else {
+        //   cb([])
+        // }
       }
     }, 200),
     handleSelect(e) {
