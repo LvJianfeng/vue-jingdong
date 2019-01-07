@@ -17,7 +17,7 @@
       v-model="cvalue"
       :disabled="!city.length"
       placeholder="城市"
-      @blur="ShandleSelect"
+      @visible-change="ShandleSelect"
     >
       <el-option
         v-for="item in city"
@@ -131,12 +131,30 @@ export default {
     handleSelect(e) {
       console.log(`${e.value}`)
       this.$store.commit('geo/setCity', e.value)
-      // this.$store.commit('geo/setProvince', e.value)
     },
-    ShandleSelect(e) {
-      console.log(`${e}`)
-      console.log(2)
-      console.log(this.$refs.currentCity.value)
+    ShandleSelect: async function() {
+      // console.log(this.$refs.currentCity.value)
+      const temp = this.$refs.currentCity.value
+      const id = Math.floor(temp / 10000) * 10000
+      // console.log(id)
+      const { status, data: { city }} = await this.$axios.get(`/geo/city/${id}`)
+      // console.log(status, city)
+      if (status === 200) {
+        // console.log(3)
+        const provinceCity = city.map(item => {
+          return {
+            id: item.id,
+            name: item.name
+          }
+        })
+        // console.log(provinceCity)
+        const currentCity = provinceCity.filter(item => {
+          return item.id === temp
+        })
+        // console.log(currentCity)
+        console.log(currentCity[0].name)
+        this.$store.commit('geo/setCity', currentCity[0].name)
+      }
     }
   }
 }
