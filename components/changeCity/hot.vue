@@ -5,12 +5,14 @@
       <dd
         v-for="item in list"
         :key="item.id"
-      >{{ item.name === '市辖区' ? item.province : item.name }}</dd>
+        @click="handleSelect(item.name)"
+      >{{ item.name }}</dd>
     </dl>
   </div>
 </template>
 
 <script>
+import { mapMutations } from 'vuex'
 export default {
   data() {
     return {
@@ -26,25 +28,34 @@ export default {
           item
         }
       })
-      console.log(cityArray, 0)
+      // console.log(cityArray, 0)
       let wantArray
       for (const value of cityArray) {
         wantArray = [...value.item.value]
         // wantArray.map(item => {
         //   return item
         // })
-        console.log(wantArray, 1)
+        // console.log(wantArray, 1)
         for (const value of wantArray) {
           // value.filter(item => {
           //   return item.hot === true
           // })
-          console.log(value, 2)
+          // console.log(value, 2)
           if (value.hot === true) {
             this.list.push(value)
             console.log(this.list, 3)
           }
         }
       }
+    }
+  },
+  methods: {
+    ...mapMutations({
+      setPosition: 'geo/setPosition'
+    }),
+    handleSelect(cityName) {
+      console.log(cityName)
+      this.$store.commit('geo/setCity', cityName)
     }
   }
 }
