@@ -119,6 +119,17 @@ export default {
         console.log(status, count, pois)
         if (status === 200 && count > 0) {
           const r = pois
+            .filter((item) => item.photos.length && item.kind === this.kind)
+            .map((item, index) => {
+              return {
+                title: item.name,
+                pos: item.type.split(';')[0],
+                price: item.biz_ext.cost || '暂无',
+                img: item.photos[0].url,
+                url: '//abc.com'
+              }
+            })
+          const all = pois
             .filter((item) => item.photos.length)
             .map((item, index) => {
               return {
@@ -130,6 +141,7 @@ export default {
               }
             })
           this.list[this.kind] = r.slice(0, 9)
+          this.list['all'] = all.slice(0, 9)
         } else {
           this.list[this.kind] = []
         }
