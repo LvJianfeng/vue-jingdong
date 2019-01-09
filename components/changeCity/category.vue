@@ -52,21 +52,13 @@ export default {
       let wantArray
       for (const value of cityArray) {
         wantArray = [...value.item.value]
-        // wantArray.map(item => {
-        //   return item
-        // })
         // console.log(wantArray, 1)
         for (const value of wantArray) {
-          // value.filter(item => {
-          //   return item.hot === true
-          // })
-          // console.log(value, 1)
           // p 首字母小写拼音
           p = pyjs
             .getFullChars(value.name)
             .toLocaleLowerCase()
             .slice(0, 1)
-          // console.log(p, 2)
           // 首字母小写拼音对应 ascii
           c = p.charCodeAt(0)
           // a-z
@@ -88,33 +80,6 @@ export default {
       // 排序
       blocks.sort((a, b) => a.title.charCodeAt(0) - b.title.charCodeAt(0))
       this.block = blocks
-      // city.forEach(item => {
-      //   // pyjs.getFullChars() 字母拼音
-      //   // p 首字母小写拼音
-      //   p = pyjs
-      //     .getFullChars(item.name)
-      //     .toLocaleLowerCase()
-      //     .slice(0, 1)
-      //   // 首字母小写拼音对应 ascii
-      //   c = p.charCodeAt(0)
-      //   // a-z
-      //   if (c > 96 && c < 123) {
-      //     if (!d[p]) {
-      //       d[p] = []
-      //     }
-      //     d[p].push(item.name)
-      //   }
-      // })
-      // // 获取对应的键值对
-      // for (const [k, v] of Object.entries(d)) {
-      //   blocks.push({
-      //     title: k.toUpperCase(),
-      //     city: v
-      //   })
-      // }
-      // // 排序
-      // blocks.sort((a, b) => a.title.charCodeAt(0) - b.title.charCodeAt(0))
-      // this.block = blocks
     }
   },
   methods: {

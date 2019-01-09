@@ -91,13 +91,7 @@ export default {
         // 要实现本地化数据，要穿参数过去，然后 server 接受后修改代码
         // const { status, data: { city }} = await this.$axios.get('/geo/city', { params: { city: this.cvalue }})
         const { status, data: { city }} = await this.$axios.get('/geo/city')
-        // console.log(status, city)
         if (status === 200) {
-          // this.cities = city.map(item => {
-          //   return {
-          //     value: item.value.name
-          //   }
-          // })
           const cityArray = city.map(item => {
             return {
               item
@@ -107,7 +101,6 @@ export default {
           let wantArray
           const wantCityArray = []
           for (const value of cityArray) {
-            // console.log(value.item.value)
             wantArray = [...value.item.value]
             // console.log(wantArray)
             wantArray.map(item => {
@@ -129,18 +122,14 @@ export default {
       }
     }, 200),
     handleSelect(e) {
-      // console.log(`${e.value}`)
       this.$store.commit('geo/setCity', e.value)
     },
     ShandleSelect: async function() {
       // console.log(this.$refs.currentCity.value)
       const temp = this.$refs.currentCity.value
       const id = Math.floor(temp / 10000) * 10000
-      // console.log(id)
-      const { status, data: { city }} = await this.$axios.get(`/geo/city/${id}`)
-      // console.log(status, city)
+      const { status, data: { city }} = await this.$axios.get(`/geo/province/${id}`)
       if (status === 200) {
-        // console.log(3)
         const provinceCity = city.map(item => {
           return {
             id: item.id,
@@ -151,7 +140,6 @@ export default {
         const currentCity = provinceCity.filter(item => {
           return item.id === temp
         })
-        // console.log(currentCity)
         // console.log(currentCity[0].name)
         this.$store.commit('geo/setCity', currentCity[0].name)
       }
