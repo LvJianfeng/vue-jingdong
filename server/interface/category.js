@@ -1,39 +1,41 @@
 ﻿import Router from 'koa-router'
-import axios from './utils/axios'
-import Config from '../dbs/config'
-// import Categroy from '../dbs/models/categroy'
+// import axios from './utils/axios'
+// import Config from '../dbs/config'
+import Categroy from '../dbs/models/category'
 
 const router = new Router({
   prefix: '/category'
 })
-const sign = Config.sign
+// const sign = Config.sign
 
 // products.vue
-router.get('/crumbs', async(ctx) => {
+router.get('/crumbs', async ctx => {
   /* 操作本地数据库 */
-  // let result = await Categroy.findOne({city: ctx.query.city.replace('市', '') || '北京'})
-  // if (result) {
-  //   ctx.body = {
-  //     areas: result.areas,
-  //     types: result.types
-  //   }
-  // } else {
-  //   ctx.body = {
-  //     areas: [],
-  //     types: []
-  //   }
-  // }
-  /* 线上服务 */
-  const { status, data: { areas, types }} = await axios.get(`${Config.requestUrl}/categroy/crumbs`, {
-    params: {
-      city: ctx.query.city.replace('市', '') || '北京',
-      sign
-    }
+  const result = await Categroy.findOne({
+    city: ctx.query.city.replace('市', '') || '北京'
   })
-  ctx.body = {
-    areas: status === 200 ? areas : [],
-    types: status === 200 ? types : []
+  if (result) {
+    ctx.body = {
+      areas: result.areas,
+      types: result.types
+    }
+  } else {
+    ctx.body = {
+      areas: [],
+      types: []
+    }
   }
+  /* 线上服务 */
+  // const { status, data: { areas, types }} = await axios.get(`${Config.requestUrl}/categroy/crumbs`, {
+  //   params: {
+  //     city: ctx.query.city.replace('市', '') || '北京',
+  //     sign
+  //   }
+  // })
+  // ctx.body = {
+  //   areas: status === 200 ? areas : [],
+  //   types: status === 200 ? types : []
+  // }
 })
 
 export default router

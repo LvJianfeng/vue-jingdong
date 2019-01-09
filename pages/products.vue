@@ -55,6 +55,8 @@ export default {
         city
       }
     })
+    console.log(city)
+    console.log(status2, areas, types)
     if (status === 200 && count > 0 && status2 === 200) {
       return {
         // 没有图片的数据过滤出去
