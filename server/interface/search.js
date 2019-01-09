@@ -86,19 +86,15 @@ router.get('/hotPlace', async(ctx) => {
 
 // artistic.vue
 router.get('/resultsByKeywords', async(ctx) => {
-  /* 操作本地数据库 bug */
+  /* 操作本地数据库 */
   try {
-    const pois = await ResultsByKeywords.find({
-      pois
-    })
+    const result = await ResultsByKeywords.findOne()
     ctx.body = {
-      code: 0,
-      count: ctx.query.count,
-      pois
+      count: result.count,
+      pois: result.pois
     }
   } catch (e) {
     ctx.body = {
-      code: -1,
       count: 0,
       pois: []
     }

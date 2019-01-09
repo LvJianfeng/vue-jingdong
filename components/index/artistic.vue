@@ -108,13 +108,15 @@ export default {
       const tag = dom.tagName.toLowerCase()
       if (tag === 'dd') {
         this.kind = dom.getAttribute('kind')
-        const keyword = dom.getAttribute('keyword')
-        const { status, data: { count, pois }} = await this.$axios.get('/search/resultsByKeywords', {
-          params: {
-            keyword,
-            city: this.$store.state.geo.position.city
-          }
-        })
+        // const keyword = dom.getAttribute('keyword')
+        // const { status, data: { count, pois }} = await this.$axios.get('/search/resultsByKeywords', {
+        //   params: {
+        //     keyword,
+        //     city: this.$store.state.geo.position.city
+        //   }
+        // })
+        const { status, data: { count, pois }} = await this.$axios.get('/search/resultsByKeywords')
+        console.log(status, count, pois)
         if (status === 200 && count > 0) {
           const r = pois
             .filter((item) => item.photos.length)
