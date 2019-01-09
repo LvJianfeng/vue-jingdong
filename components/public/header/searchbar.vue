@@ -26,7 +26,8 @@
           </button>
           <dl
             v-if="isHotPlace"
-            class="hotPlace">
+            class="hotPlace"
+          >
             <dt>热门搜索</dt>
             <dd
               v-for="(item, index) in $store.state.search.hotPlace.slice(0, 4)"
@@ -36,7 +37,8 @@
           </dl>
           <dl
             v-if="isSearchList"
-            class="searchList">
+            class="searchList"
+          >
             <dd
               v-for="(item, index) in searchList"
               :key="index">

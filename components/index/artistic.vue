@@ -106,11 +106,10 @@ export default {
     over: async function(e) {
       const dom = e.target
       const tag = dom.tagName.toLowerCase()
-      const that = this
       if (tag === 'dd') {
         this.kind = dom.getAttribute('kind')
         const keyword = dom.getAttribute('keyword')
-        const { status, data: { count, pois }} = await that.$axios.get('/search/resultsByKeywords', {
+        const { status, data: { count, pois }} = await this.$axios.get('/search/resultsByKeywords', {
           params: {
             keyword,
             city: this.$store.state.geo.position.city
