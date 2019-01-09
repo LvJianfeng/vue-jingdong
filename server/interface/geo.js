@@ -173,14 +173,24 @@ router.get('/hotCity', async ctx => {
   /* 操作本地数据库 bug! 没有返回完全的城市名 */
   const result = await City.find()
   ctx.body = {
-    hots: result.map(item => {
-      const { city } = item.value
+    city: result.map(item => {
+      const value = item.value
+      const valueArray = [...value]
       return {
-        id: item.id,
-        hots: city
+        value: valueArray
       }
     })
   }
+  // const result = await City.find()
+  // ctx.body = {
+  //   hots: result.map(item => {
+  //     const { city } = item.value
+  //     return {
+  //       id: item.id,
+  //       hots: city
+  //     }
+  //   })
+  // }
   /* 线上服务 */
   // const {
   //   status,
