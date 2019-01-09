@@ -128,6 +128,7 @@ export default {
       // console.log(this.$refs.currentCity.value)
       const temp = this.$refs.currentCity.value
       const id = Math.floor(temp / 10000) * 10000
+      // commons.app.js:331 GET http://localhost:3000/geo/province/0 500 (Internal Server Error)
       const { status, data: { city }} = await this.$axios.get(`/geo/province/${id}`)
       if (status === 200) {
         const provinceCity = city.map(item => {

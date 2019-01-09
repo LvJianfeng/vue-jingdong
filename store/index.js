@@ -21,10 +21,7 @@ const store = () =>
             status,
             data: { province, city }
           } = await app.$axios.get('/geo/getPosition')
-          commit(
-            'geo/setPosition',
-            status === 200 ? { city, province } : { city: '', province: '' }
-          )
+          commit('geo/setPosition', status === 200 ? { city, province } : { city: '', province: '' })
         }
         {
           const {
