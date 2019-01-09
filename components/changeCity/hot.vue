@@ -21,7 +21,7 @@ export default {
   },
   async mounted() {
     const { status, data: { city }} = await this.$axios.get('/geo/hotCity')
-    console.log(status, city, 'hostCity')
+    // console.log(status, city, 'hostCity')
     if (status === 200) {
       const cityArray = city.map(item => {
         return {
@@ -43,7 +43,7 @@ export default {
           // console.log(value, 2)
           if (value.hot === true) {
             this.list.push(value)
-            console.log(this.list, 3)
+            // console.log(this.list, 3)
           }
         }
       }

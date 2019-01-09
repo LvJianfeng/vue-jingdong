@@ -125,28 +125,11 @@ router.get('/city/:id', async ctx => {
 // 获取城市
 router.get('/city', async ctx => {
   /* 操作本地数据库 */
-  // const result = await City.findOne({ id: ctx.params.id })
-  // const result = await City.find()
-  // const value = result.value
-  // ctx.body = {
-  //   city: result.map(item => {
-  //     return {
-  //       value: item.value[0]
-  //     }
-  //   })
-  // }
   const result = await City.find()
   ctx.body = {
     city: result.map(item => {
       const value = item.value
       const valueArray = [...value]
-      // let valueItem
-      // for (const i of valueArray.values()) {
-      //   valueItem = i
-      // }
-      // valueArray.forEach(item => {
-      //   valueItem = item
-      // })
       return {
         value: valueArray
       }
@@ -181,16 +164,6 @@ router.get('/hotCity', async ctx => {
       }
     })
   }
-  // const result = await City.find()
-  // ctx.body = {
-  //   hots: result.map(item => {
-  //     const { city } = item.value
-  //     return {
-  //       id: item.id,
-  //       hots: city
-  //     }
-  //   })
-  // }
   /* 线上服务 */
   // const {
   //   status,

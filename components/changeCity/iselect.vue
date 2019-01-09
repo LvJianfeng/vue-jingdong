@@ -129,7 +129,7 @@ export default {
       }
     }, 200),
     handleSelect(e) {
-      console.log(`${e.value}`)
+      // console.log(`${e.value}`)
       this.$store.commit('geo/setCity', e.value)
     },
     ShandleSelect: async function() {
@@ -152,7 +152,7 @@ export default {
           return item.id === temp
         })
         // console.log(currentCity)
-        console.log(currentCity[0].name)
+        // console.log(currentCity[0].name)
         this.$store.commit('geo/setCity', currentCity[0].name)
       }
     }
