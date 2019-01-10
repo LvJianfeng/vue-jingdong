@@ -124,8 +124,8 @@ router.get('/products', async(ctx) => {
     ctx.body = {
       keyword: result.keyword,
       product: result.product,
-      more: result.more,
-      login: result.login,
+      more: ctx.isAuthenticated() ? result.more : [],
+      login: ctx.isAuthenticated(),
       type: result.type
     }
   } catch (e) {
