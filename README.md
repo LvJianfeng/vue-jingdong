@@ -26,6 +26,8 @@ redis-cli
 <!-- open other iTerm -->
 <!-- 进入根目录 -->
 npm run dev
+<!-- browser open -->
+localhost:3000
 ```
 
 ## qq 授权码
