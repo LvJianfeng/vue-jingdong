@@ -69,7 +69,7 @@ export default {
         city: ctx.store.state.geo.position.city
       }
     })
-    console.log(login, product, list)
+    // console.log(login, product, list)
     if (status === 200) {
       return {
         keyword,

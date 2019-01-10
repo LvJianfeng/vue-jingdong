@@ -6,11 +6,13 @@
 
 ## 运行图片
 
-![首页](https://i.loli.net/2018/12/26/5c23a2f719bee.png)
+![首页](https://i.loli.net/2019/01/10/5c37653fe976f.png)
 ![登录界面](https://i.loli.net/2018/12/26/5c23a34dbdea7.png)
 ![注册界面](https://i.loli.net/2018/12/26/5c23a366762d7.png)
 ![风景列表](https://i.loli.net/2018/12/26/5c23a37d382db.png)
-![风景界面](https://i.loli.net/2018/12/26/5c23a39940df7.png)
+![风景界面](https://i.loli.net/2019/01/10/5c37658f6a373.png)
+![订单界面](https://i.loli.net/2019/01/10/5c3765d79b16b.png)
+![总订单](https://i.loli.net/2019/01/11/5c376ca8b25ef.png)
 
 ## 启动
 
@@ -50,7 +52,12 @@ npm
 nvm use 8.12.0
 ```
 
-npm i scss-loader sass-loader passport-local nodemailer node-sass mongoose koa-router koa-redis koa-passport koa-json koa-generic-session koa-bodyparser babel-preset-es2015 babel-cli axios @nuxtjs/axios crypto-js -S
+```console
+npm i scss-loader sass-loader passport-local nodemailer node-sass
+ mongoose koa-router koa-redis koa-passport koa-json
+ koa-generic-session koa-bodyparser babel-preset-es2015 babel-cli
+ axios @nuxtjs/axios crypto-js -S
+```
 
 ## 导入数据到 mongodb
 

@@ -105,7 +105,7 @@ export default {
       return {
         list: list.map(item => {
           return {
-            img: item.imgs.length ? item.imgs[0].url : '/logo.png',
+            img: item.imgs.length ? item.imgs[0].url : 'https://i.loli.net/2019/01/10/5c3767c4a52de.png',
             name: item.name,
             count: 1,
             total: item.total,
@@ -115,7 +115,7 @@ export default {
         }),
         cur: list.map(item => {
           return {
-            img: item.imgs.length ? item.imgs[0].url : '/logo.png',
+            img: item.imgs.length ? item.imgs[0].url : 'https://i.loli.net/2019/01/10/5c3767c4a52de.png',
             name: item.name,
             count: 1,
             total: item.total,
