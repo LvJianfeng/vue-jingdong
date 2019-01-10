@@ -18,8 +18,8 @@
         <h3>商家团购及优惠</h3>
       </el-col>
     </el-row>
-    <!-- <el-row v-if="canOrder || !login"> -->
-    <el-row>
+    <el-row v-if="canOrder || !login">
+      <!-- <el-row> -->
       <el-col :span="24">
         <list
           v-if="login"
@@ -56,12 +56,12 @@ export default {
     Summa,
     List
   },
-  // computed: {
-  //   canOrder() {
-  //     // 有数据才能排序
-  //     return this.list.filter(item => item.photos.length).length
-  //   }
-  // },
+  computed: {
+    canOrder() {
+      // 有数据才能排序
+      return this.list.filter(item => item.photos.length).length
+    }
+  },
   async asyncData(ctx) {
     const { status, data: { product, more: list, login, type, keyword }} = await ctx.$axios.get('/search/products', {
       params: {
