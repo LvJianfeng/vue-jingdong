@@ -115,6 +115,8 @@ router.get('/resultsByKeywords', async(ctx) => {
 })
 
 router.get('/products', async(ctx) => {
+  /* 操作本地数据库 */
+  /* 线上服务 */
   const keyword = ctx.query.keyword || '旅游'
   const city = ctx.query.city || '北京'
   const { status, data: { product, more }} = await axios.get(`${Config.requestUrl}/search/products`, {
