@@ -98,6 +98,7 @@ export default {
       this.activeName = tab.name
     }
   },
+  // 获取数据
   async asyncData(ctx) {
     const { status, data: { code, list }} = await ctx.$axios.post('/order/getOrders')
     if (status === 200 && code === 0 && list.length) {

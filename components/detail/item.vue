@@ -43,14 +43,13 @@ export default {
   },
   methods: {
     createCart: async function() {
-      const self = this
       const { status, data: { code, id }} = await this.$axios.post('/cart/create', {
         params: {
           id: Math.random().toString().slice(3, 9),
           detail: {
-            name: self.meta.name,
-            price: self.meta.biz_ext.cost,
-            imgs: self.meta.photos
+            name: this.meta.name,
+            price: this.meta.biz_ext.cost,
+            imgs: this.meta.photos
           }
         }
       })

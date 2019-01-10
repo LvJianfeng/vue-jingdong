@@ -30,7 +30,7 @@
           class="deal-need-login"
         >
           <img
-            src="//p0.meituan.net/codeman/56a7d5abcb5ce3d90fc91195e5b5856911194.png"
+            src="https://i.loli.net/2019/01/10/5c3763c93e4bc.png"
             alt="登录查看"
           >
           <span>请登录后查看详细团购优惠</span>
@@ -62,6 +62,7 @@ export default {
       return this.list.filter(item => item.photos.length).length
     }
   },
+  // 获取数据
   async asyncData(ctx) {
     const { status, data: { product, more: list, login, type, keyword }} = await ctx.$axios.get('/search/products', {
       params: {

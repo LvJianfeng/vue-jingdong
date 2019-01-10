@@ -2,10 +2,12 @@
 import Cart from '../dbs/models/cart'
 // 签名
 import md5 from 'crypto-js/md5'
-// import axios from './utils/axios'
 
-const router = new Router({ prefix: '/cart' })
+const router = new Router({
+  prefix: '/cart'
+})
 
+// 立即抢购
 router.post('/create', async ctx => {
   // isAuthenticated 是否登录
   if (!ctx.isAuthenticated()) {
@@ -42,6 +44,7 @@ router.post('/create', async ctx => {
   }
 })
 
+// 购物单
 router.post('/getCart', async ctx => {
   const { id } = ctx.request.body
   try {

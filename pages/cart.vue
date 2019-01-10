@@ -6,9 +6,7 @@
         :span="24"
         class="m-cart">
         <list :cart-data="cart"/>
-        <p>
-          应付金额：<em class="money">￥{{ total }}</em>
-        </p>
+        <p>应付金额：<em class="money">￥{{ total }}</em></p>
         <div class="post">
           <el-button
             type="primary"
@@ -60,6 +58,7 @@ export default {
       }
     }
   },
+  // 获取数据
   async asyncData(ctx) {
     const { status, data: { code, data: { name, price }}} = await ctx.$axios.post('/cart/getCart', {
       id: ctx.query.id

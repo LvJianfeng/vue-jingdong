@@ -40,6 +40,7 @@ export default {
       point: []
     }
   },
+  // 获取数据
   async asyncData(ctx) {
     const keyword = ctx.query.keyword
     const city = ctx.store.state.geo.position.city
