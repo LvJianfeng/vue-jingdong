@@ -1,13 +1,14 @@
 ﻿import Router from 'koa-router'
-import Config from '../dbs/config'
-import axios from './utils/axios'
+// import Config from '../dbs/config'
+// import axios from './utils/axios'
 import Poi from '../dbs/models/poi'
 import ResultsByKeywords from '../dbs/models/resultsByKeywords'
+import Products from '../dbs/models/products'
 
 const router = new Router({
   prefix: '/search'
 })
-const sign = Config.sign
+// const sign = Config.sign
 
 // 搜索商家或地点
 router.get('/top', async(ctx) => {
@@ -116,30 +117,51 @@ router.get('/resultsByKeywords', async(ctx) => {
 
 router.get('/products', async(ctx) => {
   /* 操作本地数据库 */
-  /* 线上服务 */
-  const keyword = ctx.query.keyword || '旅游'
+  // const keyword = ctx.query.keyword || '旅游'
   const city = ctx.query.city || '北京'
-  const { status, data: { product, more }} = await axios.get(`${Config.requestUrl}/search/products`, {
-    params: {
-      keyword,
-      city,
-      sign
-    }
-  })
-  if (status === 200) {
+  try {
+    const result = await Products.findOne({ city })
     ctx.body = {
-      product,
-      // isAuthenticated 是否已经登陆
-      more: ctx.isAuthenticated() ? more : [],
-      login: ctx.isAuthenticated()
+      keyword: result.keyword,
+      product: result.product,
+      more: result.more,
+      login: result.login,
+      type: result.type
     }
-  } else {
+  } catch (e) {
     ctx.body = {
+      keyword: '',
       product: {},
-      more: ctx.isAuthenticated() ? more : [],
-      login: ctx.isAuthenticated()
+      more: [],
+      login: false,
+      type: ''
     }
   }
+  /* 线上服务 */
+  // const keyword = ctx.query.keyword || '旅游'
+  // const city = ctx.query.city || '北京'
+  // const { status, data: { product, more }} = await axios.get(`${Config.requestUrl}/search/products`, {
+  //   params: {
+  //     keyword,
+  //     city,
+  //     sign
+  //   }
+  // })
+  // http://cp-tools.cn/search/products?keyword=旅游&city=北京&sign=a3c9fe0782107295ee9f1709edd15218
+  // if (status === 200) {
+  //   ctx.body = {
+  //     product,
+  //     // isAuthenticated 是否已经登陆
+  //     more: ctx.isAuthenticated() ? more : [],
+  //     login: ctx.isAuthenticated()
+  //   }
+  // } else {
+  //   ctx.body = {
+  //     product: {},
+  //     more: ctx.isAuthenticated() ? more : [],
+  //     login: ctx.isAuthenticated()
+  //   }
+  // }
 })
 
 export default router

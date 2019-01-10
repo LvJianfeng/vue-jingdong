@@ -2,11 +2,19 @@
 
 const Schema = mongoose.Schema
 const Products = new Schema({
-  count: {
-    type: Number,
+  login: {
+    type: Boolean
+  },
+  city: {
+    type: String,
     require: true
   },
-  pois: {
+  keyword: {
+    type: String,
+    require: true
+  },
+  product: {},
+  more: {
     type: Array,
     require: true
   }
