@@ -164,7 +164,7 @@ export default {
       this.$refs['ruleForm'].validateField('name', valid => {
         namePass = valid
       })
-      that.statusMsg = ''
+      this.statusMsg = ''
       if (namePass) {
         return false
       }
@@ -199,6 +199,7 @@ export default {
       }
     },
     register() {
+      // 验证表单
       this.$refs['ruleForm'].validate(valid => {
         // 验证全部通过
         if (valid) {
