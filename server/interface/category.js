@@ -12,7 +12,7 @@ const router = new Router({
 router.get('/crumbs', async ctx => {
   /* 操作本地数据库 */
   const result = await Categroy.findOne({
-    city: ctx.query.city.replace('市', '') || '北京'
+    city: ctx.query.city
   })
   if (result) {
     ctx.body = {

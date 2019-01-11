@@ -5,7 +5,7 @@
         v-for="item in nav"
         :key="item.name"
         :class="[item.name,item.acitve?'s-nav-active':'']"
-        @click="navSelect"
+        @click="navSelect(item.txt)"
       >{{ item.txt }}</dd>
     </dl>
     <ul>
@@ -58,13 +58,21 @@ export default {
       ]
     }
   },
-  async asyncData({ app }) {
-    const { data } = await app.$axios.get('searchList')
-    return { items: data.list }
-  },
+  // async asyncData({ app }) {
+  //   const { data } = await app.$axios.get('searchList')
+  //   return { items: data.list }
+  // },
   methods: {
-    navSelect: function() {
-      console.log('select')
+    navSelect(txtName) {
+      if (txtName === '价格最低') {
+        this.list.sort((a, b) => a.price - b.price)
+      } else if (txtName === '人气最高') {
+        this.list.sort((a, b) => a.comment - b.comment)
+      } else if (txtName === '评价最高') {
+        this.list.sort((a, b) => a.rate - b.rate)
+      } else if (txtName === '智能排序') {
+        this.list.sort((a, b) => a.name.charCodeAt(0) - b.name.charCodeAt(0))
+      }
     }
   }
 }
