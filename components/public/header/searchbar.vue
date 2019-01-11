@@ -3,17 +3,22 @@
     <el-row class="m-header-searchbar">
       <el-col
         :span="3"
-        class="left">
+        class="left"
+      >
+        <!-- 美团图标 -->
         <nuxt-link to="/">
           <img
             src="//s0.meituan.net/bs/fe-web-meituan/e5eeaef/img/logo.png"
-            alt="美团">
+            alt="美团"
+          >
         </nuxt-link>
       </el-col>
       <el-col
         :span="15"
-        class="center">
+        class="center"
+      >
         <div class="wrapper">
+          <!-- 搜索商家或地点 -->
           <el-input
             v-model="search"
             placeholder="搜索商家或地点"
@@ -24,6 +29,7 @@
           <button class="el-button el-button--primary">
             <i class="el-icon-search"/>
           </button>
+          <!-- 热门搜索 -->
           <dl
             v-if="isHotPlace"
             class="hotPlace"
@@ -31,7 +37,8 @@
             <dt>热门搜索</dt>
             <dd
               v-for="(item, index) in $store.state.search.hotPlace.slice(0, 4)"
-              :key="index">
+              :key="index"
+            >
               <a :href="'/products?keyword=' + encodeURIComponent(item.name)">{{ item.name }}</a>
             </dd>
           </dl>
@@ -41,11 +48,13 @@
           >
             <dd
               v-for="(item, index) in searchList"
-              :key="index">
+              :key="index"
+            >
               <a :href="'/products?keyword=' + encodeURIComponent(item.name)">{{ item.name }}</a>
             </dd>
           </dl>
         </div>
+        <!-- 流溪河国家森林公园 -->
         <div class="suggset">
           <a
             v-for="(item, index) in $store.state.search.hotPlace.slice(0, 4)"
@@ -53,6 +62,7 @@
             :href="'/products?keyword=' + encodeURIComponent(item.name)"
           >{{ item.name }}</a>
         </div>
+        <!-- 美团外卖 -->
         <ul class="nav">
           <li>
             <nuxt-link
@@ -81,9 +91,11 @@
           </li>
         </ul>
       </el-col>
+      <!-- 随时退 -->
       <el-col
         :span="6"
-        class="right">
+        class="right"
+      >
         <ul class="security">
           <li>
             <i class="refund"/>
