@@ -12,15 +12,16 @@ router.get('/', function(ctx, next) {
   ctx.body = 'this is a users response!'
 })
 
-// 定位到 http://localhost:3000/users/bar 路由, 控制台输出
+// 定位到 http://localhost:3000/users/bar 路由
 router.get('/bar', function(ctx, next) {
+  // 返回接口结果
   ctx.body = 'this is a users/bar response'
 })
 
 /* 增加数据 */
 router.post('/addPerson', async(ctx, next) => {
   const person = new Person({
-    // ctx.request是context经过封装的请求对象
+    // ctx.request 是 ctx 经过封装的请求对象
     name: ctx.request.body.name,
     age: ctx.request.body.age
   })

@@ -29,6 +29,7 @@ router.get('/testAsync', async ctx => {
     }, 1000)
   })
   const b = await 123
+  // 返回接口结果
   ctx.body = {
     a,
     b
