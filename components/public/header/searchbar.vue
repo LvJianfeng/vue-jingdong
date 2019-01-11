@@ -139,8 +139,9 @@ export default {
       this.isFocus = true
     },
     blur() {
+      const that = this
       setTimeout(() => {
-        this.isFocus = false
+        that.isFocus = false
       }, 200)
     },
     // _.debounce 延时函数

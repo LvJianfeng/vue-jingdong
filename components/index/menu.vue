@@ -51,7 +51,7 @@ export default {
   },
   computed: {
     /**
-     * 选中左侧分类某一项后，出现对应的右侧栏数据(过滤数据)
+     * 当前的分类内容, 选中左侧分类某一项后，出现对应的右侧栏数据(过滤数据)
      * @return: 过滤数据
      */
     curdetail() {
@@ -66,13 +66,14 @@ export default {
   },
   methods: {
     navEnter(e) {
-      /* e.target: 当前被点击元素 */
+      /* e.target: 当前元素 */
       /* 获取 i 标签 className */
       this.kind = e.target.querySelector('i').className
     },
     navLeave() {
-      this._timer = setTimeout(() => {
-        this.kind = ''
+      const that = this
+      that._timer = setTimeout(() => {
+        that.kind = ''
       }, 150)
     },
     detailEnter() {
