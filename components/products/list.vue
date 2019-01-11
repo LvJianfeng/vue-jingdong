@@ -63,7 +63,7 @@ export default {
   //   return { items: data.list }
   // },
   methods: {
-    navSelect(txtName) {
+    navSelect(txtName, active) {
       if (txtName === '价格最低') {
         this.list.sort((a, b) => a.price - b.price)
       } else if (txtName === '人气最高') {
