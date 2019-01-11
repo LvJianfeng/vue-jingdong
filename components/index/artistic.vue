@@ -104,10 +104,12 @@ export default {
   },
   methods: {
     over: async function(e) {
+      // 当前元素
       const dom = e.target
       const tag = dom.tagName.toLowerCase()
       if (tag === 'dd') {
         this.kind = dom.getAttribute('kind')
+        /* 线上数据 */
         // const keyword = dom.getAttribute('keyword')
         // const { status, data: { count, pois }} = await this.$axios.get('/search/resultsByKeywords', {
         //   params: {
@@ -115,8 +117,9 @@ export default {
         //     city: this.$store.state.geo.position.city
         //   }
         // })
+        /* 本地数据 */
         const { status, data: { count, pois }} = await this.$axios.get('/search/resultsByKeywords')
-        console.log(status, count, pois)
+        // console.log(status, count, pois)
         if (status === 200 && count > 0) {
           const r = pois
             .filter((item) => item.photos.length && item.kind === this.kind)

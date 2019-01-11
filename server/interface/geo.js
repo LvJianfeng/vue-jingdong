@@ -116,10 +116,8 @@ router.get('/city', async ctx => {
   const result = await City.find()
   ctx.body = {
     city: result.map(item => {
-      const value = item.value
-      const valueArray = [...value]
       return {
-        value: valueArray
+        value: item.value
       }
     })
   }
