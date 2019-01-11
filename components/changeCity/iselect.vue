@@ -88,33 +88,31 @@ export default {
         // 搜‘北’，显示所有带‘北’的数据
         cb(this.cities.filter(item => item.value.indexOf(query) > -1))
       } else {
+        /* 线上数据 */
         // 要实现本地化数据，要穿参数过去，然后 server 接受后修改代码
         // const { status, data: { city }} = await this.$axios.get('/geo/city', { params: { city: this.cvalue }})
+        /* 本地化数据 */
         const { status, data: { city }} = await this.$axios.get('/geo/city')
+        // console.log(city, -1)
         if (status === 200) {
-          const cityArray = city.map(item => {
-            return {
-              item
-            }
-          })
-          // console.log(cityArray)
           let wantArray
           const wantCityArray = []
-          for (const value of cityArray) {
-            wantArray = [...value.item.value]
-            // console.log(wantArray)
+          for (const value of city) {
+            wantArray = [...value.value]
+            // console.log(wantArray, 2)
             wantArray.map(item => {
               // console.log(item.name)
               wantCityArray.push(item.name)
               // console.log(wantCityArray)
             })
           }
-          // console.log(wantCityArray)
+          // console.log(wantCityArray, 3)
           this.cities = wantCityArray.map(item => {
             return {
               value: item
             }
           })
+          // console.log(this.cities, 4)
           cb(this.cities.filter(item => item.value.indexOf(query) > -1))
         } else {
           cb([])

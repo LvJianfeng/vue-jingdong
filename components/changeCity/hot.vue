@@ -22,15 +22,9 @@ export default {
   async mounted() {
     const { status, data: { city }} = await this.$axios.get('/geo/hotCity')
     if (status === 200) {
-      const cityArray = city.map(item => {
-        return {
-          item
-        }
-      })
-      // console.log(cityArray, 0)
       let wantArray
-      for (const value of cityArray) {
-        wantArray = [...value.item.value]
+      for (const value of city) {
+        wantArray = [...value.value]
         // console.log(wantArray, 1)
         for (const value of wantArray) {
           // console.log(value, 2)
@@ -46,7 +40,7 @@ export default {
       setPosition: 'geo/setPosition'
     }),
     handleSelect(cityName) {
-      console.log(cityName)
+      // console.log(cityName)
       this.$store.commit('geo/setCity', cityName)
     }
   }

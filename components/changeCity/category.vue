@@ -43,18 +43,12 @@ export default {
       let p
       let c
       const d = {}
-      const cityArray = city.map(item => {
-        return {
-          item
-        }
-      })
-      console.log(cityArray, 0)
       let wantArray
-      for (const value of cityArray) {
-        wantArray = [...value.item.value]
+      for (const value of city) {
+        wantArray = [...value.value]
         // console.log(wantArray, 1)
         for (const value of wantArray) {
-          // p 首字母小写拼音
+          // p: 城市首字母小写拼音
           p = pyjs
             .getFullChars(value.name)
             .toLocaleLowerCase()
@@ -70,6 +64,7 @@ export default {
           }
         }
       }
+      // console.log(d, 4)
       // 获取对应的键值对
       for (const [k, v] of Object.entries(d)) {
         blocks.push({
@@ -87,7 +82,7 @@ export default {
       setPosition: 'geo/setPosition'
     }),
     handleSelect(cityName) {
-      console.log(cityName)
+      // console.log(cityName)
       this.$store.commit('geo/setCity', cityName)
     }
   }
