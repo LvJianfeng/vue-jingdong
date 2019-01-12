@@ -6,6 +6,7 @@ import md5 from 'crypto-js/md5'
 
 const router = new Router({ prefix: '/order' })
 
+// 创建购物车分类栏
 router.post('/createOrder', async(ctx) => {
   const { id, price, count } = ctx.request.body
   const time = Date()
@@ -49,7 +50,7 @@ router.post('/createOrder', async(ctx) => {
   }
 })
 
-// 获取购物车信息
+// 获取购物车分类栏
 router.post('/getOrders', async ctx => {
   if (!ctx.isAuthenticated()) {
     ctx.body = {
