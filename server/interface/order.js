@@ -14,7 +14,7 @@ router.post('/createOrder', async(ctx) => {
   if (!ctx.isAuthenticated()) {
     ctx.body = {
       code: -1,
-      msg: 'please login'
+      msg: '请先登录!'
     }
   } else {
     const findCart = await Cart.findOne({ cartNo: id })
@@ -49,6 +49,7 @@ router.post('/createOrder', async(ctx) => {
   }
 })
 
+// 获取购物车信息
 router.post('/getOrders', async ctx => {
   if (!ctx.isAuthenticated()) {
     ctx.body = {

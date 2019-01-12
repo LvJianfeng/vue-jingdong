@@ -7,7 +7,7 @@ const router = new Router({
   prefix: '/cart'
 })
 
-// 立即抢购
+// 创建购物车
 router.post('/create', async ctx => {
   // isAuthenticated 是否登录
   if (!ctx.isAuthenticated()) {
@@ -44,7 +44,7 @@ router.post('/create', async ctx => {
   }
 })
 
-// 购物单
+// 获取购物车
 router.post('/getCart', async ctx => {
   const { id } = ctx.request.body
   try {
