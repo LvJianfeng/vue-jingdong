@@ -6,8 +6,8 @@
     </template>
     <template v-else>
       <nuxt-link
-        to="/login"
         class="login"
+        to="/login"
       >立即登录</nuxt-link>
       <nuxt-link
         class="register"
