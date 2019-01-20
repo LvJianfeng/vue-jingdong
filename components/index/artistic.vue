@@ -119,7 +119,6 @@ export default {
         // })
         /* 本地数据 */
         const { status, data: { count, pois }} = await this.$axios.get('/search/resultsByKeywords')
-        // console.log(status, count, pois)
         if (status === 200 && count > 0) {
           const r = pois
             .filter((item) => item.photos.length && item.kind === this.kind)
@@ -143,6 +142,7 @@ export default {
                 url: '//abc.com'
               }
             })
+          // add data
           this.list[this.kind] = r.slice(0, 9)
           this.list['all'] = all.slice(0, 9)
         } else {

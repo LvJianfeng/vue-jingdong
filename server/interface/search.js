@@ -13,6 +13,7 @@ const router = new Router({
 // 搜索商家或地点
 router.get('/top', async(ctx) => {
   /* 操作本地数据库 */
+  // search.js pass parameter
   try {
     const top = await Poi.find({
       'name': new RegExp(ctx.query.input),
@@ -25,8 +26,8 @@ router.get('/top', async(ctx) => {
           name: item.name,
           type: item.type
         }
-      }),
-      type: top.length ? top[0].type : ''
+      })
+      // type: top.length ? top[0].type : ''
     }
   } catch (e) {
     ctx.body = {
@@ -48,7 +49,6 @@ router.get('/top', async(ctx) => {
   // }
 })
 
-// 热门搜索
 router.get('/hotPlace', async(ctx) => {
   /* 操作本地数据库 */
   const city = ctx.store ? ctx.store.geo.position.city : ctx.query.city

@@ -1,22 +1,13 @@
 <template>
   <div class="search-panel">
     <el-row class="m-header-searchbar">
-      <el-col
-        :span="3"
-        class="left"
-      >
+      <el-col :span="3" class="left">
         <!-- 美团图标 -->
         <nuxt-link to="/">
-          <img
-            src="//s0.meituan.net/bs/fe-web-meituan/e5eeaef/img/logo.png"
-            alt="美团"
-          >
+          <img src="//s0.meituan.net/bs/fe-web-meituan/e5eeaef/img/logo.png" alt="美团">
         </nuxt-link>
       </el-col>
-      <el-col
-        :span="15"
-        class="center"
-      >
+      <el-col :span="15" class="center">
         <div class="wrapper">
           <!-- 搜索商家或地点 -->
           <el-input
@@ -30,27 +21,15 @@
             <i class="el-icon-search"/>
           </button>
           <!-- 热门搜索 -->
-          <dl
-            v-if="isHotPlace"
-            class="hotPlace"
-          >
+          <dl v-if="isHotPlace" class="hotPlace">
             <dt>热门搜索</dt>
-            <dd
-              v-for="(item, index) in $store.state.search.hotPlace.slice(0, 4)"
-              :key="index"
-            >
+            <dd v-for="(item, index) in $store.state.search.hotPlace.slice(0, 4)" :key="index">
               <a :href="'/products?keyword=' + encodeURIComponent(item.name)">{{ item.name }}</a>
             </dd>
           </dl>
           <!-- 搜索列表 -->
-          <dl
-            v-if="isSearchList"
-            class="searchList"
-          >
-            <dd
-              v-for="(item, index) in searchList"
-              :key="index"
-            >
+          <dl v-if="isSearchList" class="searchList">
+            <dd v-for="(item, index) in searchList" :key="index">
               <a :href="'/products?keyword=' + encodeURIComponent(item.name)">{{ item.name }}</a>
             </dd>
           </dl>
@@ -66,37 +45,24 @@
         <!-- 美团外卖 -->
         <ul class="nav">
           <li>
-            <nuxt-link
-              to="/"
-              class="takeout">美团外卖</nuxt-link>
+            <nuxt-link to="/" class="takeout">美团外卖</nuxt-link>
           </li>
           <li>
-            <nuxt-link
-              to="/"
-              class="movie">猫眼电影</nuxt-link>
+            <nuxt-link to="/" class="movie">猫眼电影</nuxt-link>
           </li>
           <li>
-            <nuxt-link
-              to="/"
-              class="hotel">美团酒店</nuxt-link>
+            <nuxt-link to="/" class="hotel">美团酒店</nuxt-link>
           </li>
           <li>
-            <nuxt-link
-              to="/"
-              class="apartment">民宿/公寓</nuxt-link>
+            <nuxt-link to="/" class="apartment">民宿/公寓</nuxt-link>
           </li>
           <li>
-            <nuxt-link
-              to="/"
-              class="business">商家入驻</nuxt-link>
+            <nuxt-link to="/" class="business">商家入驻</nuxt-link>
           </li>
         </ul>
       </el-col>
       <!-- 随时退 -->
-      <el-col
-        :span="6"
-        class="right"
-      >
+      <el-col :span="6" class="right">
         <ul class="security">
           <li>
             <i class="refund"/>
@@ -117,51 +83,51 @@
 </template>
 
 <script>
-import _ from 'lodash'
+import _ from "lodash";
 export default {
   data() {
     return {
-      search: '',
+      search: "",
       isFocus: false,
       hotPlace: [],
       searchList: []
-    }
+    };
   },
   computed: {
     isHotPlace() {
-      return this.isFocus && !this.search
+      return this.isFocus && !this.search;
     },
     isSearchList() {
-      return this.isFocus && this.search
+      return this.isFocus && this.search;
     }
   },
   methods: {
     focus() {
-      this.isFocus = true
+      this.isFocus = true;
     },
     blur() {
-      const that = this
+      const that = this;
       setTimeout(() => {
-        that.isFocus = false
-      }, 200)
+        that.isFocus = false;
+      }, 200);
     },
     // _.debounce 延时函数
     input: _.debounce(async function() {
-      const city = this.$store.state.geo.position.city.replace('市', '')
-      this.searchList = []
+      const city = this.$store.state.geo.position.city.replace("市", "");
+      this.searchList = [];
       const {
         data: { top }
-      } = await this.$axios.get('/search/top', {
+      } = await this.$axios.get("/search/top", {
         params: {
-          // 传递到 search.js 的值
+          // pass to search.js parameter
           input: this.search,
           city
         }
-      })
-      this.searchList = top.slice(0, 10)
+      });
+      this.searchList = top.slice(0, 10);
     }, 300)
   }
-}
+};
 </script>
 
 <style scoped lang="scss">

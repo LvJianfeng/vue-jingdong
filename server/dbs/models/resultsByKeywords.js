@@ -11,4 +11,5 @@ const ResultsByKeywords = new Schema({
     require: true
   }
 })
+
 export default mongoose.model('ResultsByKeywords', ResultsByKeywords)

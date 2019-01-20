@@ -19,4 +19,5 @@ const Products = new Schema({
     require: true
   }
 })
+
 export default mongoose.model('Products', Products)

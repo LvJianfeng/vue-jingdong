@@ -11,4 +11,5 @@ const Province = new Schema({
     require: true
   }
 })
+
 export default mongoose.model('Province', Province)
