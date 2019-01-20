@@ -164,7 +164,6 @@ export default {
       this.$refs['ruleForm'].validateField('name', valid => {
         namePass = valid
       })
-      this.statusMsg = ''
       if (namePass) {
         return false
       }
@@ -172,6 +171,7 @@ export default {
       this.$refs['ruleForm'].validateField('email', valid => {
         emailPass = valid
       })
+      this.statusMsg = ''
       // 如果用户名, 邮箱都通过 (有值则表示没通过)
       if (!namePass && !emailPass) {
         that.$axios

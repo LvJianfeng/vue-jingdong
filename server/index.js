@@ -1,14 +1,17 @@
 import Koa from 'koa'
 import mongoose from 'mongoose'
-// 适用于 Node.js 和浏览器的优雅控制台记录器
+// Elegant Console Logger for Node.js and Browser
 import consola from 'consola'
+// A body parser for koa, base on co-body. support json, form and text type body.
 // 解析 body 的中间件，在 koa 中 this.body 就能直接获取到数据。post 参数获取
 import bodyParser from 'koa-bodyparser'
-// session 内存存储, 支持延迟会话
+// Generic session middleware for koa,
+// easy use with custom stores such as redis or mongo,
+// supports Delay session getter.
 import session from 'koa-generic-session'
-// redis 用来存储 session 的数据库
+// Redis storage for koa session middleware/cache.
 import Redis from 'koa-redis'
-// JSON 美观输出数据
+// JSON pretty-printed response middleware.
 import json from 'koa-json'
 
 import dbConfig from './dbs/config'
@@ -25,7 +28,7 @@ const app = new Koa()
 const host = process.env.HOST || '127.0.0.1'
 const port = process.env.PORT || 3000
 
-// redis
+// session
 app.keys = ['mt', 'keyskeys']
 app.proxy = true
 app.use(
@@ -36,7 +39,7 @@ app.use(
   })
 )
 
-// post 处理
+// post handle
 app.use(
   bodyParser({
     extendTypes: ['json', 'form', 'text']
@@ -44,7 +47,6 @@ app.use(
 )
 app.use(json())
 
-// 连接数据库
 mongoose.connect(
   dbConfig.dbs,
   {

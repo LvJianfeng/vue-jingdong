@@ -1,15 +1,14 @@
-// 实现登录注册功能
+// Passport middleware for Koa
 import passport from 'koa-passport'
-// 本地权限认证
+// Passport strategy for authenticating with a username and password.
 import LocalStrategy from 'passport-local'
-// mongodb 数据库表
+// mongodb
 import UserModel from '../../dbs/models/users'
 
-// 把一个策略保存在本地，后续可以通过 name 来访问, 提交数据(策略)
+// [Configure Strategy](https://www.npmjs.com/package/passport-local)
 passport.use(
   new LocalStrategy(async function(username, password, done) {
     const where = { username }
-    // mongodb: findOne 查询数据, 找出一条
     const result = await UserModel.findOne(where)
     if (result !== null) {
       if (result.password === password) {
@@ -27,7 +26,7 @@ passport.use(
 passport.serializeUser(function(user, done) {
   done(null, user)
 })
-// defulat
+
 passport.deserializeUser(function(user, done) {
   return done(null, user)
 })

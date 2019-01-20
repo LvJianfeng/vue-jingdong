@@ -1,30 +1,27 @@
 import Router from 'koa-router'
-// 服务端识别客户端状态
+// Redis storage for koa session middleware/cache
 import Redis from 'koa-redis'
-// 用自己账号给用户发邮件
+// Send e-mails from Node.js – easy as cake
 import nodeMailer from 'nodemailer'
 
 import User from '../dbs/models/users'
 import Passport from './utils/passport'
 import Email from '../dbs/config'
+// Promise based HTTP client for the browser and node.js
 import axios from './utils/axios'
 
-// 路由前缀
+// Routing prefix
 const router = new Router({
   prefix: '/users'
 })
-// 获取 redis 客户端
+// get redis client
 const Store = new Redis().client
 
-/**
- * 注册接口
- */
 router.post('/signup', async ctx => {
-  // 获取 post 数据 (register.vue 传来的参数)
-  const { username, password, email, code } = ctx.request.body
-  // 验证码
+  // get the data unload by the user (register.vue pass parameter)
+  const { username, email, code, password } = ctx.request.body
   if (code) {
-    // redis hget() 验证码
+    // redis hget() verifycode, hget() '/sigin' Store.hset()
     const saveCode = await Store.hget(`nodemail:${username}`, 'code')
     const saveExpire = await Store.hget(`nodemail:${username}`, 'expire')
     if (code === saveCode) {
@@ -47,7 +44,7 @@ router.post('/signup', async ctx => {
       msg: '请填写验证码'
     }
   }
-  // 用户名已被注册
+  // username has been register
   const user = await User.find({ username })
   if (user.length) {
     ctx.body = {
@@ -56,13 +53,13 @@ router.post('/signup', async ctx => {
     }
     return
   }
-  // 写入数据库
+  // write into database
   const nuser = await User.create({
     username,
     password,
     email
   })
-  // 注册成功
+  // register success
   if (nuser) {
     const res = await axios.post('/users/signin', {
       username,
@@ -88,12 +85,9 @@ router.post('/signup', async ctx => {
   }
 })
 
-/**
- * 登录接口
- */
 router.post('/signin', async(ctx, next) => {
-  // (register.vue 传来的参数)
-  // authenticate() 执行 passport-local 策略, 调用授权页面
+  // (register.vue pass parameter)
+  // authenticate(): invoked passport-local Strategy
   return Passport.authenticate('local', function(err, user, info, status) {
     if (err) {
       ctx.body = {
@@ -118,9 +112,6 @@ router.post('/signin', async(ctx, next) => {
   })(ctx, next)
 })
 
-/**
- * 添加路由
- */
 router.get('/fix', async ctx => {
   // Store.hset(`test`, "name", "111");
   ctx.session.name = 'nidie'
@@ -129,12 +120,8 @@ router.get('/fix', async ctx => {
   }
 })
 
-/**
- * 验证码验证
- */
 router.post('/verify', async(ctx, next) => {
-  // 验证请求过于频繁
-  // 获取 post 数据
+  // register.vue pass parameter
   const { username } = ctx.request.body
   const saveExpire = await Store.hget(`nodemail:${username}`, 'expire')
   if (saveExpire && new Date().getTime() - saveExpire < 0) {
@@ -144,7 +131,7 @@ router.post('/verify', async(ctx, next) => {
     }
     return false
   }
-  // 发邮件配置
+  // send email config
   const transporter = nodeMailer.createTransport({
     host: Email.smtp.host,
     port: 587,
@@ -155,26 +142,26 @@ router.post('/verify', async(ctx, next) => {
       pass: Email.smtp.pass
     }
   })
-  // 对外发送什么信息, 接收方式是什么
+  // What information is sent and received
   const ko = {
     code: Email.smtp.code(),
     expire: Email.smtp.expire(),
     email: ctx.request.body.email,
     user: ctx.request.body.username
   }
-  // 邮件显示什么内容
+  // email msg
   const mailOptions = {
     from: `认证邮件<${Email.smtp.user}>`,
     to: ko.email,
     subject: '《慕课网高仿美团网全栈实战》注册码',
     html: `您在《慕课网高仿美团网全栈实战》课程中注册，您的邀请码是${ko.code}`
   }
-  // 发送邮件
+  // send email
   await transporter.sendMail(mailOptions, (err, info) => {
     if (err) {
       return console.log(err)
     } else {
-      // redis 存储用户信息
+      // redis save user info
       Store.hmset(
         `nodemail:${ko.user}`,
         'code',
@@ -186,16 +173,12 @@ router.post('/verify', async(ctx, next) => {
       )
     }
   })
-  // 响应
   ctx.body = {
     code: 0,
     msg: '验证码已经发送，可能会有延时，有效期1分钟'
   }
 })
 
-/**
- * 退出登录
- */
 router.get('/exit', async(ctx, next) => {
   await ctx.logout()
   // isAuthenticated: 判断是否认证 (检测现在是否是登录状态)
@@ -210,9 +193,6 @@ router.get('/exit', async(ctx, next) => {
   }
 })
 
-/**
- * 获取用户信息
- */
 router.get('/getUser', async ctx => {
   // isAuthenticated: 判断是否认证 (检测现在是否是登录状态)
   if (ctx.isAuthenticated()) {
