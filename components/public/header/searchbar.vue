@@ -42,6 +42,7 @@
               <a :href="'/products?keyword=' + encodeURIComponent(item.name)">{{ item.name }}</a>
             </dd>
           </dl>
+          <!-- 搜索列表 -->
           <dl
             v-if="isSearchList"
             class="searchList"

@@ -34,6 +34,7 @@
 export default {
   data() {
     return {
+      // 记录鼠标 hover 的状态
       kind: ''
       // menu: [
       //   {
@@ -67,7 +68,7 @@ export default {
   methods: {
     navEnter(e) {
       /* e.target: 当前元素 */
-      /* 获取 i 标签 className */
+      /* querySelector: 获取 i 标签 */
       this.kind = e.target.querySelector('i').className
     },
     navLeave() {
