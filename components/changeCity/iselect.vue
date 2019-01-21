@@ -76,6 +76,21 @@ export default {
           label: item.name
         }
       })
+      // {
+      //   "code": 0,
+      //   "city": [
+      //       {
+      //           "province": "北京市",
+      //           "id": "110100",
+      //           "name": "北京市"
+      //       }
+      //   ]
+      // }
+      // console.log(this.province, 'this.province')
+      // Array(20)
+      // 0:
+      // label: "辽宁省"
+      // value: "210000"
     }
   },
   methods: {
@@ -93,7 +108,7 @@ export default {
         // const { status, data: { city }} = await this.$axios.get('/geo/city', { params: { city: this.cvalue }})
         /* 本地化数据 */
         const { status, data: { city }} = await this.$axios.get('/geo/city')
-        // console.log(city, -1)
+        console.log(city, -1)
         if (status === 200) {
           let wantArray
           const wantCityArray = []

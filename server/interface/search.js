@@ -102,7 +102,7 @@ router.get('/hotPlace', async(ctx) => {
   // }
 })
 
-// artistic.vue
+// "有格调"界面
 router.get('/resultsByKeywords', async(ctx) => {
   /* 操作本地数据库 */
   try {
