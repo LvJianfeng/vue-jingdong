@@ -2,15 +2,15 @@
   <div class="m-products-list">
     <dl>
       <dd
-        v-for="item in nav"
+        v-for="(item, index) in nav"
         :key="item.name"
-        :class="[item.name,item.acitve?'s-nav-active':'']"
-        @click="navSelect(item.txt)"
+        :class="[item.acitve === true ? 's-nav-active' : '']"
+        @click="navSelect(item.txt, index)"
       >{{ item.txt }}</dd>
     </dl>
     <ul>
       <Item
-        v-for="(item,idx) in list"
+        v-for="(item, idx) in list"
         :key="idx"
         :meta="item"
       />
@@ -38,12 +38,12 @@ export default {
         {
           name: 's-default',
           txt: '智能排序',
-          acitve: true
+          acitve: false
         },
         {
           name: 's-price',
           txt: '价格最低',
-          active: false
+          active: true
         },
         {
           name: 's-visit',
@@ -63,15 +63,31 @@ export default {
   //   return { items: data.list }
   // },
   methods: {
-    navSelect(txtName, active) {
-      if (txtName === '价格最低') {
+    navSelect(txt, index) {
+      if (txt === '价格最低') {
+        // 价格
         this.list.sort((a, b) => a.price - b.price)
-      } else if (txtName === '人气最高') {
-        this.list.sort((a, b) => a.comment - b.comment)
-      } else if (txtName === '评价最高') {
-        this.list.sort((a, b) => a.rate - b.rate)
-      } else if (txtName === '智能排序') {
+        this.nav.active = false
+        this.nav[index].active = true
+        console.log(index)
+      } else if (txt === '人气最高') {
+        // 评论数量
+        this.list.sort((a, b) => b.comment - a.comment)
+        this.nav.active = false
+        this.nav[index].active = true
+        console.log(index)
+      } else if (txt === '评价最高') {
+        // 评分
+        this.list.sort((a, b) => b.rate - a.rate)
+        this.nav.active = false
+        this.nav[index].active = true
+        console.log(index)
+      } else if (txt === '智能排序') {
+        // 名字字母顺序
         this.list.sort((a, b) => a.name.charCodeAt(0) - b.name.charCodeAt(0))
+        this.nav.active = false
+        this.nav[index].active = true
+        console.log(index)
       }
     }
   }

@@ -32,7 +32,7 @@
         <span class="s-item-addr">{{ meta.addr }}</span>
       </p>
       <p>
-        <em class="s-item-price">￥{{ meta.price }}起</em>
+        <em class="s-item-price">￥{{ meta.price }}元</em>
         <b>{{ meta.status }}</b>
       </p>
       <ul>
