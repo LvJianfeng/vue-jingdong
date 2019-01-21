@@ -60,9 +60,9 @@ router.get('/menu', async ctx => {
 
 router.get('/province', async ctx => {
   /* 操作本地数据库 */
-  const province = await Province.find()
+  const result = await Province.find()
   ctx.body = {
-    province: province.map(item => {
+    province: result.map(item => {
       return {
         id: item.id,
         name: item.value[0]
@@ -82,10 +82,10 @@ router.get('/province', async ctx => {
 // 获取对应省份城市
 router.get('/province/:id', async ctx => {
   /* 操作本地数据库 */
-  const city = await City.findOne({ id: ctx.params.id })
+  const result = await City.findOne({ id: ctx.params.id })
   ctx.body = {
     code: 0,
-    city: city.value.map(item => {
+    city: result.value.map(item => {
       return { province: item.province, id: item.id, name: item.name }
     })
   }
