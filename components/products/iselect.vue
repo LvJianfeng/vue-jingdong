@@ -1,12 +1,14 @@
 ﻿<template>
   <div class="m-product-select">
+    <!-- 丽人 亲子 -->
     <dl class="tab">
       <dt>{{ name }}<i class="el-icon-arrow-down el-icon-right"/></dt>
       <dd>
         <h3>{{ name }}</h3>
         <span
           v-for="(item, idx) in list"
-          :key="idx">{{ item }}</span>
+          :key="idx"
+        >{{ item }}</span>
       </dd>
     </dl>
   </div>

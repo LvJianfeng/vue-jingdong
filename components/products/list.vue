@@ -1,5 +1,6 @@
 ﻿<template>
   <div class="m-products-list">
+    <!-- 智能排序 -->
     <dl>
       <dd
         v-for="(item, index) in nav"
