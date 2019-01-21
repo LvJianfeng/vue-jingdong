@@ -18,8 +18,7 @@
         <h3>商家团购及优惠</h3>
       </el-col>
     </el-row>
-    <el-row v-if="canOrder || !login">
-      <!-- <el-row> -->
+    <el-row v-if="canOrder || !login"> 
       <el-col :span="24">
         <list
           v-if="login"
@@ -58,7 +57,6 @@ export default {
   },
   computed: {
     canOrder() {
-      // 有数据才能排序
       return this.list.filter(item => item.photos.length).length
     }
   },
