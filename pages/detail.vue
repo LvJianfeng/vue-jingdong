@@ -18,7 +18,7 @@
         <h3>商家团购及优惠</h3>
       </el-col>
     </el-row>
-    <el-row v-if="canOrder || !login"> 
+    <el-row v-if="canOrder || !login">
       <el-col :span="24">
         <list
           v-if="login"
