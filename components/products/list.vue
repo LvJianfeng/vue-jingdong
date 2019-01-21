@@ -44,7 +44,7 @@ export default {
         {
           name: 's-price',
           txt: '价格最低',
-          active: true
+          active: false
         },
         {
           name: 's-visit',
