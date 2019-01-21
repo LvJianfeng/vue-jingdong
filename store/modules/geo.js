@@ -10,7 +10,7 @@ const mutations = {
     state.position.city = val
   },
   setProvince(state, val) {
-    state.position.setProvince = val
+    state.position.province = val
   }
 }
 
