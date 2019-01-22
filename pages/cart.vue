@@ -61,7 +61,7 @@ export default {
       }
     }
   },
-  // 获取数据
+  // 获取数据，nuxt 生命周期
   async asyncData(ctx) {
     const { status, data: { code, data: { name, price }}} = await ctx.$axios.post('/cart/getCart', {
       id: ctx.query.id

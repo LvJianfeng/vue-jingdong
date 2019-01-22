@@ -94,6 +94,7 @@ export default {
     }
   },
   methods: {
+    // 切换 全部订单 待付款 待使用 待评价
     handleClick(tab) {
       this.activeName = tab.name
     }
