@@ -108,7 +108,7 @@ export default {
         // const { status, data: { city }} = await this.$axios.get('/geo/city', { params: { city: this.cvalue }})
         /* 本地化数据 */
         const { status, data: { city }} = await this.$axios.get('/geo/city')
-        console.log(city, -1)
+        // console.log(city, -1)
         if (status === 200) {
           let wantArray
           const wantCityArray = []
