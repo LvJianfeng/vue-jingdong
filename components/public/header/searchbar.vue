@@ -154,9 +154,7 @@ export default {
     input: _.debounce(async function() {
       const city = this.$store.state.geo.position.city.replace('市', '')
       this.searchList = []
-      const {
-        data: { top }
-      } = await this.$axios.get('/search/top', {
+      const { data: { top }} = await this.$axios.get('/search/top', {
         params: {
           // pass to search.js parameter
           input: this.search,
