@@ -138,6 +138,7 @@ router.get('/products', async(ctx) => {
   const city = ctx.query.city || '北京'
   try {
     const result = await Products.findOne({ city })
+    // ctx.isAuthenticated() 是否已经登录?
     ctx.body = {
       keyword: result.keyword,
       product: result.product,
