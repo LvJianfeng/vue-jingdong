@@ -4,18 +4,21 @@
       <el-col
         v-if="cart.length"
         :span="24"
-        class="m-cart">
+        class="m-cart"
+      >
         <list :cart-data="cart"/>
         <p>应付金额：<em class="money">￥{{ total }}</em></p>
         <div class="post">
           <el-button
             type="primary"
-            @click="submit">提交订单</el-button>
+            @click="submit"
+          >提交订单</el-button>
         </div>
       </el-col>
       <el-col
         v-else
-        class="empty">购物车为空
+        class="empty"
+      >购物车为空
       </el-col>
     </el-row>
   </div>

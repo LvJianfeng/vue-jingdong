@@ -1,6 +1,6 @@
 ﻿import Router from 'koa-router'
 import Cart from '../dbs/models/cart'
-// 签名
+// 签名, MD5 加密
 import md5 from 'crypto-js/md5'
 
 const router = new Router({
@@ -16,9 +16,10 @@ router.post('/create', async ctx => {
       msg: 'please login'
     }
   } else {
+    // Date: 为了时区一样
     const time = Date()
     const cartNo = md5(Math.random() * 1000 + time).toString()
-    // ctx.request.body: post 方式获取数据
+    // ctx.request.body: post 方式获取数据, 传来的数据
     const { params: { id, detail }} = ctx.request.body
     const cart = new Cart({
       id,
