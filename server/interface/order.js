@@ -52,6 +52,7 @@ router.post('/createOrder', async(ctx) => {
 
 // 获取购物车分类栏
 router.post('/getOrders', async ctx => {
+  // isAuthenticated 是否登录
   if (!ctx.isAuthenticated()) {
     ctx.body = {
       code: -1,
