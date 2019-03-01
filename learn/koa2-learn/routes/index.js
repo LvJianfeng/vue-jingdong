@@ -19,7 +19,10 @@ router.get('/json', async(ctx, next) => {
   }
 })
 
-/* await 后面跟着 promise 对象(如果不是则转化为 Promise), await 等待结果才执行下面代码, 能使代码依次执行 */
+/*
+await 后面跟着 promise 对象(如果不是则转化为 Promise),
+await 等待结果才执行下面代码, 能使代码依次执行
+*/
 router.get('/testAsync', async ctx => {
   global.console.log('start', new Date().getTime())
   const a = await new Promise((resolve, reject) => {
