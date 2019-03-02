@@ -11,6 +11,7 @@ const router = new Router({
 })
 // const sign = Config.sign
 
+// http://localhost:3000/geo/getPosition
 router.get('/getPosition', async ctx => {
   /* 操作本地数据库 */
   const result = await Positon.findOne()
@@ -36,6 +37,7 @@ router.get('/getPosition', async ctx => {
   // }
 })
 
+// http://localhost:3000/geo/menu
 router.get('/menu', async ctx => {
   /* 操作本地数据库 */
   const result = await Menu.findOne()
@@ -58,6 +60,7 @@ router.get('/menu', async ctx => {
   // }
 })
 
+// http://localhost:3000/geo/province
 router.get('/province', async ctx => {
   /* 操作本地数据库 */
   const result = await Province.find()
@@ -79,6 +82,7 @@ router.get('/province', async ctx => {
   // }
 })
 
+// http://localhost:3000/geo/province/110000
 // 获取对应省份城市
 router.get('/province/:id', async ctx => {
   /* 操作本地数据库 */
@@ -107,6 +111,7 @@ router.get('/province/:id', async ctx => {
   // }
 })
 
+// http://localhost:3000/geo/city
 router.get('/city', async ctx => {
   /* 操作本地数据库 */
   const result = await City.find()
@@ -133,6 +138,7 @@ router.get('/city', async ctx => {
   // }
 })
 
+// http://localhost:3000/geo/city
 router.get('/hotCity', async ctx => {
   /* 操作本地数据库 bug! 没有返回完全的城市名 */
   const result = await City.find()

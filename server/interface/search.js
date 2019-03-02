@@ -10,12 +10,13 @@ const router = new Router({
 })
 // const sign = Config.sign
 
+// http://localhost:3000/search/top?input=十指恋时尚美甲&city=广州
 // 搜索商家或地点
 router.get('/top', async(ctx) => {
   /* 操作本地数据库 */
-  // search.js pass parameter
   try {
     const top = await Poi.find({
+      // ctx.query.input & ctx.query.city: searchbar.vue pass parameter
       'name': new RegExp(ctx.query.input),
       city: ctx.query.city
     })
@@ -27,7 +28,6 @@ router.get('/top', async(ctx) => {
           type: item.type
         }
       })
-      // type: top.length ? top[0].type : ''
     }
   } catch (e) {
     ctx.body = {
@@ -38,7 +38,6 @@ router.get('/top', async(ctx) => {
   /* 线上服务 */
   // const { status, data: { top }} = await axios.get(`${Config.requestUrl}/search/top`, {
   //   params: {
-  //     // searchbar.vue 传入的参数
   //     input: ctx.query.input,
   //     city: ctx.query.city,
   //     sign
@@ -49,6 +48,7 @@ router.get('/top', async(ctx) => {
   // }
 })
 
+// http://localhost:3000/search/hotPlace?city=广州&type=景点
 router.get('/hotPlace', async(ctx) => {
   /* 操作本地数据库 */
   const city = ctx.store ? ctx.store.geo.position.city : ctx.query.city
@@ -66,23 +66,6 @@ router.get('/hotPlace', async(ctx) => {
         }
       })
     }
-    // {
-    //   "code": 0,
-    //   "result": [
-    //       {
-    //           "name": "十指恋时尚美甲",
-    //           "type": "景点"
-    //       },
-    //       {
-    //           "name": "水云阁水疗养生休闲会所",
-    //           "type": "景点"
-    //       },
-    //       {
-    //           "name": "流溪河国家森林公园",
-    //           "type": "景点"
-    //       }
-    //   ]
-    // }
   } catch (e) {
     ctx.body = {
       code: -1,
@@ -103,6 +86,7 @@ router.get('/hotPlace', async(ctx) => {
 })
 
 // "有格调"界面
+// http://localhost:3000/search/resultsByKeywords
 router.get('/resultsByKeywords', async(ctx) => {
   /* 操作本地数据库 */
   try {

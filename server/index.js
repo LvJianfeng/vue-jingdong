@@ -38,6 +38,9 @@ app.use(
     store: new Redis()
   })
 )
+// 开启 koa-passport 对 session 的支持
+app.use(passport.initialize())
+app.use(passport.session())
 
 // post handle
 app.use(
@@ -47,16 +50,13 @@ app.use(
 )
 app.use(json())
 
+// 连接数据库
 mongoose.connect(
   dbConfig.dbs,
   {
     useNewUrlParser: true
   }
 )
-
-// 开启 koa-passport 对 session 的支持
-app.use(passport.initialize())
-app.use(passport.session())
 
 // Import and Set Nuxt.js options
 const config = require('../nuxt.config.js')
