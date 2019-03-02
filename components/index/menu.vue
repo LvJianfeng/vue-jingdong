@@ -34,8 +34,7 @@
 export default {
   data() {
     return {
-      // 记录鼠标 hover 的状态
-      kind: ''
+      kind: '' // 记录鼠标 hover 的状态
       // menu: [
       //   {
       //     type: 'food',
