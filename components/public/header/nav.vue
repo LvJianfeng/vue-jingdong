@@ -41,11 +41,19 @@
       </li>
       <li class="list bd">
         <nuxt-link to="/">客户服务</nuxt-link>
-        <dl>
-          <dd><nuxt-link to="/">登录商家中心</nuxt-link></dd>
+        <dl class="bd-sub">
+          <dt>特色主题</dt>
+          <dd><nuxt-link to="/">帮助中心</nuxt-link></dd>
           <dd><nuxt-link to="/">我想合作</nuxt-link></dd>
-          <dd><nuxt-link to="/">免费手机开店</nuxt-link></dd>
-          <dd><nuxt-link to="/">商家申请开票</nuxt-link></dd>
+          <dd><nuxt-link to="/">免费手机</nuxt-link></dd>
+          <dd><nuxt-link to="/">申请开票</nuxt-link></dd>
+        </dl>
+        <dl class="bd-sub">
+          <dt>特色主题2</dt>
+          <dd><nuxt-link to="/">商家中心</nuxt-link></dd>
+          <dd><nuxt-link to="/">我想合作</nuxt-link></dd>
+          <dd><nuxt-link to="/">手机开店</nuxt-link></dd>
+          <dd><nuxt-link to="/">申请开票</nuxt-link></dd>
         </dl>
       </li>
       <li class="list site">
