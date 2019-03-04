@@ -5,26 +5,31 @@
     class="m-header"
   >
     <!-- span 栅格占据的列数 (共24) -->
-    <el-col :span="5">
-      <geo/>
+    <el-col :span="4">
+      <logo/>
     </el-col>
-    <el-col :span="5">
-      <user/>
+    <el-col :span="3">
+      <el-col :span="12">
+        <geo/>
+      </el-col>
+      <el-col :span="12">
+        <div>&nbsp;</div>
+      </el-col>
     </el-col>
-    <el-col :span="14">
+    <el-col :span="16">
       <navbar/>
     </el-col>
   </el-row>
 </template>
 
 <script>
+import Logo from './logo'
 import Geo from './geo'
-import User from './user'
 import Navbar from './nav'
 export default {
   components: {
+    Logo,
     Geo,
-    User,
     Navbar
   }
 }

@@ -3,14 +3,19 @@
     .m-header.m-header-topbar {
       width: 1190px !important;
       z-index: 9999;
-      height: 40px;
-      line-height: 40px;
+      height: 30px;
+      line-height: 30px;
       z-index: 9;
     }
   }
+  .m-logo {
+    color: #fff;
+    background: #fff;
+  }
   .m-geo {
-    color: #666;
+    text-align: center;
     font-size: 12px;
+    color: #666;
     .changeCity {
       background: #f4f4f4;
       border: 1px solid #e5e5e5;
@@ -29,7 +34,7 @@
     .login,
     .register {
       font-size: 12px;
-      line-height: 40px;
+      line-height: 30px;
       color: #999;
       margin: 0 5px;
       &.login {
@@ -50,7 +55,16 @@
       list-style: none;
       float: right;
       margin: 0;
-      height: 40px;
+      height: 30px;
+
+      > li:nth-child(1) {
+        float: left;
+        width: 156px;
+        box-sizing: border-box;
+        text-align: center;
+        cursor: pointer;
+      }
+
       > li {
         float: left;
         width: 78px;
@@ -62,13 +76,14 @@
           color: #999;
 
           &:hover {
-            color: #31bbac;
+            color: #f00;
           }
         }
 
         &.list:hover {
           border: 1px solid #e5e5e5;
           border-top: none;
+          background: #fff;
 
           > dl {
             display: block;
@@ -95,9 +110,14 @@
           }
         }
 
+        .register, .login, .username, .exit {
+          float: right;
+          margin-left: 6px;
+        }
+
         &.bd {
           dl {
-            width: 140%;
+            width: 130%;
             position: relative;
             border-top: 1px solid #e5e5e5;
             left: -31px;
@@ -131,26 +151,26 @@
 
         .subContainer {
           box-sizing: border-box;
-          background: #fff;
-          padding: 30px 36px 36px 47px;
-          width: 1250px;
-          position: relative;
-          left: -1175px;
           z-index: 999;
-          border: 1px solid #e5e5e5;
           display: none;
+          position: relative;
+          left: -986px;
+          padding: 30px 36px 36px 47px;
+          border: 1px solid #e5e5e5;
+          width: 1190px;
           text-align: left;
+          background: #fff;
 
-          &:before {
-            content: ' ';
-            display: block;
-            width: 76px;
-            height: 4px;
-            background: #fff;
-            position: absolute;
-            top: -1px;
-            right: 0;
-          }
+          // &:before {
+          //   content: ' ';
+          //   display: block;
+          //   width: 76px;
+          //   height: 4px;
+          //   background: #fff;
+          //   position: absolute;
+          //   top: -1px;
+          //   right: 0;
+          // }
 
           > dl {
             box-sizing: border-box;

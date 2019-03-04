@@ -1,8 +1,34 @@
 <template>
   <div class="m-nav">
     <ul class="nav">
+      <li class="user">
+        <template v-if="user">
+          <nuxt-link
+            class="exit"
+            to="/exit">退出</nuxt-link>
+          <nuxt-link
+            class="username"
+            to="/order">{{ user }}</nuxt-link>
+        </template>
+        <template v-else>
+          <nuxt-link
+            class="register"
+            to="/register"
+          >免费注册</nuxt-link>
+          <nuxt-link
+            class="login"
+            to="/login"
+          >请登录</nuxt-link>
+        </template>
+      </li>
+      <li>
+        <nuxt-link to="/order">我的订单</nuxt-link>
+      </li>
+      <li>
+        <nuxt-link to="/order">我的京东</nuxt-link>
+      </li>
       <li class="list">
-        <nuxt-link to="/my">我的美团</nuxt-link>
+        <nuxt-link to="/my">京东会员</nuxt-link>
         <dl>
           <dd><nuxt-link to="/order">我的订单</nuxt-link></dd>
           <dd><nuxt-link to="/order">我的收藏</nuxt-link></dd>
@@ -11,10 +37,10 @@
         </dl>
       </li>
       <li>
-        <nuxt-link to="/order">手机APP</nuxt-link>
+        <nuxt-link to="/order">企业采购</nuxt-link>
       </li>
       <li class="list bd">
-        <nuxt-link to="/center">商家中心</nuxt-link>
+        <nuxt-link to="/center">客户服务</nuxt-link>
         <dl>
           <dd><nuxt-link to="/userCenter">登录商家中心</nuxt-link></dd>
           <dd><nuxt-link to="/coop">我想合作</nuxt-link></dd>
@@ -78,12 +104,27 @@
           </dl>
         </div>
       </li>
+      <li>
+        <nuxt-link to="/order">手机京东</nuxt-link>
+      </li>
     </ul>
   </div>
 </template>
 
 <script>
-export default {}
+export default {
+  data() {
+    return {
+      user: ''
+    }
+  },
+  async mounted() {
+    const { status, data: { user }} = await this.$axios.get('/users/getUser')
+    if (status === 200) {
+      this.user = user
+    }
+  }
+}
 </script>
 
 <style scoped lang="scss">
