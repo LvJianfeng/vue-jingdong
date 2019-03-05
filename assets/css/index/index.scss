@@ -1,19 +1,21 @@
 .page-index {
   .m-menu {
-    width: 250px;
-    height: 475px;
     box-sizing: border-box;
-    margin-top: -56px;
-    color: #fff;
+    box-shadow: 2px 2px 2px #dadcd9, -2px 2px 2px #dadcd9;
     position: relative;
+    width: 199px;
+    height: 450px;
+    margin-top: -32px;
+    color: #fff;
     background: linear-gradient(
       -180deg,
       rgba(2, 181, 157, 0.85) 2%,
-      rgba(22, 146, 183, 0.85) 100%
+      rgba(82, 91, 94, 0.85) 100%
     );
 
     dl {
       margin: 6px 0 0 0;
+      padding: 26px 0;
     }
 
     dt {
@@ -173,13 +175,13 @@
 
     .detail {
       position: absolute;
-      left: 250px;
-      top: 50px;
+      left: 200px;
+      top: 26px;
       padding: 0 30px;
       width: 400px;
-      height: 416px;
+      height: 426px;
       color: #999;
-      background: rgb(238, 232, 232);
+      background: #ccc;
       z-index: 9999;
 
       h4 {

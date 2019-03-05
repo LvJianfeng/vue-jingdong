@@ -4,7 +4,7 @@
       class="nav"
       @mouseleave="navLeave"
     >
-      <dt>全部分类</dt>
+      <!-- <dt>全部分类</dt> -->
       <dd
         v-for="(item, index) in $store.state.home.menu"
         :key="index"
@@ -35,18 +35,6 @@ export default {
   data() {
     return {
       kind: '' // 记录鼠标 hover 的状态
-      // menu: [
-      //   {
-      //     type: 'food',
-      //     name: '美食',
-      //     child: [
-      //       {
-      //         title: '美食',
-      //         child: ['代金券', '甜点饮品', '火锅', '自助餐', '小吃快餐']
-      //       }
-      //     ]
-      //   },
-      // ]
     }
   },
   computed: {
