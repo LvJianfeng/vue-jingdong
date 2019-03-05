@@ -9,8 +9,18 @@
     }
   }
   .m-logo {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 170px;
+    box-shadow: 2px 2px 2px #dadcd9, -2px 2px 2px #dadcd9;
     color: #fff;
     background: #fff;
+    img {
+      width: 126px;
+      height: 46px;
+    }
   }
   .m-geo {
     text-align: center;
