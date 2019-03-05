@@ -1,10 +1,10 @@
 <template>
   <div class="page-index">
     <el-row>
-      <el-col :span="5">
+      <el-col :span="4">
         <emenu/>
       </el-col>
-      <el-col :span="19">
+      <el-col :span="20">
         <elife/>
       </el-col>
     </el-row>

@@ -4,10 +4,10 @@
       <el-col :span="14">
         <slider/>
       </el-col>
-      <el-col :span="4">
+      <el-col :span="5">
         <div class="m-life-pic"/>
       </el-col>
-      <el-col :span="6">
+      <el-col :span="5">
         <div class="m-life-login">
           <h4>
             <img
@@ -42,10 +42,10 @@
       <el-col :span="7">
         <div class="m-life-music"/>
       </el-col>
-      <el-col :span="4">
+      <el-col :span="5">
         <div class="m-life-coop"/>
       </el-col>
-      <el-col :span="6">
+      <el-col :span="5">
         <div class="m-life-downapp">
           <img
             src="//s1.meituan.net/bs/fe-web-meituan/60ac9a0/img/download-qr.png"
