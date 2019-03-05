@@ -9,17 +9,45 @@
     }
   }
   .m-logo {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    height: 170px;
-    box-shadow: 2px 2px 2px #dadcd9, -2px 2px 2px #dadcd9;
-    color: #fff;
+    z-index: 999;
+    box-sizing: border-box;
     background: #fff;
-    img {
-      width: 126px;
-      height: 46px;
+    .nav {
+      list-style: none;
+      float: right;
+      margin: 0;
+      width: 100%;
+      height: 30px;
+      > li {
+        box-sizing: border-box;
+        box-shadow: 2px 2px 2px #dadcd9, -2px 2px 2px #dadcd9;
+        text-align: center;
+        cursor: pointer;
+        a {
+          color: #999;
+          &:hover {
+            color: #f00;
+          }
+        }
+        &.list {
+          background: #fff;
+        }
+        dl {
+          z-index: 999;
+          display: block;
+          margin: 0;
+          background: #fff;
+          dd {
+            margin: 0;
+            height: 170px;
+            line-height: 170px;
+            img {
+              width: 126px;
+              height: 46px;
+            }
+          }
+        }
+      }
     }
   }
   .m-geo {
@@ -66,7 +94,6 @@
       float: right;
       margin: 0;
       height: 30px;
-
       > li:nth-child(1) {
         float: left;
         width: 156px;
@@ -74,57 +101,46 @@
         text-align: center;
         cursor: pointer;
       }
-
       > li {
         float: left;
-        width: 78px;
         box-sizing: border-box;
+        width: 78px;
         text-align: center;
         cursor: pointer;
-
         a {
           color: #999;
-
           &:hover {
             color: #f00;
           }
         }
-
         &.list:hover {
           border: 1px solid #e5e5e5;
           border-top: none;
           background: #fff;
-
           > dl {
             display: block;
           }
-
           .subContainer {
             display: flex;
           }
         }
-
         dl {
-          background: #fff;
+          z-index: 999;
           display: none;
           margin: 0;
-          z-index: 999;
-
+          background: #fff;
           dd {
             margin: 0;
             line-height: 35px;
-
             &:hover {
               color: #31bbac;
             }
           }
         }
-
         .register, .login, .username, .exit {
           float: right;
           margin-left: 6px;
         }
-
         &.bd {
           dl {
             box-sizing: border-box;
@@ -165,13 +181,11 @@
             border-bottom: none;
           }
         }
-
         &.site {
           &:hover {
             border-bottom: none;
           }
         }
-
         .subContainer {
           box-sizing: border-box;
           z-index: 999;
