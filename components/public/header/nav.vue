@@ -62,39 +62,39 @@
           <!-- dl 有 dt, 能标识标题 -->
           <dl class="hotel">
             <dt>特色主题</dt>
-            <dd>京东试用</dd>
-            <dd>京东金融</dd>
-            <dd>全球售</dd>
-            <dd>国际站</dd>
-            <dd>京东会员</dd>
-            <dd>京东预售</dd>
-            <dd>买什么</dd>
-            <dd>俄语站</dd>
-            <dd>装机大师</dd>
-            <dd>0元评测</dd>
-            <dd>港销售</dd>
-            <dd>优惠券</dd>
+            <dd><nuxt-link to="/">京东试用</nuxt-link></dd>
+            <dd><nuxt-link to="/">京东金融</nuxt-link></dd>
+            <dd><nuxt-link to="/">全球售</nuxt-link></dd>
+            <dd><nuxt-link to="/">国际站</nuxt-link></dd>
+            <dd><nuxt-link to="/">京东会员</nuxt-link></dd>
+            <dd><nuxt-link to="/">京东预售</nuxt-link></dd>
+            <dd><nuxt-link to="/">买什么</nuxt-link></dd>
+            <dd><nuxt-link to="/">俄语站</nuxt-link></dd>
+            <dd><nuxt-link to="/">装机大师</nuxt-link></dd>
+            <dd><nuxt-link to="/">0元评测</nuxt-link></dd>
+            <dd><nuxt-link to="/">港销售</nuxt-link></dd>
+            <dd><nuxt-link to="/">优惠券</nuxt-link></dd>
           </dl>
           <dl class="hotel2">
             <dt>行业频道</dt>
-            <dd>国际机票</dd>
-            <dd>国际机票</dd>
-            <dd>国际机票</dd>
-            <dd>国际机票</dd>
+            <dd><nuxt-link to="/">国际机票</nuxt-link></dd>
+            <dd><nuxt-link to="/">优惠券</nuxt-link></dd>
+            <dd><nuxt-link to="/">优惠券</nuxt-link></dd>
+            <dd><nuxt-link to="/">优惠券</nuxt-link></dd>
           </dl>
           <dl class="hotel2">
             <dt>生活服务</dt>
-            <dd>国际机票</dd>
-            <dd>国际机票</dd>
-            <dd>国际机票</dd>
-            <dd>国际机票</dd>
+            <dd><nuxt-link to="/">国际机票</nuxt-link></dd>
+            <dd><nuxt-link to="/">优惠券</nuxt-link></dd>
+            <dd><nuxt-link to="/">优惠券</nuxt-link></dd>
+            <dd><nuxt-link to="/">优惠券</nuxt-link></dd>
           </dl>
           <dl class="hotel2">
             <dt>更多精选</dt>
-            <dd>国际机票</dd>
-            <dd>国际机票</dd>
-            <dd>国际机票</dd>
-            <dd>国际机票</dd>
+            <dd><nuxt-link to="/">国际机票</nuxt-link></dd>
+            <dd><nuxt-link to="/">优惠券</nuxt-link></dd>
+            <dd><nuxt-link to="/">优惠券</nuxt-link></dd>
+            <dd><nuxt-link to="/">优惠券</nuxt-link></dd>
           </dl>
         </div>
       </li>
