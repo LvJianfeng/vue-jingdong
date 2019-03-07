@@ -8,7 +8,6 @@
       }
     }
   }
-
   > .el-row:nth-child(1) {
     width: 1190px;
     margin: 0 auto;
@@ -16,16 +15,13 @@
     height: 30px;
     line-height: 30px;
   }
-
   > .el-row:nth-child(2) {
     background: #fff;
-
     .search-panel {
       width: 1190px;
       margin: 0 auto;
     }
   }
-
   > .el-main {
     overflow: unset;
   }
