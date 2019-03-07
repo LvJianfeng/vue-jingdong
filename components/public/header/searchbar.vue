@@ -5,13 +5,7 @@
         :span="3"
         class="left"
       >
-        <!-- 美团图标 -->
-        <!-- <nuxt-link to="/">
-          <img
-            src="//s0.meituan.net/bs/fe-web-meituan/e5eeaef/img/logo.png"
-            alt="美团"
-          >
-        </nuxt-link> -->
+        <div>none</div>
       </el-col>
       <el-col
         :span="15"
