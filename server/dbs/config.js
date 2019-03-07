@@ -40,6 +40,5 @@ export default {
       }
     }
   },
-  sign: 'a3c9fe0782107295ee9f1709edd15218',
   requestUrl: 'http://cp-tools.cn'
 }
