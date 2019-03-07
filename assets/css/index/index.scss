@@ -1,8 +1,8 @@
 .page-index {
   .m-menu {
+    position: relative;
     box-sizing: border-box;
     box-shadow: 2px 2px 2px #dadcd9, -2px 2px 2px #dadcd9;
-    position: relative;
     width: 199px;
     height: 450px;
     margin-top: -32px;
@@ -36,7 +36,7 @@
       cursor: pointer;
 
       &:hover {
-        background: rgba(255, 255, 255, 0.2);
+        background: rgba(255, 255, 255, 0.319);
 
         & > i {
           opacity: 1;
@@ -181,7 +181,7 @@
       width: 400px;
       height: 426px;
       color: #999;
-      background: #ccc;
+      background: rgb(70, 69, 69);
       z-index: 9999;
 
       h4 {
@@ -190,6 +190,7 @@
         border-bottom: 1px solid #3b3535;
         height: 22px;
         line-height: 22px;
+        color: #31bbac;
       }
 
       span {

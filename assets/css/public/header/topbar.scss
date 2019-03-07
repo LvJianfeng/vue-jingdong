@@ -10,7 +10,6 @@
   .m-logo {
     z-index: 999;
     box-sizing: border-box;
-    background: #fff;
     .nav {
       list-style: none;
       float: right;
@@ -19,25 +18,14 @@
       height: 30px;
       > li {
         box-sizing: border-box;
-        box-shadow: 2px 2px 2px #dadcd9, -2px 2px 2px #dadcd9;
+        box-shadow: 2px 0 2px #dadcd9, -2px 0 2px #dadcd9;
         text-align: center;
         cursor: pointer;
-        a {
-          color: #999;
-          &:hover {
-            color: #f00;
-          }
-        }
-        &.list {
-          background: #fff;
-        }
         dl {
           z-index: 999;
           display: block;
-          margin: 0;
           background: #fff;
           dd {
-            margin: 0;
             height: 170px;
             line-height: 170px;
             img {

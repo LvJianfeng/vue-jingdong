@@ -1,10 +1,12 @@
 .m-header {
+  .search-panel {
+    background: #fff;
+  }
   .m-header-searchbar {
     align-items: start;
     box-sizing: border-box;
     padding: 20px 0 0 0;
     height: 167px;
-    background: #fff;
     .left {
       padding-top: 15px;
       width: 280px;
