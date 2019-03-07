@@ -1,25 +1,21 @@
 ﻿<template>
   <div class="m-logo">
-    <ul class="nav">
-      <li class="list">
-        <template v-if="logoType">
-          <dl>
-            <dd>
-              <nuxt-link to="/">
-                <img
-                  src="//s0.meituan.net/bs/fe-web-meituan/e5eeaef/img/logo.png"
-                  alt="美团"
-                >
-              </nuxt-link>
-            </dd>
-          </dl>
-        </template>
-        <template v-else>
-          <i class="el-icon-location"/>
-          {{ $store.state.geo.position.city }}
-        </template>
-      </li>
-    </ul>
+    <div class="nav">
+      <template v-if="logoType">
+        <div class="home-logo">
+          <nuxt-link to="/">
+            <img
+              src="//s0.meituan.net/bs/fe-web-meituan/e5eeaef/img/logo.png"
+              alt="美团"
+            >
+          </nuxt-link>
+        </div>
+      </template>
+      <template v-else>
+        <i class="el-icon-location"/>
+        {{ $store.state.geo.position.city }}
+      </template>
+    </div>
   </div>
 </template>
 
