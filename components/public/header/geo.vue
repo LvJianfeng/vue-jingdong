@@ -1,8 +1,17 @@
 <template>
   <div class="m-geo">
     <template v-if="logoType">
-      <i class="el-icon-location"/>
-      {{ $store.state.geo.position.city }}
+      <div class="nav">
+        <div class="list">
+          <nuxt-link to="/">
+            <i class="el-icon-location"/>
+            {{ $store.state.geo.position.city }}
+          </nuxt-link>
+          <dl>
+            <dd><nuxt-link to="/order">帮助中心</nuxt-link></dd>
+          </dl>
+        </div>
+      </div>
     </template>
     <template v-else>&nbsp;</template>
   </div>

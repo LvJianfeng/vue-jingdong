@@ -46,8 +46,9 @@ export default {
       let wantArray
       for (const value of city) {
         wantArray = [...value.value]
-        // console.log(wantArray, 1)
+        console.log(wantArray[0].province, 1)
         for (const value of wantArray) {
+          // console.log(value, 2)
           // p: 城市首字母小写拼音
           p = pyjs
             .getFullChars(value.name)
