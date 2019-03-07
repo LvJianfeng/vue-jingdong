@@ -7,11 +7,11 @@
             <i class="el-icon-location"/>
             {{ $store.state.geo.position.city }}
           </nuxt-link>
-          <dl
-            v-for="item in block"
-            :key="item"
-          >
-            <dd><nuxt-link to="/order">{{ item }}</nuxt-link></dd>
+          <dl>
+            <dd
+              v-for="item in block"
+              :key="item"
+            ><nuxt-link to="/">{{ item }}</nuxt-link></dd>
           </dl>
         </div>
       </div>
@@ -34,18 +34,17 @@ export default {
     }
   },
   async mounted() {
-    // const blocks = []
+    const blocks = []
     const { status, data: { city }} = await this.$axios.get('/geo/city')
     if (status === 200) {
-      // let p
-      // let c
-      // const d = {}
       let wantArray
       for (const value of city) {
         wantArray = [...value.value]
-        this.block = wantArray[0].province
-        console.log(this.block, 2)
+        blocks.push(wantArray[0].province)
       }
+      blocks.splice(4, 1, '内蒙古')
+      blocks.splice(17, 1, '广西省')
+      this.block = blocks
     }
   }
 }
