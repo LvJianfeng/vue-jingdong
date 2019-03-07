@@ -3,7 +3,8 @@
     <div class="login-header">
       <a
         href="/"
-        class="logo"/>
+        class="logo"
+      />
     </div>
     <div class="login-panel">
       <div class="banner">
