@@ -7,8 +7,11 @@
             <i class="el-icon-location"/>
             {{ $store.state.geo.position.city }}
           </nuxt-link>
-          <dl>
-            <dd><nuxt-link to="/order">帮助中心</nuxt-link></dd>
+          <dl
+            v-for="item in block"
+            :key="item"
+          >
+            <dd><nuxt-link to="/order">{{ item }}</nuxt-link></dd>
           </dl>
         </div>
       </div>
@@ -18,10 +21,31 @@
 </template>
 
 <script>
+// import { mapMutations } from 'vuex'
 export default {
+  data() {
+    return {
+      block: []
+    }
+  },
   computed: {
     logoType() {
       return this.$route.name === 'index'
+    }
+  },
+  async mounted() {
+    // const blocks = []
+    const { status, data: { city }} = await this.$axios.get('/geo/city')
+    if (status === 200) {
+      // let p
+      // let c
+      // const d = {}
+      let wantArray
+      for (const value of city) {
+        wantArray = [...value.value]
+        this.block = wantArray[0].province
+        console.log(this.block, 2)
+      }
     }
   }
 }
