@@ -43,7 +43,6 @@
       float: right;
       height: 30px;
       div {
-        float: left;
         box-sizing: border-box;
         width: 78px;
         text-align: center;
@@ -55,9 +54,6 @@
           > dl {
             display: inline-block;
           }
-          .subContainer {
-            display: flex;
-          }
         }
         dl {
           z-index: 999;
@@ -68,7 +64,7 @@
           border-top: none;
           border-left: none;
           padding: 10px;
-          width: 450%;
+          width: 425%;
           text-align: left;
           background: #fff;
           dd {
@@ -76,9 +72,10 @@
             width: 60px;
             height: 20px;
             line-height: 20px;
-            text-align: left;
+            text-align: center;
             &:hover {
               color: #31bbac;
+              background: #f4f4f4;
             }
           }
         }
