@@ -11,6 +11,7 @@
             <dd
               v-for="item in block"
               :key="item"
+              @click="handleSelect(item)"
             ><nuxt-link to="/">{{ item }}</nuxt-link></dd>
           </dl>
         </div>
@@ -21,7 +22,7 @@
 </template>
 
 <script>
-// import { mapMutations } from 'vuex'
+import { mapMutations } from 'vuex'
 export default {
   data() {
     return {
@@ -43,8 +44,17 @@ export default {
         blocks.push(wantArray[0].province)
       }
       blocks.splice(4, 1, '内蒙古')
-      blocks.splice(17, 1, '广西省')
+      blocks.splice(17, 1, '广西')
       this.block = blocks
+    }
+  },
+  methods: {
+    ...mapMutations({
+      setPosition: 'geo/setPosition'
+    }),
+    handleSelect(cityName) {
+      // console.log(cityName)
+      this.$store.commit('geo/setCity', cityName)
     }
   }
 }
