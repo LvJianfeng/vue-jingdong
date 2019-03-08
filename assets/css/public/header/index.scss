@@ -1,7 +1,8 @@
 @import './topbar.scss';
 @import './search.scss';
+@import '../variable.scss';
 .m-header {
-  background: #e3e4e5;
+  background: $color-theme-l;
   @at-root .layout-default {
     .el-header {
       .m-header {
@@ -17,7 +18,7 @@
     line-height: 30px;
   }
   > .el-row:nth-child(2) {
-    background: #fff;
+    background: $color-theme-w;
     .search-panel {
       width: 1190px;
       margin: 0 auto;

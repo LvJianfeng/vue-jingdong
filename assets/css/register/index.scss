@@ -1,8 +1,9 @@
+@import '../public/variable.scss';
 .page-register {
   .header {
-    border-bottom: 2px solid #2bb8aa;
+    border-bottom: 2px solid $color-theme;
     min-width: 980px;
-    color: #666;
+    color: $color-text;
 
     header {
       margin: 0 auto;
@@ -40,11 +41,11 @@
     .status {
       font-size: 12px;
       margin-left: 20px;
-      color: #e6a23c;
+      color: $color-text-active;
     }
 
     .error {
-      color: red;
+      color: $color-text-active;
     }
   }
 }

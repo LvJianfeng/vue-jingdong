@@ -1,3 +1,4 @@
+@import '../public/variable.scss';
 .page-product {
   .m-crumbs {
     margin: 10px 0;
@@ -6,7 +7,7 @@
     display: flex;
     padding: 20px 0;
     min-height: 125px;
-    border-top: 1px solid #e5e5e5;
+    border-top: 1px solid $color-shadow;
 
     dt {
       width: 220px;
@@ -25,7 +26,7 @@
       > h3 {
         font-weight: 500;
         font-size: 16px;
-        color: #333;
+        color: $color-text;
       }
 
       .el-rate {
@@ -61,7 +62,7 @@
 
         > b {
           float: right;
-          border: 1px solid #31bbac;
+          border: 1px solid $color-theme;
           background-color: rgb(255, 153, 0);
           border-color: rgb(255, 153, 0);
           color: rgb(255, 255, 255);
@@ -79,7 +80,7 @@
         font-size: 12px;
         padding-top: 11px;
         margin-top: 5px;
-        border-top: 1px dashed #ddd;
+        border-top: 1px dashed $color-shadow;
 
         li {
           width: 668px;
@@ -93,7 +94,7 @@
             line-height: 15px;
             display: inline-block;
             background: rgb(35, 147, 238);
-            color: #fff;
+            color: $color-theme-w;
             text-align: center;
             border-radius: 1px;
             padding: 1px 2px;
@@ -118,10 +119,10 @@
   .m-products-list {
     box-sizing: border-box;
     margin-top: 10px;
-    background: #fff;
-    border: 1px solid #e5e5e5;
+    background: $color-theme-w;
+    border: 1px solid $color-shadow;
     border-radius: 4px;
-    color: #333;
+    color: $color-text;
     font-size: 14px;
     line-height: 20px;
     padding: 11px 20px;
@@ -136,7 +137,7 @@
         cursor: pointer;
 
         &.s-nav-active {
-          color: #31bcad;
+          color: $color-theme;
         }
       }
 
@@ -152,7 +153,7 @@
           right: 8px;
           top: 0;
           border: 4px solid transparent;
-          border-bottom-color: #ddd;
+          border-bottom-color: $color-shadow;
           width: 0;
           height: 0;
         }
@@ -160,7 +161,7 @@
         &:after {
           top: 12px;
           border-bottom-color: transparent;
-          border-top-color: #ddd;
+          border-top-color: $color-shadow;
         }
       }
     }
@@ -172,10 +173,10 @@
   }
   .m-product-categroy {
     padding: 15px 20px 0;
-    background: #fff;
-    border: 1px solid #e5e5e5;
+    background: $color-theme-w;
+    border: 1px solid $color-shadow;
     border-radius: 4px;
-    color: #333;
+    color: $color-text;
     font-size: 14px;
     font-weight: 500;
     line-height: 20px;
@@ -190,8 +191,8 @@
 
       &:nth-child(2) {
         border-radius: 100px;
-        background: #13d1be;
-        color: #fff;
+        background: $color-theme;
+        color: $color-theme-w;
         height: 22px;
         line-height: 22px;
         width: 40px;
@@ -203,7 +204,7 @@
 
     &:nth-child(1) {
       dd {
-        border-bottom: 1px solid #ddd;
+        border-bottom: 1px solid $color-shadow;
       }
     }
   }
@@ -226,7 +227,7 @@
           display: block;
           width: 0;
           height: 0;
-          border-color: transparent transparent #e5e5e5;
+          border-color: transparent transparent $color-shadow;
           border-style: solid;
           border-width: 5px;
           top: -11px;
@@ -240,7 +241,7 @@
           display: block;
           width: 0;
           height: 0;
-          border-color: transparent transparent #fff;
+          border-color: transparent transparent $color-theme-w;
           border-style: solid;
           border-width: 4px;
         }
@@ -248,15 +249,15 @@
         display: none;
         top: 24px;
         width: 510px;
-        background: #fff;
+        background: $color-theme-w;
         position: absolute;
         cursor: auto;
         user-select: text;
         white-space: normal;
         font-size: 12px;
         text-align: left;
-        background: #fff;
-        border: 1px solid #e5e5e5;
+        background: $color-theme-w;
+        border: 1px solid $color-shadow;
         border-radius: 4px;
         padding: 19px 15px 9px;
 
@@ -268,7 +269,7 @@
         }
 
         h3 {
-          color: #ccc;
+          color: $color-text;
           font-size: 16px;
           margin-bottom: 11px;
         }

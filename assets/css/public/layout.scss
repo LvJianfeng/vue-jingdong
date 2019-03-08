@@ -1,3 +1,4 @@
+@import './variable.scss';
 .el-header,
 .el-main,
 .el-footer {
@@ -8,17 +9,17 @@
 }
 
 .el-header {
-  background: #e3e4e5;
-  color: #999;
   width: 100%;
   font-size: 12px;
+  color: $color-text;
+  background: $color-theme-d;
 
   .m-header {
     width: 1190px;
     margin: 0 auto;
 
     .m-user > a {
-      color: #13d1be;
+      color: $color-theme;
     }
   }
 }
@@ -27,5 +28,5 @@
   -webkit-font-smoothing: antialiased;
   font-family: '-apple-system', BlinkMacSystemFont, Roboto, 'Helvetica Neue',
     'MIcrosoft YaHei', sans-serif !important;
-  background-color: #f8f8f8;
+  background-color: $color-theme-d;
 }

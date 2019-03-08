@@ -1,3 +1,4 @@
+@import '../variable.scss';
 .m-header {
   @at-root .el-header {
     .m-header.m-header-topbar {
@@ -15,16 +16,16 @@
       margin: 0;
       width: 100%;
       height: 30px;
-      color: #666;
+      color: $color-text;
       .home-logo {
         z-index: 999;
         display: block;
         box-sizing: border-box;
-        box-shadow: 2px 0 2px #dadcd9, -2px 0 2px #dadcd9;
+        box-shadow: 2px 0 2px $color-shadow, -2px 0 2px $color-shadow;
         height: 170px;
         line-height: 170px;
         text-align: center;
-        background: #fff;
+        background: $color-theme-w;
         cursor: pointer;
         img {
           width: 126px;
@@ -37,7 +38,7 @@
     box-sizing: border-box;
     text-align: center;
     font-size: 12px;
-    color: #666;
+    color: $color-text;
     cursor: pointer;
     .nav {
       float: right;
@@ -48,9 +49,9 @@
         text-align: center;
         cursor: pointer;
         &:hover {
-          border: 1px solid #e5e5e5;
+          border: 1px solid $color-shadow;
           border-top: none;
-          background: #fff;
+          background: $color-theme-w;
           > dl {
             display: inline-block;
           }
@@ -60,13 +61,13 @@
           display: none;
           position: relative;
           box-sizing: border-box;
-          border: 1px solid #e5e5e5;
+          border: 1px solid $color-shadow;
           border-top: none;
           border-left: none;
           padding: 10px;
           width: 425%;
           text-align: left;
-          background: #fff;
+          background: $color-theme-w;
           dd {
             display: inline-block;
             width: 60px;
@@ -74,8 +75,8 @@
             line-height: 20px;
             text-align: center;
             &:hover {
-              color: #31bbac;
-              background: #f4f4f4;
+              color: $color-text-active;
+              background: $color-theme-d;
             }
           }
         }
@@ -110,16 +111,16 @@
         cursor: pointer;
         &:hover {
           > a {
-            color: #f00;
+            color: $color-text-active;
           }
         }
         a {
-          color: #999;
+          color: $color-text;
         }
         &.list:hover {
-          border: 1px solid #e5e5e5;
+          border: 1px solid $color-shadow;
           border-top: none;
-          background: #fff;
+          background: $color-theme-w;
           > dl {
             display: block;
           }
@@ -131,12 +132,12 @@
           z-index: 999;
           display: none;
           margin: 0;
-          background: #fff;
+          background: $color-theme-w;
           dd {
             margin: 0;
             line-height: 35px;
             &:hover a {
-              color: #31bbac;
+              color: $color-text-active;
             }
           }
         }
@@ -146,13 +147,13 @@
             width: 200%;
             padding: 4px 2px 2px 8px;
             box-sizing: border-box;
-            border: 1px solid #e5e5e5;
+            border: 1px solid $color-shadow;
             border-top: none;
             border-left: none;
             dt {
               font-size: 14px;
               text-align: left;
-              color: #31bbac;
+              color: $color-theme;
             }
             dd {
               display: inline-block;
@@ -177,11 +178,11 @@
           position: relative;
           left: -986px;
           box-sizing: border-box;
-          border: 1px solid #e5e5e5;
+          border: 1px solid $color-shadow;
           padding: 20px 0 20px 20px;
           width: 1190px;
           text-align: left;
-          background: #fff;
+          background: $color-theme-w;
           > dl {
             box-sizing: border-box;
             display: inline-block !important;
@@ -189,7 +190,7 @@
             dt {
               font-size: 14px;
               text-align: left;
-              color: #31bbac;
+              color: $color-theme;
             }
             &.hotel {
               width: 4 / 13 * 100%;

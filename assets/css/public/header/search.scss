@@ -1,6 +1,7 @@
+@import '../variable.scss';
 .m-header {
   .search-panel {
-    background: #fff;
+    background: $color-theme-w;
   }
   .m-header-searchbar {
     align-items: start;
@@ -21,7 +22,7 @@
       .wrapper {
         position: relative;
         box-sizing: border-box;
-        border: 1px solid #13d1be;
+        border: 1px solid $color-theme;
         border-radius: 4px;
         margin-top: 16px;
         width: 552px;
@@ -41,7 +42,7 @@
           width: 88px;
           font-size: 16px;
           vertical-align: -1px;
-          background: #13d1be;
+          background: $color-theme;
           i {
             font-weight: bold;
           }
@@ -57,25 +58,25 @@
           border-bottom-left-radius: 4px;
           border-bottom-right-radius: 4px;
           border-top: none;
-          border: 1px solid #e5e5e5;
+          border: 1px solid $color-theme-l;
           padding: 10px;
           width: 462px;
           font-size: 12px;
-          background: #fff;
+          background: $color-theme-w;
           dt {
             font-weight: bold;
-            color: #999;
+            color: $color-text;
           }
           dd {
             display: inline-block;
             margin-right: 10px;
             margin-bottom: 3px;
             margin-top: 5px;
-            color: #666;
+            color: $color-text;
             cursor: pointer;
             &:hover {
-              color: #31bbac;
-              background: #f8f8f8;
+              color: $color-theme;
+              background: $color-theme-d;
             }
           }
           &.searchList {
@@ -96,9 +97,9 @@
           margin: 0 5px 0 0;
           line-height: 40px;
           font-size: 12px;
-          color: #999;
+          color: $color-text;
           &:hover {
-            color: #31bbac;
+            color: $color-theme;
           }
         }
       }
@@ -113,18 +114,9 @@
           margin: 0 20px 0 0;
           cursor: pointer;
           a {
-            color: #222;
+            color: $color-text;
             &:hover {
-              color: #f04d4e;
-            }
-            &.takeout:hover {
-              color: #fbc700;
-            }
-            &.apartment:hover {
-              color: #fdc411;
-            }
-            &.business:hover {
-              color: #31bbac;
+              color: $color-text-active;
             }
           }
         }
@@ -145,7 +137,7 @@
           &:after {
             font-family: iconfont;
             font-size: 36px;
-            color: #13d1be;
+            color: $color-theme;
           }
         }
         .refund {
@@ -168,7 +160,7 @@
           line-height: 1;
           text-align: center;
           font-size: 12px;
-          color: #999;
+          color: $color-text;
         }
       }
     }
