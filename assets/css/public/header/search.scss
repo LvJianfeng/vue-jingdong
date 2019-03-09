@@ -22,7 +22,7 @@
       .wrapper {
         position: relative;
         box-sizing: border-box;
-        border: 1px solid $color-theme;
+        border: 1px solid $color-text-active;
         border-radius: 4px;
         margin-top: 16px;
         width: 552px;
@@ -42,7 +42,7 @@
           width: 88px;
           font-size: 16px;
           vertical-align: -1px;
-          background: $color-theme;
+          background: $color-text-active;
           i {
             font-weight: bold;
           }
@@ -75,7 +75,7 @@
             color: $color-text;
             cursor: pointer;
             &:hover {
-              color: $color-theme;
+              color: $color-text-active;
               background: $color-theme-d;
             }
           }
@@ -99,7 +99,7 @@
           font-size: 12px;
           color: $color-text;
           &:hover {
-            color: $color-theme;
+            color: $color-text-active;
           }
         }
       }
@@ -137,7 +137,7 @@
           &:after {
             font-family: iconfont;
             font-size: 36px;
-            color: $color-theme;
+            color: $color-text-active;
           }
         }
         .refund {

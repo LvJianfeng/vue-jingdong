@@ -4,7 +4,6 @@
       class="nav"
       @mouseleave="navLeave"
     >
-      <!-- <dt>全部分类</dt> -->
       <dd
         v-for="(item, index) in $store.state.home.menu"
         :key="index"
