@@ -1,9 +1,5 @@
 # imooc-mt
 
-## 内容大纲
-
-![内容大纲](https://i.loli.net/2018/12/30/5c28d153b9341.jpeg)
-
 ## 运行图片
 
 ![首页](https://i.loli.net/2019/01/10/5c37653fe976f.png)
@@ -11,8 +7,10 @@
 ![注册界面](https://i.loli.net/2018/12/26/5c23a366762d7.png)
 ![风景列表](https://i.loli.net/2018/12/26/5c23a37d382db.png)
 ![风景界面](https://i.loli.net/2019/01/10/5c37658f6a373.png)
-![订单界面](https://i.loli.net/2019/01/10/5c3765d79b16b.png)
-![总订单](https://i.loli.net/2019/01/11/5c376ca8b25ef.png)
+
+## 内容大纲
+
+![内容大纲](https://i.loli.net/2018/12/30/5c28d153b9341.jpeg)
 
 ## 启动
 
