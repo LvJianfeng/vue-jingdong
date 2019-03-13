@@ -6,7 +6,7 @@
 ![登录界面](https://i.loli.net/2018/12/26/5c23a34dbdea7.png)
 ![注册界面](https://i.loli.net/2018/12/26/5c23a366762d7.png)
 ![风景列表](https://i.loli.net/2019/03/13/5c884a4563ca3.png)
-![风景界面](https://i.loli.net/2019/01/10/5c37658f6a373.png)
+![风景界面](https://i.loli.net/2019/03/13/5c88502e901b7.png)
 
 ## 内容大纲
 
