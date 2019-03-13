@@ -2,7 +2,7 @@
 
 ## 运行图片
 
-![首页](https://i.loli.net/2019/01/10/5c37653fe976f.png)
+![首页](https://i.loli.net/2019/03/13/5c884927d9b57.png)
 ![登录界面](https://i.loli.net/2018/12/26/5c23a34dbdea7.png)
 ![注册界面](https://i.loli.net/2018/12/26/5c23a366762d7.png)
 ![风景列表](https://i.loli.net/2018/12/26/5c23a37d382db.png)
