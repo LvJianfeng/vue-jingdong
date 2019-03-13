@@ -20,13 +20,6 @@
           <sub>门店价{{ Number(meta.biz_ext.cost) }}</sub>
         </p>
       </dd>
-      <dd>
-        <el-button
-          type="warning"
-          round
-          @click="createCart">立即抢购
-        </el-button>
-      </dd>
     </dl>
   </li>
 </template>
